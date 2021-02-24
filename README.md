@@ -4,7 +4,7 @@ Integrantes de equipo:
 
 Daniel Imanol Martinez Gomez    ImanolMG
 
-Luis Daniel Cruz Gomez    
+Luis Daniel Cruz Gomez    201255
 
 Jesus Eduardo Jimenez Guillen 
 
