@@ -1,4 +1,4 @@
 package persistencia;
 
-public class Servicio {
+public class DAO {
 }
