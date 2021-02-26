@@ -33,7 +33,7 @@ public class CitaDAO {
         System.out.println("IdCita \t Nombre Mascota \t Fecha \t Servicio");
         for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
             Cita dao = (Cita) iterator.next();
-            System.out.println( dao.getId()+ "\t" + dao.getNombreMascota()+"\t" + dao.getFecha() +"\t"+ dao.getServicio());
+            System.out.println( dao.getId()+ "\t\t" + dao.getNombreMascota()+"\t\t" + dao.getFecha() +"\t"+ dao.getServicio());
         }
     }
 }

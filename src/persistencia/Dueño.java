@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Dueño implements Serializable {
 
+    private Integer IdDueño;
     private String Nombre;
     private String Direccion;
     private Integer Numero;
@@ -11,7 +12,8 @@ public class Dueño implements Serializable {
     public Dueño() {
     }
 
-    public Dueño(String Nombre,String Direccion,Integer Numero) {
+    public Dueño(Integer IdDueño, String Nombre,String Direccion,Integer Numero) {
+        this.IdDueño = IdDueño;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.Numero = Numero;
