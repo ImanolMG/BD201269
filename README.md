@@ -2,7 +2,7 @@
 Proyecto Veterinaria 
 Integrantes de equipo:
 
-Daniel Imanol Martinez Gomez    ImanolMG
+Daniel Imanol Martinez Gomez  201269  ImanolMG
 
 Luis Daniel Cruz Gomez    201255
 
