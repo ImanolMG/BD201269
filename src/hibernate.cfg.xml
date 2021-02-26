@@ -16,7 +16,6 @@
 		    <mapping resource="persistencia/Ciudad.hbm.xml" />
     <mapping resource="persistencia/Alumno.hbm.xml" />
 
-
 </session-factory>
 </hibernate-configuration>
 
