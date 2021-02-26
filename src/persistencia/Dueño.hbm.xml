@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="persistencia">
-  <class name="Cita" table="cita">
+  <class name="Dueño" table="dueño">
    <id name="id"
-            column="idCita"
+            column="idDueño"
             type="java.lang.Integer"
             unsaved-value="null" >
             <generator class="native">
             </generator>
         </id>
 
-<property name="NombreMascota" column="NombreMascota"/>
-<property name="Fecha" column="Fecha" />
-<property name="Servicio" column="Servicio" />
-    <many-to-one name="Cita" class="Cita" fetch="select">
-            <column name="IdCita" not-null="true" />
+<property name="Nombre" column="Nombre"/>
+<property name="Direccion" column="Direccion" />
+<property name="Telefono" column="Telefono" />
+    <many-to-one name="Dueño" class="Dueño" fetch="select">
+            <column name="idDueño" not-null="true" />
     </many-to-one>
   </class>
 </hibernate-mapping>

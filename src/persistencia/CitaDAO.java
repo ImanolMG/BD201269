@@ -12,12 +12,12 @@ public class CitaDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
-    public CitaDAO() {
+    public CitaDAO(String conection) {
         System.err.println("Iniciando conexionn");
         try {
             Configuration configuration = new Configuration();
             System.err.println("Leyendo configuracion.");
-            configuration.configure();
+            configuration.configure(conection);
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             factory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
