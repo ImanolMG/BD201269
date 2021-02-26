@@ -1,4 +1,4 @@
 package persistencia;
 
-public class DAO {
+public class DueñoDAO {
 }
