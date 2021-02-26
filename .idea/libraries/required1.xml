@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="required1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/BaseDatos/Jar/hibernateJarFiles/required" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/Downloads/BaseDatos/Jar/hibernateJarFiles/required" recursive="false" />
+  </library>
+</component>
