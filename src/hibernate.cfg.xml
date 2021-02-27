@@ -15,8 +15,7 @@
 
 		<mapping resource="persistencia/Cita.hbm.xml" />
 		    <mapping resource="persistencia/Dueño.hbm.xml" />
-		<mapping resource="persistencia/Mascota.hbm.xml" />
-		<mapping resource="persistencia/Medicamentos.hbm.xml" />
+
 
 
 </session-factory>
