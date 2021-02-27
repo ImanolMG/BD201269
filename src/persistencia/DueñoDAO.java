@@ -8,6 +8,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import java.util.*;
 
 public class DueñoDAO {
+
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
@@ -29,10 +30,10 @@ public class DueñoDAO {
         Session session = factory.openSession();
         List empList1 = session.createQuery(" from Dueño").list();
 
-        System.out.println("IdDueño \t Nombre Dueño \t Direccion \t Telefono");
+        System.out.println("IdDueño \t Nombre_Dueño \t Direccion \t Telefono");
         for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
             Dueño dao = (Dueño) iterator.next();
-            System.out.println( );
+            System.out.println( dao.getId()+ "\t\t"+dao.getNombre()+"\t\t" + dao.getDireccion() +"\t"+ dao.getTelefono());
         }
     }
 }

@@ -14,7 +14,7 @@
 <property name="Direccion" column="Direccion" />
 <property name="Telefono" column="Telefono" />
     <many-to-one name="Dueño" class="Dueño" fetch="select">
-            <column name="idDueño" not-null="true" />
+            <column name="IdDueño" not-null="true" />
     </many-to-one>
   </class>
 </hibernate-mapping>

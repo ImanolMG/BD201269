@@ -7,18 +7,23 @@ public class Dueño implements Serializable {
     private Integer IdDueño;
     private String Nombre;
     private String Direccion;
-    private Integer Numero;
+    private Integer Telefono;
     private Dueño dueño;
     public Dueño() {
     }
 
-    public Dueño(Integer IdDueño, String Nombre,String Direccion,Integer Numero) {
+    public Dueño(Integer IdDueño, String Nombre,String Direccion,Integer Telefono) {
         this.IdDueño = IdDueño;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
-        this.Numero = Numero;
+        this.Telefono = Telefono;
     }
-
+    public void setId(Integer IdDueño){
+        this.IdDueño = IdDueño;
+    }
+    public Integer getId(){
+        return IdDueño;
+    }
     public void setNombre(String Nombre){
         this.Nombre = Nombre;
     }
@@ -33,11 +38,11 @@ public class Dueño implements Serializable {
         return Direccion;
     }
 
-    public void setNumero(Integer Numero){
-        this.Numero=Numero;
+    public void setTelefono(Integer Telefono){
+        this.Telefono=Telefono;
     }
-    public Integer getNumero(){
-        return Numero;
+    public Integer getTelefono(){
+        return Telefono;
     }
 
 
