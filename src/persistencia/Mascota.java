@@ -1,6 +1,8 @@
 package persistencia;
 
-public class Mascota {
+import java.io.Serializable;
+
+public class Mascota implements Serializable {
 
     private Integer IdMascota;
     private String TipoMascota;
@@ -9,79 +11,74 @@ public class Mascota {
     private Integer IdDueño;
     private String Sexo;
     private String Motivo;
+    private Mascota mascota;
 
-
-    public Mascota(Integer idMascota, String tipoMascota, String nombre, String fechaIngreso, Integer idDueño, String sexo, String motivo) {
-        IdMascota = idMascota;
-        TipoMascota = tipoMascota;
-        Nombre = nombre;
-        FechaIngreso = fechaIngreso;
-        IdDueño = idDueño;
-        Sexo = sexo;
-        Motivo = motivo;
+    public Mascota(){
+    }
+    public Mascota(Integer IdMascota, String TipoMascota, String Nombre, String FechaIngreso, Integer IdDueño, String Sexo, String Motivo) {
+        this.IdMascota = IdMascota;
+        this.TipoMascota = TipoMascota;
+        this.Nombre = Nombre;
+        this.FechaIngreso = FechaIngreso;
+        this.IdDueño = IdDueño;
+        this.Sexo = Sexo;
+        this.Motivo = Motivo;
     }
 
 
-    public Integer getIdMascota() {
+    public Integer getId() {
         return IdMascota;
     }
-
-    public Mascota setIdMascota(Integer idMascota) {
-        IdMascota = idMascota;
-        return this;
+    public void setId(Integer IdMascota) {
+        this.IdMascota = IdMascota;
     }
 
     public String getTipoMascota() {
         return TipoMascota;
     }
-
-    public Mascota setTipoMascota(String tipoMascota) {
-        TipoMascota = tipoMascota;
-        return this;
+    public void setTipoMascota(String tipoMascota) {
+        this.TipoMascota = TipoMascota;
     }
 
     public String getNombre() {
         return Nombre;
     }
-
-    public Mascota setNombre(String nombre) {
-        Nombre = nombre;
-        return this;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public String getFechaIngreso() {
         return FechaIngreso;
     }
-
-    public Mascota setFechaIngreso(String fechaIngreso) {
-        FechaIngreso = fechaIngreso;
-        return this;
+    public void setFechaIngreso(String FechaIngreso) {
+        this.FechaIngreso = FechaIngreso;
     }
 
     public Integer getIdDueño() {
         return IdDueño;
     }
-
-    public Mascota setIdDueño(Integer idDueño) {
-        IdDueño = idDueño;
-        return this;
+    public void setIdDueño(Integer IdDueño) {
+        this.IdDueño = IdDueño;
     }
 
     public String getSexo() {
         return Sexo;
     }
-
-    public Mascota setSexo(String sexo) {
-        Sexo = sexo;
-        return this;
+    public void setSexo(String Sexo) {
+        this.Sexo = Sexo;
     }
 
     public String getMotivo() {
         return Motivo;
     }
+    public void setMotivo(String Motivo) {
+        this.Motivo = Motivo;
+    }
 
-    public Mascota setMotivo(String motivo) {
-        Motivo = motivo;
-        return this;
+    public void setMascota(Mascota mascota){
+        this.mascota = mascota;
+    }
+    public Mascota getMascota(){
+        return mascota;
     }
 }

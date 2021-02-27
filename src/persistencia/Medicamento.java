@@ -8,6 +8,9 @@ public class Medicamento implements Serializable {
     private String NombreMedicamento;
     private String SustanciaActiva;
     private String Caducidad;
+    private Medicamento medicamento;
+
+    public Medicamento(){}
 
     public Medicamento(Integer codigo, String nombreMedicamento, String sustanciaActiva, String caducidad) {
         Codigo = codigo;
@@ -16,39 +19,38 @@ public class Medicamento implements Serializable {
         Caducidad = caducidad;
     }
 
-    public Integer getCodigo() {
+    public Integer getId() {
         return Codigo;
     }
-
-    public Medicamento setCodigo(Integer codigo) {
-        Codigo = codigo;
-        return this;
+    public void setId(Integer Codigo) {
+        this.Codigo = Codigo;
     }
 
     public String getNombreMedicamento() {
         return NombreMedicamento;
     }
-
-    public Medicamento setNombreMedicamento(String nombreMedicamento) {
+    public void setNombreMedicamento(String nombreMedicamento) {
         NombreMedicamento = nombreMedicamento;
-        return this;
     }
 
     public String getSustanciaActiva() {
         return SustanciaActiva;
     }
-
-    public Medicamento setSustanciaActiva(String sustanciaActiva) {
+    public void setSustanciaActiva(String sustanciaActiva) {
         SustanciaActiva = sustanciaActiva;
-        return this;
     }
 
     public String getCaducidad() {
         return Caducidad;
     }
-
-    public Medicamento setCaducidad(String caducidad) {
+    public void setCaducidad(String caducidad) {
         Caducidad = caducidad;
-        return this;
+    }
+
+    public void setMedicamento(Medicamento Medicamento){
+        this.medicamento = medicamento;
+    }
+    public Medicamento getMedicamento(){
+        return medicamento;
     }
 }

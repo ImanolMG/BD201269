@@ -5,11 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-
 import java.util.Iterator;
 import java.util.List;
 
 public class DueñoDAO {
+
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
@@ -29,7 +29,7 @@ public class DueñoDAO {
 
     public void getDueños(){
         Session session = factory.openSession();
-        List empList1 = session.createQuery(" from Cita").list();
+        List empList1 = session.createQuery(" from Dueño").list();
 
         System.out.println("IdDueño \t Nombre_Dueño \t Direccion \t Telefono");
         for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
