@@ -20,5 +20,6 @@ public class Controller {
         dai.getMascotas();
         MedicamentoDAO dau = new MedicamentoDAO("hibernate.cfg.xml");
         dau.getMedicamentos();
+        System.out.println("XD");
     }
 }
