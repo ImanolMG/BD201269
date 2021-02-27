@@ -9,6 +9,7 @@ public class Cita implements Serializable {
     private String Fecha;
     private String Servicio;
     private Cita cita;
+
     public Cita() {
     }
 

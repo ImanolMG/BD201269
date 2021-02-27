@@ -1,18 +1,20 @@
 package persistencia;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 public class Dueño implements Serializable {
 
     private Integer IdDueño;
     private String Nombre;
     private String Direccion;
-    private Integer Telefono;
+    private BigInteger Telefono;
     private Dueño dueño;
+
     public Dueño() {
     }
 
-    public Dueño(Integer IdDueño, String Nombre,String Direccion,Integer Telefono) {
+    public Dueño(Integer IdDueño, String Nombre,String Direccion,BigInteger Telefono) {
         this.IdDueño = IdDueño;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
@@ -24,6 +26,7 @@ public class Dueño implements Serializable {
     public Integer getId(){
         return IdDueño;
     }
+
     public void setNombre(String Nombre){
         this.Nombre = Nombre;
     }
@@ -38,10 +41,10 @@ public class Dueño implements Serializable {
         return Direccion;
     }
 
-    public void setTelefono(Integer Telefono){
+    public void setTelefono(BigInteger Telefono){
         this.Telefono=Telefono;
     }
-    public Integer getTelefono(){
+    public BigInteger getTelefono(){
         return Telefono;
     }
 
