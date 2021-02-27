@@ -19,7 +19,6 @@
 		<mapping resource="persistencia/Medicamentos.hbm.xml" />
 
 
-
 </session-factory>
 </hibernate-configuration>
 
