@@ -3,17 +3,17 @@
 <hibernate-mapping package="persistencia">
   <class name="Usuarios" table="usuarios">
    <id name="id"
-            column="IdUsuarios"
+            column="IdUsuario"
             type="java.lang.Integer"
             unsaved-value="null" >
             <generator class="native">
             </generator>
         </id>
-<property name="NombreCompleto" column="NombreMedicamento"/>
-<property name="SustanciaActiva" column="SustanciaActiva" />
-<property name="Caducidad" column="Caducidad" />
-    <many-to-one name="Medicamento" class="Medicamento" fetch="select">
-            <column name="Codigo" not-null="true" />
+<property name="Name" column="NombreCompleto"/>
+<property name="User" column="Usuario" />
+<property name="Password" column="Contraseña" />
+    <many-to-one name="Usuarios" class="Usuarios" fetch="select">
+            <column name="usuario" not-null="true" />
     </many-to-one>
   </class>
 </hibernate-mapping>

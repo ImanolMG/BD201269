@@ -5,10 +5,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class UsuariosDAO {
+    public ArrayList<Usuarios> listUsers = new ArrayList();
+
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
@@ -26,11 +30,18 @@ public class UsuariosDAO {
         }
     }
 
-    public void BuscarUsuario(){
+    public void BuscarUsuario(String usuario, String contraseña){
         Session session = factory.openSession();
-        List listaUsuarios = session.createQuery(" from Usuario").list();
+        List listaUsuarios = session.createQuery(" from Usuarios").list();
         for (Iterator iterator = listaUsuarios.iterator(); iterator.hasNext();){
-            Usuarios dao = (Usuarios) iterator.next();
+            Usuarios dau = (Usuarios) iterator.next();
+        }
+        for(Usuarios user: listUsers){
+            if(usuario== user.getUser()){
+                if(contraseña== user.getPassword()){
+
+                }
+            }
         }
     }
 }
