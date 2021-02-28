@@ -5,10 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import javax.swing.*;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class UsuariosDAO {
     public ArrayList<Usuarios> listUsers = new ArrayList();
@@ -39,9 +38,13 @@ public class UsuariosDAO {
         for(Usuarios user: listUsers){
             if(usuario== user.getUser()){
                 if(contraseña== user.getPassword()){
-
+                    JOptionPane.showMessageDialog(null, "BIENVENIDO");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos", "No se ha podido iniciar la sesion", JOptionPane.WARNING_MESSAGE);
                 }
             }
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos", "No se ha podido iniciar la sesion", JOptionPane.WARNING_MESSAGE);
         }
     }
 }
