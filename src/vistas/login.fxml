@@ -4,11 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('file:C:/Users/DELL/Desktop/BDfondos/Login.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.login">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.login">
    <children>
+      <ImageView fitHeight="365.0" fitWidth="633.0" layoutX="-35.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../BDfondos/Login.jpg" />
+         </image>
+      </ImageView>
       <TextField layoutX="353.0" layoutY="108.0" opacity="0.89" promptText="Ingrese su usuario" style="-fx-background-radius: 50; -fx-background-color: #A4C3F4;">
          <font>
             <Font name="Arial Bold" size="18.0" />
