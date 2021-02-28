@@ -26,16 +26,5 @@ public class MascotaDAO {
         }
     }
 
-    public void getMascotas(){
-        Session session = factory.openSession();
-        List empList1 = session.createQuery(" from Mascota").list();
-
-        System.out.println("IdMascota \t Nombre \t Tipo \t Dueño\t Sexo \t Fecha Ingreso");
-        for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
-            Mascota dao = (Mascota) iterator.next();
-            System.out.println( dao.getId()+ "\t\t" + dao.getNombre()+"\t\t" + dao.getTipoMascota() +"\t"+ dao.getIdDueño()+"\t"+dao.getSexo()+"\t"+dao.getFechaIngreso());
-        }
-    }
-
 
 }
