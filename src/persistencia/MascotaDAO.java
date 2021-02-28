@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MascotaDAO {
-
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
