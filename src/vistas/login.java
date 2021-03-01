@@ -25,7 +25,7 @@ public class login {
         view.BuscarUsuario(idUser.getText(),idPass.getText());
         evaluarInicio = view.BuscarUsuario(idUser.getText(),idPass.getText());
         if(evaluarInicio==false){
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "No se puedo iniciar la sesion",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "No se pudo iniciar la sesion",JOptionPane.WARNING_MESSAGE);
         }
     }
 }
