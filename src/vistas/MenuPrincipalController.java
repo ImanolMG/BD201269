@@ -33,9 +33,7 @@ public class MenuPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+
     }
 
 
@@ -52,8 +50,8 @@ public class MenuPrincipalController {
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
+
     }
 
     @FXML
@@ -68,8 +66,8 @@ public class MenuPrincipalController {
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
+
     }
 
     @FXML
@@ -84,8 +82,8 @@ public class MenuPrincipalController {
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
+
     }
 
 }
