@@ -14,8 +14,7 @@ public class Dueño implements Serializable {
     public Dueño() {
     }
 
-    public Dueño(Integer IdDueño, String Nombre,String Direccion,BigInteger Telefono) {
-        this.IdDueño = IdDueño;
+    public Dueño(String Nombre,String Direccion,BigInteger Telefono) {
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.Telefono = Telefono;

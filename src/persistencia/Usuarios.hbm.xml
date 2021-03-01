@@ -17,7 +17,6 @@
 
     <many-to-one name="Usuarios" class="Usuarios" fetch="select">
             <column name="idUsuario" not-null="true" />
-
     </many-to-one>
 
   </class>
