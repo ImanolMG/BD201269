@@ -1,8 +1,10 @@
 package vistas;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -85,6 +87,13 @@ public class MenuPrincipalController {
             e.printStackTrace();
 
         }
+    }
+
+    @FXML
+    private void cerrarSesion(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
 }
