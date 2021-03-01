@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MenuPrincipalController {
-
-
     @FXML
     private Button btnDueños;
     @FXML
@@ -31,11 +29,8 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page));
             stage.setTitle("Caja");
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 

@@ -3,6 +3,7 @@ package vistas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -36,7 +37,21 @@ public class login {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "No se pudo iniciar la sesion",JOptionPane.WARNING_MESSAGE);
         }
         else{
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPrincipal.fxml"));
+                AnchorPane page = (AnchorPane) loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(page));
+                stage.setTitle("Menu");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }
+
     }
 
 @FXML
