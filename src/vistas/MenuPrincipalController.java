@@ -26,11 +26,11 @@ public class MenuPrincipalController {
     @FXML
     public void vistaDueños() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Mascotas.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dueños.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(page));
-            stage.setTitle("Caja");
+            stage.setTitle("Dueños");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class MenuPrincipalController {
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(page));
-            stage.setTitle("Caja");
+            stage.setTitle("Mascotas");
             stage.show();
 
 
@@ -59,11 +59,11 @@ public class MenuPrincipalController {
     @FXML
     public void vistaCitas() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Mascotas.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Citas.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(page));
-            stage.setTitle("Caja");
+            stage.setTitle("Citas");
             stage.show();
 
 
@@ -76,11 +76,11 @@ public class MenuPrincipalController {
     @FXML
     public void vistaMedicamentos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Mascotas.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Medicamentos.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(page));
-            stage.setTitle("Caja");
+            stage.setTitle("Medicamentos");
             stage.show();
 
 
