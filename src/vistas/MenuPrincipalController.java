@@ -65,8 +65,6 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page));
             stage.setTitle("Citas");
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
 
@@ -82,7 +80,6 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page));
             stage.setTitle("Medicamentos");
             stage.show();
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -108,7 +105,6 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page, 600, 400));
             stage.setTitle("Iniciar Sesion");
             stage.show();
-
 
         } catch (IOException e) {
             e.printStackTrace();

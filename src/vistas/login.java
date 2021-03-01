@@ -30,7 +30,6 @@ public class login {
     @FXML
     void ButtonLogin(ActionEvent event){
         boolean evaluarInicio = false;
-        UsuariosDAO view = new UsuariosDAO();
         view.BuscarUsuario(idUser.getText(),idPass.getText());
         evaluarInicio = view.BuscarUsuario(idUser.getText(),idPass.getText());
         if(evaluarInicio==false){
