@@ -22,7 +22,7 @@ public class login {
     @FXML
     private Button btnLogin;
     @FXML
-            private  Button btnSignUp;
+    private  Button btnSignUp;
 
     UsuariosDAO view = new UsuariosDAO();
 
@@ -35,6 +35,8 @@ public class login {
         if(evaluarInicio==false){
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "No se pudo iniciar la sesion",JOptionPane.WARNING_MESSAGE);
         }
+        else{
+        }
     }
 
 @FXML
@@ -46,11 +48,8 @@ public class login {
             stage.setScene(new Scene(page));
             stage.setTitle("Caja");
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }
