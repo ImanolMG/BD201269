@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sample.Main;
 
 import java.io.IOException;
 
@@ -94,6 +95,26 @@ public class MenuPrincipalController {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+        cargarLogin();
+
     }
+
+    @FXML
+    public void cargarLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(page, 600, 400));
+            stage.setTitle("Login");
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
 
 }
