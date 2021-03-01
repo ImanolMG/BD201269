@@ -28,14 +28,24 @@ public class UsuariosDAO {
         }
     }
 
-    public void BuscarUsuario(String usuario, String contraseña){
-        ArrayList<Usuarios> users = new ArrayList();
+    public boolean BuscarUsuario(String usuario, String contraseña){
         Session session = factory.openSession();
-        List listaUsuarios = session.createQuery(" from Usuarios").list();
+        List empList1 = session.createQuery(" from Usuarios").list();
 
-        for (Iterator iterator = listaUsuarios.iterator(); iterator.hasNext();){
-            Usuarios dau = (Usuarios) iterator.next();
+        boolean evaluar = false;
+        Usuarios listUser;
+        for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
+            listUser = (Usuarios) iterator.next();
+
+            if(usuario.equals(listUser.getUser())){
+                if(contraseña.equals(listUser.getPassword())){
+                    evaluar = true;
+                }
+            }
         }
-
+        return evaluar;
     }
+
+
+
 }
