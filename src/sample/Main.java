@@ -12,6 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../vistas/login.fxml"));
         primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("Iniciar Sesion");
         primaryStage.show();
     }
 

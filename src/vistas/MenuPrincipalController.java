@@ -106,7 +106,7 @@ public class MenuPrincipalController {
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(page, 600, 400));
-            stage.setTitle("Login");
+            stage.setTitle("Iniciar Sesion");
             stage.show();
 
 
