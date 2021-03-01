@@ -50,7 +50,6 @@ public class UsuariosDAO {
         Session session = factory.openSession();
         session.beginTransaction();
 
-
         Usuarios userRegister = new Usuarios(nombre, usuario, contraseña);
         session.save(userRegister);
 

@@ -15,8 +15,7 @@ public class Mascota implements Serializable {
 
     public Mascota(){
     }
-    public Mascota(Integer IdMascota, String TipoMascota, String Nombre, String FechaIngreso, Integer IdDueño, String Sexo, String Motivo) {
-        this.IdMascota = IdMascota;
+    public Mascota(String TipoMascota, String Nombre, String FechaIngreso, Integer IdDueño, String Sexo, String Motivo) {
         this.TipoMascota = TipoMascota;
         this.Nombre = Nombre;
         this.FechaIngreso = FechaIngreso;
