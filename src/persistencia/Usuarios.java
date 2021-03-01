@@ -11,14 +11,14 @@ public class Usuarios implements Serializable {
 
     public Usuarios(){}
 
-    public Usuarios(Integer Id, String Name, String User, String Password){
-        this.Id = Id;
+    public Usuarios(String Name, String User, String Password){
         this.Name = Name;
         this.User =  User;
         this.Password = Password;
     }
 
     public void setId(Integer Id){
+        this.Id = Id;
     }
     public Integer getId(){
         return Id;

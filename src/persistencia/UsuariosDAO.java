@@ -46,6 +46,18 @@ public class UsuariosDAO {
         return evaluar;
     }
 
+    public void RegistrarUsuarios(String nombre, String usuario, String contraseña){
+        Session session = factory.openSession();
+        session.beginTransaction();
+
+
+        Usuarios userRegister = new Usuarios(nombre, usuario, contraseña);
+        session.save(userRegister);
+
+        session.getTransaction().commit();
+
+    }
+
 
 
 }
