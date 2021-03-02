@@ -8,13 +8,13 @@ public class Dueño implements Serializable {
     private Integer IdDueño;
     private String Nombre;
     private String Direccion;
-    private BigInteger Telefono;
+    private String Telefono;
     private Dueño dueño;
 
     public Dueño() {
     }
 
-    public Dueño(String Nombre,String Direccion,BigInteger Telefono) {
+    public Dueño(String Nombre,String Direccion,String Telefono) {
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
@@ -40,10 +40,10 @@ public class Dueño implements Serializable {
         return Direccion;
     }
 
-    public void setTelefono(BigInteger Telefono){
+    public void setTelefono(String Telefono){
         this.Telefono=Telefono;
     }
-    public BigInteger getTelefono(){
+    public String getTelefono(){
         return Telefono;
     }
 

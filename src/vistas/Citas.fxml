@@ -74,7 +74,7 @@
                         <Font name="Arial Black" size="24.0" />
                      </font>
                   </Text>
-                  <Text layoutX="6.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Mascota" wrappingWidth="197.5380859375">
+                  <Text layoutX="6.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Citas" wrappingWidth="197.5380859375">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
