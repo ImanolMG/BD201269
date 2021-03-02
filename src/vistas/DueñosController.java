@@ -68,8 +68,8 @@ private DueñoDAO dueñoDAO;
     @FXML
     public void BtnGuardar(Event event){
         DueñoDAO dao = new DueñoDAO();
-        BigInteger telefono = new BigInteger(idTelefono.getText());
-        dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), telefono);
+
+        dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
     }
 
 

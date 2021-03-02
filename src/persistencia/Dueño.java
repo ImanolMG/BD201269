@@ -1,66 +1,51 @@
 package persistencia;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 import java.io.Serializable;
 import java.math.BigInteger;
 
 public class Dueño implements Serializable {
 
-    private IntegerProperty IdDueño;
-    private StringProperty Nombre;
-    private StringProperty Direccion;
-    private StringProperty Telefono;
+    private Integer IdDueño;
+    private String Nombre;
+    private String Direccion;
+    private String Telefono;
     private Dueño dueño;
 
     public Dueño() {
     }
 
     public Dueño(String Nombre,String Direccion,String Telefono) {
-        this.Nombre = new SimpleStringProperty(Nombre);;
-        this.Direccion = new SimpleStringProperty(Direccion);
-        this.Telefono = new SimpleStringProperty(Telefono);
+        this.Nombre = Nombre;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
     }
-
-    public String getNombre(){
-        return Nombre.get();
+    public void setId(Integer IdDueño){
+        this.IdDueño = IdDueño;
     }
-
-    public void setNombre(String Nombre ){
-        this.Nombre = new SimpleStringProperty(Nombre);
-    }
-
-
-    public String getDireccion(){
-        return Direccion.get();
-    }
-
-    public void setDireccion(String Direccion ){
-        this.Direccion = new SimpleStringProperty(Direccion);
-    }
-
-    public String getTelefono(){
-        return Telefono.get();
-    }
-
-    public void setTelefono(String Telefono ){
-        this.Telefono = new SimpleStringProperty(Telefono);
-    }
-
-
-
     public Integer getId(){
-        return IdDueño.get();
-    }
-    public void setIdDueño(Integer IdDueño ){
-        this.IdDueño = new SimpleIntegerProperty(IdDueño);
+        return IdDueño;
     }
 
+    public void setNombre(String Nombre){
+        this.Nombre = Nombre;
+    }
+    public String getNombre(){
+        return Nombre;
+    }
 
+    public void setDireccion(String Direccion){
+        this.Direccion=Direccion;
+    }
+    public String getDireccion(){
+        return Direccion;
+    }
 
+    public void setTelefono(String Telefono){
+        this.Telefono=Telefono;
+    }
+    public String getTelefono(){
+        return Telefono;
+    }
 
 
     public void setDueño(Dueño dueño) {
