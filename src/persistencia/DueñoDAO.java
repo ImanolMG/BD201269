@@ -42,6 +42,8 @@ public class DueñoDAO {
         session.getTransaction().commit();
     }
 
+
+
     public List<Dueño> getAll() throws SQLException {
 
         List<Dueño> lista = new ArrayList<>();
