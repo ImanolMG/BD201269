@@ -12,12 +12,12 @@ public class CitaDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
-    public CitaDAO(String conection) {
+    public CitaDAO() {
         System.err.println("Iniciando conexionn");
         try {
             Configuration configuration = new Configuration();
             System.err.println("Leyendo configuracion.");
-            configuration.configure(conection);
+            configuration.configure();
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             factory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
@@ -26,6 +26,15 @@ public class CitaDAO {
         }
     }
 
+    public void BusquedaDueño(String NombreDueño){
+        Session session = factory.openSession();
+        List empList1 = session.createQuery(" from Dueño where Nombre="+NombreDueño).list();
 
+        System.out.println("Codigo \t Nombre_Medicamento \t Caducidad \t Sustancia_Activa");
+        for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
+            Dueño dao = (Dueño) iterator.next();
+            System.out.println(dao.getNombre());
+        }
+    }
 
 }
