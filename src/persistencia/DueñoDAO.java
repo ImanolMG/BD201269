@@ -7,6 +7,9 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import java.math.BigInteger;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class DueñoDAO {
         }
     }
 
-    public void GuardarDatos(String Nombre, String Direccion, BigInteger Telefono){
+    public void GuardarDatos(String Nombre, String Direccion, String Telefono){
         Session session = factory.openSession();
         session.beginTransaction();
 
@@ -37,6 +40,27 @@ public class DueñoDAO {
         session.save(userRegister);
 
         session.getTransaction().commit();
+    }
+
+    public List<Dueño> getAll() throws SQLException {
+
+        List<Dueño> lista = new ArrayList<>();
+        Session session = factory.openSession();
+Dueño d = null;
+        ResultSet rs = (ResultSet) session.createQuery("SELECT Nombre, Direccion, Telefono " +
+                "FROM dueño;");
+
+        while(rs.next()){
+d = new Dueño();
+d.setNombre(rs.getString("Nombre").trim());
+d.setDireccion(rs.getString("Direccion").trim());
+d.setTelefono(rs.getString("Telefono").trim());
+lista.add(d);
+
+
+
+        }
+        return lista;
     }
 
 

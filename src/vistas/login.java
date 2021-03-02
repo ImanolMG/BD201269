@@ -60,7 +60,7 @@ public class login {
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(page));
-            stage.setTitle("Caja");
+            stage.setTitle("Registrarse");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
