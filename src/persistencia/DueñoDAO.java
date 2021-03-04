@@ -1,10 +1,17 @@
 package persistencia;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import org.hibernate.transform.Transformers;
+
 import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,27 +50,22 @@ public class DueñoDAO {
 
 
 
-    public List<Dueño> getAll() throws SQLException {
-
-        List<Dueño> lista = new ArrayList<>();
+    public Dueño listaDueños() {
         Session session = factory.openSession();
-Dueño d = null;
-        ResultSet rs = (ResultSet) session.createQuery("SELECT Nombre, Direccion, Telefono " +
-                "FROM dueño;");
+        Criteria criteria = session.createCriteria(Dueño.class);
+        ProjectionList dueñosLista = Projections.projectionList();
 
-        while(rs.next()){
-d = new Dueño();
-d.setNombre(rs.getString("Nombre").trim());
-d.setDireccion(rs.getString("Direccion").trim());
-d.setTelefono(rs.getString("Telefono").trim());
-lista.add(d);
+                        dueñosLista.add(Projections.max("Nombre"),"Nombre");
+        dueñosLista.add(Projections.max("Direccion"),"Direccion");
+        dueñosLista.add(Projections.max("Telefono"),"Telefono");
 
 
+        criteria.setProjection(dueñosLista);
+        criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
 
-        }
-        return lista;
+
+Dueño dueño = (Dueño) criteria.list().get(0);
+return dueño;
     }
-
-
 
 }

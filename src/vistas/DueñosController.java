@@ -48,19 +48,24 @@ public class DueñosController implements Initializable {
 
 
 
-    private ObservableList<Dueño> olListaDueños = FXCollections.observableArrayList();
+    private ObservableList<Dueño> olListaDueños ;
 
 private DueñoDAO dueñoDAO;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            olListaDueños.addAll(dueñoDAO.getAll());
+        olListaDueños = FXCollections.observableArrayList();
+
+            dueñoDAO = new DueñoDAO();
+            olListaDueños.addAll(dueñoDAO.listaDueños());
             tblListaDueños.setItems(olListaDueños);
-            clmnDireccion.setCellValueFactory(param -> param.getValue().DireccionProperty());
+            clmnNombre.setCellValueFactory(tf -> tf.getValue().nombre());
+            clmnDireccion.setCellValueFactory(tf -> tf.getValue().direccion());
+            clmnTelefono.setCellValueFactory(tf -> tf.getValue().telefono());
             gestionDeEventos();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
+
 
     }
 
