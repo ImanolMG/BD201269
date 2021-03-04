@@ -55,13 +55,15 @@ public class DueñoDAO {
         Criteria criteria = session.createCriteria(Dueño.class);
         ProjectionList dueñosLista = Projections.projectionList();
 
-                        dueñosLista.add(Projections.max("Nombre"),"Nombre");
-        dueñosLista.add(Projections.max("Direccion"),"Direccion");
-        dueñosLista.add(Projections.max("Telefono"),"Telefono");
+
+            dueñosLista.add(Projections.property("Nombre"), "Nombre");
+            dueñosLista.add(Projections.property("Direccion"), "Direccion");
+            dueñosLista.add(Projections.property("Telefono"), "Telefono");
+
+            criteria.setProjection(dueñosLista);
+            criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
 
 
-        criteria.setProjection(dueñosLista);
-        criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
 
 
 Dueño dueño = (Dueño) criteria.list().get(0);

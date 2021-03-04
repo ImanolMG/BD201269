@@ -71,10 +71,18 @@ private DueñoDAO dueñoDAO;
 
 
     @FXML
-    public void BtnGuardar(Event event){
+    public void BtnGuardar(){
         DueñoDAO dao = new DueñoDAO();
 
         dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
+    }
+
+    @FXML
+    public void btnNuevo() {
+        idNombre.setText("");
+        idDireccion.setText("");
+        idTelefono.setText("");
+
     }
 
 
@@ -86,6 +94,10 @@ private DueñoDAO dueñoDAO;
 
             @Override
             public void changed(ObservableValue<? extends Dueño> observableValue, Dueño valorAnterior, Dueño valorNuevo) {
+                if(valorNuevo!=null)
+                    idNombre.setText(valorNuevo.getNombre());
+                idDireccion.setText(valorNuevo.getDireccion());
+                idTelefono.setText(valorNuevo.getTelefono());
 
             }
         });
