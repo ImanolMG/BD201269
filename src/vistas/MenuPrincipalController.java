@@ -26,7 +26,7 @@ public class MenuPrincipalController {
     private Button btnUsers;
 
     @FXML
-    public void vistaDueños() {
+    public void vistaDueños(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Dueños.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -34,15 +34,21 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page));
             stage.setTitle("Dueños");
             stage.show();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
 
 
     @FXML
-    public void vistaMascotas() {
+    public void vistaMascotas(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Mascotas.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -53,10 +59,13 @@ public class MenuPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    public void vistaCitas() {
+    public void vistaCitas(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Citas.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -67,10 +76,13 @@ public class MenuPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    public void vistaMedicamentos() {
+    public void vistaMedicamentos(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Medicamentos.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -81,6 +93,10 @@ public class MenuPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -103,10 +119,11 @@ public class MenuPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @FXML
-    public void vistaUsuarios(){
+    public void vistaUsuarios(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AccionesUsuarios.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -117,6 +134,12 @@ public class MenuPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
+
     }
 
 

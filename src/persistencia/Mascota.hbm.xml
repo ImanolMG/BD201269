@@ -14,6 +14,7 @@
 <property name="TipoMascota" column="TipoMascota"/>
 <property name="Nombre" column="Nombre" />
 <property name="FechaIngreso" column="FechaIngreso" />
+      <property name="NombreDueño" column="NombreDueño"/>
       <property name="IdDueño" column="IdDueño"/>
       <property name="Sexo" column="Sexo"/>
       <property name="Motivo" column="Motivo"/>

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.MedicamentosController">
    <children>
       <SplitPane dividerPositions="0.35572139303482586" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -104,7 +104,7 @@
                         <TableColumn prefWidth="191.0" text="Sustancia Activa" />
                     </columns>
                   </TableView>
-                  <Button layoutX="427.0" layoutY="412.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Cerrar" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                  <Button layoutX="427.0" layoutY="412.0" mnemonicParsing="false" onAction="#cerrarVentana" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Cerrar" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
                      <font>
                         <Font name="Arial Bold" size="12.0" />
                      </font>
