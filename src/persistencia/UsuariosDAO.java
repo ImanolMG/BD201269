@@ -29,16 +29,9 @@ public class UsuariosDAO {
         }
     }
 
-    public void BuscarUsuario(String usuario, String contraseña){
+    public boolean BuscarUsuario(String usuario, String contraseña){
         Session session = factory.openSession();
-        Criteria userCr = session.createCriteria(Usuarios.class);
-        userCr.add(Restrictions.gt(usuario, contraseña));
-        List listUs = userCr.list();
-
-
-
-        /*List empList1 = session.createQuery(" from Usuarios").list();
-
+        List empList1 = session.createQuery(" from Usuarios").list();
         boolean evaluar = false;
         Usuarios listUser;
         for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
@@ -50,7 +43,7 @@ public class UsuariosDAO {
                 }
             }
         }
-        return evaluar;*/
+        return evaluar;
     }
 
     public void RegistrarUsuarios(String nombre, String usuario, String contraseña){

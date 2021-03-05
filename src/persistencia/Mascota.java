@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.*;
 
 public class Mascota implements Serializable {
 
@@ -18,7 +18,6 @@ public class Mascota implements Serializable {
     private StringProperty Sexo = new SimpleStringProperty();
     private StringProperty Motivo = new SimpleStringProperty();
     private Mascota mascota;
-    private List<Cita> cita;
 
     public Mascota(){
     }
@@ -94,13 +93,9 @@ public class Mascota implements Serializable {
         this.IdDueño.set(IdDueño);
     }
 
-
     public IntegerProperty idDueño(){
         return IdDueño;
     }
-
-
-
 
     public String getSexo() {
         return Sexo.get();
@@ -112,7 +107,6 @@ public class Mascota implements Serializable {
         return Sexo;
     }
 
-
     public String getMotivo() {
         return Motivo.get();
     }
@@ -123,8 +117,6 @@ public class Mascota implements Serializable {
         return Motivo;
     }
 
-
-
     public void setMascota(Mascota mascota){
         this.mascota = mascota;
     }
@@ -132,10 +124,4 @@ public class Mascota implements Serializable {
         return mascota;
     }
 
-    public List<Cita> getCita() {
-        return cita;
-    }
-    public void setAlumnos(List<Cita>cita) {
-        this.cita = cita;
-    }
 }

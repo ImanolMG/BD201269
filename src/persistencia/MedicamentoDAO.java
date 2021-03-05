@@ -1,10 +1,15 @@
 package persistencia;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+
 import java.util.Iterator;
 import java.util.*;
 
@@ -27,15 +32,21 @@ public class MedicamentoDAO {
         }
     }
 
-    public void getMedicamentos(){
+    public Medicamento getMedicamentos(){
         Session session = factory.openSession();
-        List empList1 = session.createQuery(" from Medicamento").list();
+        Criteria criteria = session.createCriteria(Mascota.class);
+        ProjectionList medicamentoLista = Projections.projectionList();
 
-        System.out.println("Codigo \t Nombre_Medicamento \t Caducidad \t Sustancia_Activa");
-        for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
-            Medicamento dao = (Medicamento) iterator.next();
-            System.out.println( dao.getId()+ "\t\t" + dao.getNombreMedicamento()+"\t\t" + dao.getCaducidad() +"\t"+ dao.getSustanciaActiva());
-        }
+        medicamentoLista.add(Projections.property("Codigo"), "Codigo");
+        medicamentoLista.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
+        medicamentoLista.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
+        medicamentoLista.add(Projections.property("Caducidad"), "Caducidad");
+
+        criteria.setProjection(medicamentoLista);
+        criteria.setResultTransformer(new AliasToBeanResultTransformer(Medicamento.class));
+
+        Medicamento medicamento = (Medicamento) criteria.list().get(0);
+        return medicamento;
     }
 
 }

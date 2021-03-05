@@ -31,13 +31,10 @@ public class MascotaDAO {
         }
     }
 
-
-
     public Mascota listaMascotas() {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Mascota.class);
         ProjectionList mascotasLista = Projections.projectionList();
-
 
         mascotasLista.add(Projections.property("Nombre"), "Nombre");
         mascotasLista.add(Projections.property("Direccion"), "Direccion");
@@ -45,9 +42,7 @@ public class MascotaDAO {
 
         criteria.setProjection(mascotasLista);
         criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
-
-
-    Mascota mascota = (Mascota) criteria.list().get(0);
+        Mascota mascota = (Mascota) criteria.list().get(0);
         return mascota;
     }
 
