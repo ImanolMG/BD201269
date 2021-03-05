@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -36,6 +37,13 @@ public class SignUp {
     private void RegistrarUsuario(ActionEvent event){
         UsuariosDAO dao = new UsuariosDAO();
         dao.RegistrarUsuarios(idNombre.getText(), idUsuario.getText(), idContraseña.getText());
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("El usuario se a registrado exitosamente :D");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
