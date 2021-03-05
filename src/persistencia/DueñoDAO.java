@@ -1,24 +1,26 @@
 package persistencia;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.service.spi.ServiceException;
 import org.hibernate.transform.AliasToBeanResultTransformer;
-import org.hibernate.transform.Transformers;
+import sun.net.ext.ExtendedSocketOptions;
 
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 
 public class DueñoDAO {
-
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
@@ -36,13 +38,21 @@ public class DueñoDAO {
         }
     }
 
-    public void GuardarDatos(String Nombre, String Direccion, String Telefono){
+    public void EliminarDatos (String Nombre, String Direccion, String Telefono) throws SQLException {
         Session session = factory.openSession();
         session.beginTransaction();
 
+        String sql = "DELETE FROM dueño WHERE Nombre="+Nombre+" and "+Direccion+" and "+Telefono;
+        Query qery = session.createQuery(sql);
+    }
+
+    public void GuardarDatos(String Nombre, String Direccion, String Telefono){
+        Session session = factory.openSession();
+        session.beginTransaction();
         Dueño userRegister = new Dueño(Nombre, Direccion, Telefono);
         session.save(userRegister);
         session.getTransaction().commit();
+        session.close();
     }
 
     public List<Dueño> listaDueños(){
