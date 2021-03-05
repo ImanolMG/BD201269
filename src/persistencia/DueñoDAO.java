@@ -54,7 +54,6 @@ public class DueñoDAO {
         dueñosLista.add(Projections.property("Direccion"), "Direccion");
         dueñosLista.add(Projections.property("Telefono"), "Telefono");
         criteria.setProjection(dueñosLista);
-        criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
 
         List<Dueño> dueño = new ArrayList<>();
         List dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();

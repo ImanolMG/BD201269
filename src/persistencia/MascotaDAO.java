@@ -44,7 +44,6 @@ public class MascotaDAO {
         mascotasLista.add(Projections.property("Sexo"), "Sexo");
         mascotasLista.add(Projections.property("Motivo"), "Motivo");
         criteria.setProjection(mascotasLista);
-        criteria.setResultTransformer(new AliasToBeanResultTransformer(Mascota.class));
 
         List<Mascota> mascotas = new ArrayList<>();
         List mascotaList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Mascota.class)).list();

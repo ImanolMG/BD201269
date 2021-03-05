@@ -32,21 +32,26 @@ public class MedicamentoDAO {
         }
     }
 
-    public Medicamento getMedicamentos(){
+    public List<Medicamento> getMedicamentos(){
         Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Mascota.class);
-        ProjectionList medicamentoLista = Projections.projectionList();
+        Criteria criteria = session.createCriteria(Medicamento.class);
+        ProjectionList medicamentoList = Projections.projectionList();
 
-        medicamentoLista.add(Projections.property("Codigo"), "Codigo");
-        medicamentoLista.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
-        medicamentoLista.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
-        medicamentoLista.add(Projections.property("Caducidad"), "Caducidad");
+        medicamentoList.add(Projections.property("Codigo"), "Codigo");
+        medicamentoList.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
+        medicamentoList.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
+        medicamentoList.add(Projections.property("Caducidad"), "Caducidad");
+        criteria.setProjection(medicamentoList);
 
-        criteria.setProjection(medicamentoLista);
-        criteria.setResultTransformer(new AliasToBeanResultTransformer(Medicamento.class));
+        List<Medicamento> medicamentos = new ArrayList<>();
+        List medicamentoLista = criteria.setResultTransformer(new AliasToBeanResultTransformer(Medicamento.class)).list();
 
-        Medicamento medicamento = (Medicamento) criteria.list().get(0);
-        return medicamento;
+        int i =0;
+        for(Iterator iterator = medicamentoLista.iterator(); iterator.hasNext();){
+            medicamentos.add((Medicamento) iterator.next());
+            i++;
+        }
+        return medicamentos;
     }
 
 }
