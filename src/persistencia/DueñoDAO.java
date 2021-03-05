@@ -22,7 +22,7 @@ public class DueñoDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
-    public DueñoDAO() {
+    public DueñoDAO(){
         System.err.println("Iniciando conexionn");
         try {
             Configuration configuration = new Configuration();
@@ -45,7 +45,6 @@ public class DueñoDAO {
         session.getTransaction().commit();
     }
 
-
     public List<Dueño> listaDueños(){
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Dueño.class);
@@ -58,7 +57,6 @@ public class DueñoDAO {
         criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
 
         List<Dueño> dueño = new ArrayList<>();
-
         List dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
 
         int i =0;
@@ -66,7 +64,6 @@ public class DueñoDAO {
             dueño.add((Dueño) iterator.next());
             i++;
         }
-        /*Dueño dueño = (Dueño) criteria.list().get(0);*/
         return dueño;
     }
 
