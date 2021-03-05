@@ -44,6 +44,7 @@ public class MascotaDAO {
         criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
         Mascota mascota = (Mascota) criteria.list().get(0);
         return mascota;
+
     }
 
 }
