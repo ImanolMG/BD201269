@@ -10,6 +10,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,20 +32,28 @@ public class MascotaDAO {
         }
     }
 
-    public Mascota listaMascotas() {
+    public List<Mascota> listaMascotas() {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Mascota.class);
         ProjectionList mascotasLista = Projections.projectionList();
 
+        mascotasLista.add(Projections.property("TipoMascota"), "TipoMascota");
         mascotasLista.add(Projections.property("Nombre"), "Nombre");
-        mascotasLista.add(Projections.property("Direccion"), "Direccion");
-        mascotasLista.add(Projections.property("Telefono"), "Telefono");
-
+        mascotasLista.add(Projections.property("FechaIngreso"), "FechaIngreso");
+        mascotasLista.add(Projections.property("IdDueño"), "IdDueño");
+        mascotasLista.add(Projections.property("Sexo"), "Sexo");
+        mascotasLista.add(Projections.property("Motivo"), "Motivo");
         criteria.setProjection(mascotasLista);
-        criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
-        Mascota mascota = (Mascota) criteria.list().get(0);
-        return mascota;
 
+        List<Mascota> mascotas = new ArrayList<>();
+        List mascotaList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Mascota.class)).list();
+
+        int i =0;
+        for(Iterator iterator = mascotaList.iterator(); iterator.hasNext();){
+            mascotas.add((Mascota) iterator.next());
+            i++;
+        }
+        return mascotas;
     }
 
 }
