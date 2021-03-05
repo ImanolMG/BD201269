@@ -29,7 +29,7 @@ public class UsuariosDAO {
         }
     }
 
-    public boolean BuscarUsuario(String usuario, String contraseña){
+    public void BuscarUsuario(String usuario, String contraseña){
         Session session = factory.openSession();
         Criteria userCr = session.createCriteria(Usuarios.class);
         userCr.add(Restrictions.gt(usuario, contraseña));
