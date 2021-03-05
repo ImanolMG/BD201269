@@ -128,7 +128,7 @@ public class MenuPrincipalController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AccionesUsuarios.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(page, 600, 400));
+            stage.setScene(new Scene(page, 800, 800));
             stage.setTitle("Usuarios");
             stage.show();
         } catch (IOException e) {

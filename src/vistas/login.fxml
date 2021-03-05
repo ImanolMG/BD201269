@@ -31,7 +31,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnSignUp" layoutX="351.0" layoutY="276.0" mnemonicParsing="false" onAction="#handlerVistaSignUp" prefHeight="33.0" prefWidth="226.0" style="-fx-background-radius: 10; -fx-background-color: #345287;" text="Registrarse" textFill="WHITE">
+      <Button fx:id="btnSignUp" layoutX="351.0" layoutY="276.0" mnemonicParsing="false" onAction="#handlerVistaSignUp" prefHeight="33.0" prefWidth="226.0" style="-fx-background-radius: 10; -fx-background-color: #345287;" text="Registrarse" textFill="WHITE" visible="false">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font></Button>
