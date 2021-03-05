@@ -12,12 +12,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.hibernate.transform.Transformers;
 
-import java.math.BigInteger;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+
 
 public class DueñoDAO {
 
@@ -62,7 +57,6 @@ public class DueñoDAO {
 
             criteria.setProjection(dueñosLista);
             criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
-
 
 
 
