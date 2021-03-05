@@ -1,7 +1,7 @@
 package persistencia;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.util.List;
 
 public class Dueño implements Serializable {
 
@@ -10,6 +10,7 @@ public class Dueño implements Serializable {
     private String Direccion;
     private String Telefono;
     private Dueño dueño;
+    private List<Mascota> Mascota;
 
     public Dueño() {
     }
@@ -54,4 +55,13 @@ public class Dueño implements Serializable {
     public Dueño getDueño() {
         return dueño;
     }
+
+    public List<Mascota> getMascota() {
+        return Mascota;
+    }
+    public void setMascota(List<Mascota>alumnos) {
+        this.Mascota = Mascota ;
+    }
+
+
 }

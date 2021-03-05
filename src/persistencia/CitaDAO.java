@@ -26,15 +26,8 @@ public class CitaDAO {
         }
     }
 
-    public void BusquedaDueño(String NombreDueño){
-        Session session = factory.openSession();
-        List empList1 = session.createQuery(" from Dueño where Nombre="+NombreDueño).list();
+    public void BusquedaDueño(String Nombre){
 
-        System.out.println("Codigo \t Nombre_Medicamento \t Caducidad \t Sustancia_Activa");
-        for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
-            Dueño dao = (Dueño) iterator.next();
-            System.out.println(dao.getNombre());
-        }
     }
 
 }

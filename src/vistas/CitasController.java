@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import persistencia.CitaDAO;
+import persistencia.DueñoDAO;
 
 public class CitasController {
     @FXML
@@ -14,8 +15,9 @@ public class CitasController {
 
     @FXML
     public void BtnBusqueda(Event event){
-        CitaDAO daoCita = new CitaDAO();
-        daoCita.BusquedaDueño(idNombreDueño.getText());
+        CitaDAO daoD = new CitaDAO();
+        daoD.BusquedaDueño(idNombreDueño.getText());
+
     }
 
 }

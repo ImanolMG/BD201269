@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Mascota implements Serializable {
 
@@ -12,6 +13,7 @@ public class Mascota implements Serializable {
     private String Sexo;
     private String Motivo;
     private Mascota mascota;
+    private List<Cita> cita;
 
     public Mascota(){
     }
@@ -79,5 +81,12 @@ public class Mascota implements Serializable {
     }
     public Mascota getMascota(){
         return mascota;
+    }
+
+    public List<Cita> getCita() {
+        return cita;
+    }
+    public void setAlumnos(List<Cita>cita) {
+        this.cita = cita;
     }
 }

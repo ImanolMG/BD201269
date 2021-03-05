@@ -54,7 +54,7 @@ public class UsuariosDAO {
         session.save(userRegister);
 
         session.getTransaction().commit();
-
+        session.close();
     }
 
 

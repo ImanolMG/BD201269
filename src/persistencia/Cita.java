@@ -13,8 +13,7 @@ public class Cita implements Serializable {
     public Cita() {
     }
 
-    public Cita(Integer idCita, String NombreMascota,String Fecha,String Servicio) {
-        this.idCita=idCita;
+    public Cita(String NombreMascota,String Fecha,String Servicio) {
         this.NombreMascota=NombreMascota;
         this.Fecha=Fecha;
         this.Servicio=Servicio;
@@ -52,5 +51,6 @@ public class Cita implements Serializable {
     public Cita getCita() {
         return cita;
     }
+
 }
 

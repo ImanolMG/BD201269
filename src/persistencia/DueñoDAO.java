@@ -16,7 +16,7 @@ public class DueñoDAO {
 
     public DueñoDAO() {
         System.err.println("Iniciando conexionn");
-        try {
+        try{
             Configuration configuration = new Configuration();
             System.err.println("Leyendo configuracion.");
             configuration.configure();
@@ -36,7 +36,10 @@ public class DueñoDAO {
         session.save(userRegister);
 
         session.getTransaction().commit();
+        session.close();
     }
+
+
 
 
 
