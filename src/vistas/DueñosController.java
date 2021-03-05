@@ -60,6 +60,7 @@ public class DueñosController implements Initializable {
     }
 
 
+
     @FXML
     public void BtnGuardar(){
         DueñoDAO dao = new DueñoDAO();
@@ -89,7 +90,9 @@ public class DueñosController implements Initializable {
     public void gestionDeEventos() {
 
 
+
         tblListaDueños.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Dueño>() {
+
 
             @Override
             public void changed(ObservableValue<? extends Dueño> observableValue, Dueño valorAnterior, Dueño valorNuevo) {
