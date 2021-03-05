@@ -75,6 +75,7 @@ private DueñoDAO dueñoDAO;
         DueñoDAO dao = new DueñoDAO();
 
         dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
+        gestionDeEventos();
     }
 
     @FXML
@@ -82,13 +83,12 @@ private DueñoDAO dueñoDAO;
         idNombre.setText("");
         idDireccion.setText("");
         idTelefono.setText("");
-
+gestionDeEventos();
     }
 
 
 
     public void gestionDeEventos() {
-
 
         tblListaDueños.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Dueño>() {
 

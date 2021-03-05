@@ -1,28 +1,32 @@
 package persistencia;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 
 public class Mascota implements Serializable {
+
 
     private IntegerProperty IdMascota = new SimpleIntegerProperty();
     private StringProperty TipoMascota = new SimpleStringProperty();
     private StringProperty Nombre = new SimpleStringProperty();
-    private StringProperty FechaIngreso = new SimpleStringProperty();
+    private ObjectProperty<LocalDateTime> FechaIngreso = new SimpleObjectProperty<>();
     private IntegerProperty IdDueño = new SimpleIntegerProperty();
     private StringProperty Sexo = new SimpleStringProperty();
     private StringProperty Motivo = new SimpleStringProperty();
     private Mascota mascota;
 
+
+
     public Mascota(){
     }
 
 
-    public Mascota(String TipoMascota, String Nombre, String FechaIngreso, Integer IdDueño, String Sexo, String Motivo) {
+
+    public Mascota(String TipoMascota, String Nombre, LocalDateTime FechaIngreso, Integer IdDueño, String Sexo, String Motivo) {
         this.TipoMascota.set(TipoMascota);
         this.Nombre.set(Nombre);
         this.FechaIngreso.set(FechaIngreso);
@@ -74,13 +78,13 @@ public class Mascota implements Serializable {
 
 
 
-    public String getFechaIngreso() {
+    public LocalDateTime getFechaIngreso() {
         return FechaIngreso.get();
     }
-    public void setFechaIngreso(String FechaIngreso) {
+    public void setFechaIngreso(LocalDateTime FechaIngreso) {
         this.FechaIngreso.set(FechaIngreso);
     }
-    public StringProperty fechaIngreso(){
+    public ObjectProperty fechaIngreso(){
         return FechaIngreso;
     }
 
