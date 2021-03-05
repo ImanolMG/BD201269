@@ -12,6 +12,9 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.hibernate.transform.Transformers;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class DueñoDAO {
@@ -39,29 +42,32 @@ public class DueñoDAO {
 
         Dueño userRegister = new Dueño(Nombre, Direccion, Telefono);
         session.save(userRegister);
-
         session.getTransaction().commit();
     }
 
 
-
-    public Dueño listaDueños() {
+    public List<Dueño> listaDueños(){
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Dueño.class);
         ProjectionList dueñosLista = Projections.projectionList();
 
+        dueñosLista.add(Projections.property("Nombre"), "Nombre");
+        dueñosLista.add(Projections.property("Direccion"), "Direccion");
+        dueñosLista.add(Projections.property("Telefono"), "Telefono");
+        criteria.setProjection(dueñosLista);
+        criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
 
-            dueñosLista.add(Projections.property("Nombre"), "Nombre");
-            dueñosLista.add(Projections.property("Direccion"), "Direccion");
-            dueñosLista.add(Projections.property("Telefono"), "Telefono");
+        List<Dueño> dueño = new ArrayList<>();
 
-            criteria.setProjection(dueñosLista);
-            criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class));
+        List dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
 
-
-
-Dueño dueño = (Dueño) criteria.list().get(0);
-return dueño;
+        int i =0;
+        for(Iterator iterator = dueñoList.iterator(); iterator.hasNext();){
+            dueño.add((Dueño) iterator.next());
+            i++;
+        }
+        /*Dueño dueño = (Dueño) criteria.list().get(0);*/
+        return dueño;
     }
 
 }

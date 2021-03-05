@@ -46,27 +46,20 @@ public class DueñosController implements Initializable {
     @FXML
     private TableColumn<Dueño, String> clmnTelefono;
 
-
-
     private ObservableList<Dueño> olListaDueños ;
-
-private DueñoDAO dueñoDAO;
+    private DueñoDAO dueñoDAO;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         olListaDueños = FXCollections.observableArrayList();
-
-            dueñoDAO = new DueñoDAO();
-            olListaDueños.addAll(dueñoDAO.listaDueños());
-            tblListaDueños.setItems(olListaDueños);
-            clmnNombre.setCellValueFactory(tf -> tf.getValue().nombre());
-            clmnDireccion.setCellValueFactory(tf -> tf.getValue().direccion());
-            clmnTelefono.setCellValueFactory(tf -> tf.getValue().telefono());
-            gestionDeEventos();
-
-
-
+        dueñoDAO = new DueñoDAO();
+        olListaDueños.addAll(dueñoDAO.listaDueños());
+        tblListaDueños.setItems(olListaDueños);
+        clmnNombre.setCellValueFactory(tf -> tf.getValue().nombre());
+        clmnDireccion.setCellValueFactory(tf -> tf.getValue().direccion());
+        clmnTelefono.setCellValueFactory(tf -> tf.getValue().telefono());
+        gestionDeEventos();
     }
 
 
@@ -75,7 +68,6 @@ private DueñoDAO dueñoDAO;
         DueñoDAO dao = new DueñoDAO();
 
         dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
-        gestionDeEventos();
     }
 
     @FXML
@@ -83,12 +75,12 @@ private DueñoDAO dueñoDAO;
         idNombre.setText("");
         idDireccion.setText("");
         idTelefono.setText("");
-gestionDeEventos();
     }
 
 
 
     public void gestionDeEventos() {
+
 
         tblListaDueños.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Dueño>() {
 

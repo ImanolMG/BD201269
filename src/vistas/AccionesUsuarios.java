@@ -20,4 +20,6 @@ public class AccionesUsuarios {
     private TextField idDireccion;
     @FXML
     private TextField idTelefono;
+
+
 }

@@ -22,6 +22,8 @@ public class MenuPrincipalController {
     private Button btnCitas;
     @FXML
     private Button btnMedicamentos;
+    @FXML
+    private Button btnUsers;
 
     @FXML
     public void vistaDueños() {
@@ -48,11 +50,8 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page));
             stage.setTitle("Mascotas");
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
@@ -67,7 +66,6 @@ public class MenuPrincipalController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
@@ -80,10 +78,8 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page));
             stage.setTitle("Medicamentos");
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
@@ -93,7 +89,6 @@ public class MenuPrincipalController {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
         cargarLogin();
-
     }
 
     @FXML
@@ -105,10 +100,22 @@ public class MenuPrincipalController {
             stage.setScene(new Scene(page, 600, 400));
             stage.setTitle("Iniciar Sesion");
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
 
+    @FXML
+    public void vistaUsuarios(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccionesUsuarios.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(page, 600, 400));
+            stage.setTitle("Usuarios");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
