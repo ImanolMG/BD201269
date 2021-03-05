@@ -18,12 +18,12 @@ public class MascotaDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
-    public MascotaDAO(String conection) {
+    public MascotaDAO() {
         System.err.println("Iniciando conexionn");
         try {
             Configuration configuration = new Configuration();
             System.err.println("Leyendo configuracion.");
-            configuration.configure(conection);
+            configuration.configure();
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             factory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
