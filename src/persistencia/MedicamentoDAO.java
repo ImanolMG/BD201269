@@ -32,7 +32,7 @@ public class MedicamentoDAO {
         }
     }
 
-    public List<Medicamento> getMedicamentos(){
+    public List<Medicamento> listaMedicamentos(){
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Medicamento.class);
         ProjectionList medicamentoList = Projections.projectionList();
