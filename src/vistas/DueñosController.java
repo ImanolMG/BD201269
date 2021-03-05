@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import persistencia.Dueño;
 import persistencia.DueñoDAO;
@@ -66,8 +63,18 @@ public class DueñosController implements Initializable {
     @FXML
     public void BtnGuardar(){
         DueñoDAO dao = new DueñoDAO();
+        olListaDueños = FXCollections.observableArrayList();
 
-        dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
+     dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("El dueño se a registrado exitosamente :D");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+     olListaDueños.addAll(dao.listaDueños());
+     tblListaDueños.setItems(olListaDueños);
     }
 
     @FXML
@@ -86,11 +93,11 @@ public class DueñosController implements Initializable {
 
             @Override
             public void changed(ObservableValue<? extends Dueño> observableValue, Dueño valorAnterior, Dueño valorNuevo) {
-                if(valorNuevo!=null)
+                if(valorNuevo!=null) {
                     idNombre.setText(valorNuevo.getNombre());
-                idDireccion.setText(valorNuevo.getDireccion());
-                idTelefono.setText(valorNuevo.getTelefono());
-
+                    idDireccion.setText(valorNuevo.getDireccion());
+                    idTelefono.setText(valorNuevo.getTelefono());
+                }
             }
         });
     }
