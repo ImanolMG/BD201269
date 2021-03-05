@@ -9,9 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import persistencia.Usuarios;
 import persistencia.UsuariosDAO;
 import javax.swing.*;
 import java.io.IOException;
+import java.util.*;
 
 public class login {
     @FXML
