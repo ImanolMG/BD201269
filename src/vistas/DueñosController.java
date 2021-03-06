@@ -76,45 +76,64 @@ public class DueñosController implements Initializable {
         clmnDireccion.setCellValueFactory(tf -> tf.getValue().direccion());
         clmnTelefono.setCellValueFactory(tf -> tf.getValue().telefono());
         gestionDeEventos();
-
-
-
     }
-
-
 
     @FXML
     public void BtnGuardar(){
-        DueñoDAO dao = new DueñoDAO();
-        olListaDueños = FXCollections.observableArrayList();
+         DueñoDAO dao = new DueñoDAO();
+         olListaDueños = FXCollections.observableArrayList();
 
+         dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
 
+         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+         mensaje.setTitle("Registro exitoso");
+         mensaje.setContentText("El dueño se a registrado exitosamente :D");
+         mensaje.setHeaderText("Resultado:");
+         mensaje.show();
 
-     dao.GuardarDatos(idNombre.getText(), idDireccion.getText(), idTelefono.getText());
-
-     Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
-        mensaje.setTitle("Registro exitoso");
-        mensaje.setContentText("El dueño se a registrado exitosamente :D");
-        mensaje.setHeaderText("Resultado:");
-        mensaje.show();
-
-     olListaDueños.addAll(dao.listaDueños());
-     tblListaDueños.setItems(olListaDueños);
+         olListaDueños.addAll(dao.listaDueños());
+         tblListaDueños.setItems(olListaDueños);
     }
 
     @FXML
-    public void BtnDelete(Event event) throws SQLException {
+    public void BtnDelete(Event event){
         DueñoDAO dao = new DueñoDAO();
-        dao.EliminarDatos(idNombre.getText());
+        olListaDueños = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idDueño.getText());
+        dao.EliminarDatos(id);
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha eliminado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaDueños.addAll(dao.listaDueños());
+        tblListaDueños.setItems(olListaDueños);
+    }
+
+    @FXML
+    public void BtnEditar(Event event){
+        DueñoDAO dao = new DueñoDAO();
+        olListaDueños = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idDueño.getText());
+
+        dao.EditarDatos(id, idNombre.getText(), idDireccion.getText(), idTelefono.getText());
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha modificado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaDueños.addAll(dao.listaDueños());
+        tblListaDueños.setItems(olListaDueños);
     }
 
     @FXML
     public void btnNuevo() {
         idNombre.setText("");
         idDireccion.setText("");
-
-
-
         idTelefono.setText("");
     }
 
@@ -134,9 +153,6 @@ public class DueñosController implements Initializable {
                 }
             }
         });
-
-
-
     }
 
     @FXML
@@ -145,9 +161,6 @@ public class DueñosController implements Initializable {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
         cargarMenuprincipal();
-
-
-
     }
 
 
@@ -161,8 +174,6 @@ public class DueñosController implements Initializable {
             stage.setScene(new Scene(page, 600, 400));
             stage.setTitle("Menu Principal");
             stage.show();
-
-
 
         } catch (IOException e) {
             e.printStackTrace();

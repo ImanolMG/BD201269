@@ -35,22 +35,28 @@ public class DueñoDAO {
         }
     }
 
-    public void EliminarDatos (String Nombre) throws SQLException {
+    public void EliminarDatos (Integer id){
         Session session = factory.openSession();
         session.beginTransaction();
-        Dueño userRegister = (Dueño)session.get(Dueño.class, Nombre);
 
+        Dueño userRegister = (Dueño)session.get(Dueño.class, id);
         session.delete(userRegister);
 
         session.getTransaction().commit();
         session.close();
     }
 
-    public void Editar(){
+    public void EditarDatos(Integer id, String nombre, String direccion, String telefono){
         Session session = factory.openSession();
         session.beginTransaction();
-        
-        session.save(userRegister);
+
+        Dueño userRegister = (Dueño)session.get(Dueño.class, id);
+
+        userRegister.setNombre(nombre);
+        userRegister.setDireccion(direccion);
+        userRegister.setTelefono(telefono);
+        session.update(userRegister);
+
         session.getTransaction().commit();
         session.close();
     }

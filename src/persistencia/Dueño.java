@@ -25,8 +25,6 @@ public class Dueño implements Serializable {
         this.Telefono.set(Telefono);
     }
 
-
-
     public void setIdDueño(Integer IdDueño){
         this.idDueño.set(IdDueño);
     }
@@ -78,4 +76,5 @@ public class Dueño implements Serializable {
     public Dueño getDueño() {
         return dueño;
     }
+
 }
