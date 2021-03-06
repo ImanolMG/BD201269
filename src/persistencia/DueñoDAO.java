@@ -46,10 +46,10 @@ public class DueñoDAO {
         Query qery = session.createQuery(sql);
     }
 
-    public void GuardarDatos(String Nombre, String Direccion, String Telefono){
+    public void GuardarDatos( String Nombre, String Direccion, String Telefono){
         Session session = factory.openSession();
         session.beginTransaction();
-        Dueño userRegister = new Dueño(Nombre, Direccion, Telefono);
+        Dueño userRegister = new Dueño(0,Nombre, Direccion, Telefono);
         session.save(userRegister);
         session.getTransaction().commit();
         session.close();
@@ -60,6 +60,7 @@ public class DueñoDAO {
         Criteria criteria = session.createCriteria(Dueño.class);
         ProjectionList dueñosLista = Projections.projectionList();
 
+        dueñosLista.add(Projections.property("idDueño"),"idDueño");
         dueñosLista.add(Projections.property("Nombre"), "Nombre");
         dueñosLista.add(Projections.property("Direccion"), "Direccion");
         dueñosLista.add(Projections.property("Telefono"), "Telefono");

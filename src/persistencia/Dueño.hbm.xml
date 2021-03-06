@@ -3,7 +3,7 @@
 <hibernate-mapping package="persistencia">
   <class dynamic-insert="true"
          dynamic-update="true" name="Dueño" table="dueño">
-   <id name="id"
+   <id name="idDueño"
             column="idDueño"
             type="java.lang.Integer"
             unsaved-value="null" >
@@ -12,6 +12,7 @@
         </id>
 
 <property name="Nombre" column="Nombre"/>
+
 <property name="Direccion" column="Direccion" />
 <property name="Telefono" column="Telefono" />
     <many-to-one name="Dueño" class="Dueño" fetch="select">

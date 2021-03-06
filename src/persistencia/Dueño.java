@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class Dueño implements Serializable {
 
-    private final IntegerProperty IdDueño = new SimpleIntegerProperty();
+    private final IntegerProperty idDueño = new SimpleIntegerProperty();
     private final StringProperty Nombre = new SimpleStringProperty();
     private final StringProperty Direccion = new SimpleStringProperty();
     private final StringProperty Telefono = new SimpleStringProperty();
@@ -18,20 +18,24 @@ public class Dueño implements Serializable {
     public Dueño() {
     }
 
-    public Dueño(String Nombre,String Direccion,String Telefono) {
+    public Dueño(Integer idDueño, String Nombre,String Direccion,String Telefono) {
+        this.idDueño.set(idDueño);
         this.Nombre.set(Nombre);
         this.Direccion.set(Direccion);
         this.Telefono.set(Telefono);
     }
-    public void setId(Integer IdDueño){
-        this.IdDueño.set(IdDueño);
+
+
+
+    public void setIdDueño(Integer IdDueño){
+        this.idDueño.set(IdDueño);
     }
-    public Integer getId(){
-        return IdDueño.get();
+    public Integer getIdDueño(){
+        return idDueño.get();
     }
 
     public IntegerProperty idDueño(){
-        return IdDueño;
+        return idDueño;
     }
 
 

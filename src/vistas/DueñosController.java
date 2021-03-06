@@ -33,6 +33,10 @@ public class DueñosController implements Initializable {
     private Button idEditar;
     @FXML
     private Button idEliminar;
+
+    @FXML
+    private TextField idDueño;
+
     @FXML
     private TextField idNombre;
     @FXML
@@ -40,15 +44,19 @@ public class DueñosController implements Initializable {
     @FXML
     private TextField idTelefono;
 
+
+
     @FXML
     private TableView<Dueño> tblListaDueños;
-
+    @FXML
+    private TableColumn<Dueño, Number> clmnidDueño;
     @FXML
     private TableColumn<Dueño, String> clmnNombre;
     @FXML
     private TableColumn<Dueño, String> clmnDireccion;
     @FXML
     private TableColumn<Dueño, String> clmnTelefono;
+
 
     private ObservableList<Dueño> olListaDueños ;
     private DueñoDAO dueñoDAO;
@@ -63,10 +71,13 @@ public class DueñosController implements Initializable {
         dueñoDAO = new DueñoDAO();
         olListaDueños.addAll(dueñoDAO.listaDueños());
         tblListaDueños.setItems(olListaDueños);
+        clmnidDueño.setCellValueFactory(tf -> tf.getValue().idDueño());
         clmnNombre.setCellValueFactory(tf -> tf.getValue().nombre());
         clmnDireccion.setCellValueFactory(tf -> tf.getValue().direccion());
         clmnTelefono.setCellValueFactory(tf -> tf.getValue().telefono());
         gestionDeEventos();
+
+
 
     }
 
@@ -115,9 +126,11 @@ public class DueñosController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Dueño> observableValue, Dueño valorAnterior, Dueño valorNuevo) {
                 if(valorNuevo!=null) {
+                   idDueño.setText(String.valueOf(valorNuevo.getIdDueño()));
                     idNombre.setText(valorNuevo.getNombre());
                     idDireccion.setText(valorNuevo.getDireccion());
                     idTelefono.setText(valorNuevo.getTelefono());
+
                 }
             }
         });

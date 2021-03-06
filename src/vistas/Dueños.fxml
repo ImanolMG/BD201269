@@ -49,7 +49,7 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idNombre1" layoutY="17.0" prefHeight="23.0" prefWidth="283.0" />
+                        <TextField fx:id="idDueño" disable="true" layoutY="17.0" prefHeight="17.0" prefWidth="64.0" />
                      </children>
                   </Pane>
                   <Pane layoutX="14.0" layoutY="263.0">
@@ -97,7 +97,7 @@
                   </ImageView>
                   <TableView fx:id="tblListaDueños" layoutY="65.0" opacity="0.85" prefHeight="280.0" prefWidth="425.0" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="idDueño" />
+                        <TableColumn fx:id="clmnidDueño" prefWidth="75.0" text="idDueño" />
                       <TableColumn fx:id="clmnNombre" prefWidth="184.0" text="Nombre" />
                         <TableColumn fx:id="clmnDireccion" prefWidth="185.0" text="Direccion" />
                         <TableColumn fx:id="clmnTelefono" minWidth="0.0" prefWidth="145.0" text="Numero Telefonico" />
