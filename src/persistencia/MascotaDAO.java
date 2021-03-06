@@ -33,9 +33,6 @@ public class MascotaDAO {
     }
 
 
-
-
-
     public List<Mascota> listaMascotas() {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Mascota.class);

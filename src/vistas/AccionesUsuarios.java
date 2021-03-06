@@ -30,11 +30,6 @@ public class AccionesUsuarios {
     private TextField idTelefono;
 
 
-
-
-
-
-
     @FXML
     private void cerrarVentana(ActionEvent event) {
         Node source = (Node) event.getSource();
@@ -42,7 +37,6 @@ public class AccionesUsuarios {
         stage.close();
         cargarMenuprincipal();
     }
-
 
     public void cargarMenuprincipal() {
         try {

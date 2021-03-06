@@ -50,10 +50,9 @@ public class login {
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
         }
-
     }
 
-@FXML
+    @FXML
     public void handlerVistaSignUp() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("signUp.fxml"));

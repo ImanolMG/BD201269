@@ -1,9 +1,6 @@
 package persistencia;
 
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
@@ -38,12 +35,24 @@ public class DueñoDAO {
         }
     }
 
-    public void EliminarDatos (String Nombre, String Direccion, String Telefono) throws SQLException {
+    public void EliminarDatos (String Nombre) throws SQLException {
         Session session = factory.openSession();
         session.beginTransaction();
+        Dueño userRegister = (Dueño)session.get(Dueño.class, Nombre);
 
-        String sql = "DELETE FROM dueño WHERE Nombre="+Nombre+" and "+Direccion+" and "+Telefono;
-        Query qery = session.createQuery(sql);
+        session.delete(userRegister);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void Editar(){
+        Session session = factory.openSession();
+        session.beginTransaction();
+        
+        session.save(userRegister);
+        session.getTransaction().commit();
+        session.close();
     }
 
     public void GuardarDatos(String Nombre, String Direccion, String Telefono){

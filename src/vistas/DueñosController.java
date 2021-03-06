@@ -94,7 +94,7 @@ public class DueñosController implements Initializable {
     @FXML
     public void BtnDelete(Event event) throws SQLException {
         DueñoDAO dao = new DueñoDAO();
-        dao.EliminarDatos(idNombre.getText(),idDireccion.getText(), idTelefono.getText());
+        dao.EliminarDatos(idNombre.getText());
     }
 
     @FXML
