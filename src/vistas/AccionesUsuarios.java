@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AccionesUsuarios {
-
     @FXML
     private Button idNew;
     @FXML

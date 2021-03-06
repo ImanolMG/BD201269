@@ -8,7 +8,6 @@ public class Usuarios implements Serializable {
     private String User;
     private String Password;
     private Usuarios usuarios;
-
     public Usuarios(){}
 
     public Usuarios(String Name, String User, String Password){

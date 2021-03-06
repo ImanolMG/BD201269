@@ -12,13 +12,6 @@ import java.io.IOException;
 
 public class MedicamentosController {
 
-
-
-
-
-
-
-
     @FXML
     private void cerrarVentana(ActionEvent event) {
         Node source = (Node) event.getSource();

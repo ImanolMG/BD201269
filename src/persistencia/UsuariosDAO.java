@@ -9,7 +9,6 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import java.util.*;
 
-
 public class UsuariosDAO {
 
     private static SessionFactory factory;

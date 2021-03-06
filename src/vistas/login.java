@@ -24,7 +24,6 @@ public class login {
     private Button btnLogin;
     @FXML
     private  Button btnSignUp;
-
     UsuariosDAO view = new UsuariosDAO();
 
     @FXML

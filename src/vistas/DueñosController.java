@@ -33,19 +33,14 @@ public class DueñosController implements Initializable {
     private Button idEditar;
     @FXML
     private Button idEliminar;
-
     @FXML
     private TextField idDueño;
-
     @FXML
     private TextField idNombre;
     @FXML
     private TextField idDireccion;
     @FXML
     private TextField idTelefono;
-
-
-
     @FXML
     private TableView<Dueño> tblListaDueños;
     @FXML
@@ -56,8 +51,6 @@ public class DueñosController implements Initializable {
     private TableColumn<Dueño, String> clmnDireccion;
     @FXML
     private TableColumn<Dueño, String> clmnTelefono;
-
-
     private ObservableList<Dueño> olListaDueños ;
     private DueñoDAO dueñoDAO;
 
