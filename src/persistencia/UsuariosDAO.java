@@ -76,7 +76,40 @@ public class UsuariosDAO {
         return usuario;
     }
 
+    public void EliminarDatos (Integer id){
+        Session session = factory.openSession();
+        session.beginTransaction();
 
+        Usuarios userRegister = (Usuarios)session.get(Usuarios.class, id);
+        session.delete(userRegister);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void EditarDatos(Integer id, String nombre, String usuario, String contraseña){
+        Session session = factory.openSession();
+        session.beginTransaction();
+
+        Usuarios userRegister = (Usuarios)session.get(Usuarios.class, id);
+
+        userRegister.setNombreCompleto(nombre);
+        userRegister.setUsuario(usuario);
+        userRegister.setContraseña(contraseña);
+        session.update(userRegister);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void GuardarDatos(String Nombre, String Usuario, String Contraseña){
+        Session session = factory.openSession();
+        session.beginTransaction();
+        Usuarios userRegister = new Usuarios(0,Nombre, Usuario, Contraseña);
+        session.save(userRegister);
+        session.getTransaction().commit();
+        session.close();
+    }
 
 
 }

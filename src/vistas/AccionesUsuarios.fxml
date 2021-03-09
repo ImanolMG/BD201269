@@ -20,7 +20,7 @@
             <Font size="48.0" />
          </font></Label>
       <TextField fx:id="idNombre" layoutX="14.0" layoutY="134.0" prefHeight="34.0" prefWidth="216.0" promptText="Nombre" style="-fx-background-radius: 50;" />
-      <Button fx:id="idGuardar" layoutX="88.0" layoutY="341.0" mnemonicParsing="false" onAction="#Botto" text="Guardar" />
+      <Button fx:id="idGuardar" layoutX="88.0" layoutY="341.0" mnemonicParsing="false" onAction="#BtnSave" text="Guardar" />
       <TableView fx:id="tableUsuarios" layoutX="245.0" layoutY="94.0" prefHeight="304.0" prefWidth="474.0">
         <columns>
            <TableColumn fx:id="IdUsuario" prefWidth="109.0" text="IdUsuario" />
@@ -29,9 +29,9 @@
             <TableColumn fx:id="Contraseña" minWidth="0.0" prefWidth="140.0" text="Contraseña" />
         </columns>
       </TableView>
-      <Button fx:id="idEditar" layoutX="83.0" layoutY="302.0" mnemonicParsing="false" text="Modificar" />
-      <Button fx:id="idEliminar" layoutX="170.0" layoutY="302.0" mnemonicParsing="false" text="Eliminar" />
-      <Button fx:id="idNew" layoutX="9.0" layoutY="302.0" mnemonicParsing="false" text="Limpiar" />
+      <Button fx:id="idEditar" layoutX="96.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnEditar" text="Editar" />
+      <Button fx:id="idEliminar" layoutX="170.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnDelete" text="Eliminar" />
+      <Button fx:id="idNew" layoutX="9.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnNuevo" text="Nuevo" />
       <TextField fx:id="idUsuario" layoutX="14.0" layoutY="198.0" prefHeight="34.0" prefWidth="216.0" promptText="Usuario" style="-fx-background-radius: 50;" />
       <PasswordField fx:id="idContraseña" layoutX="14.0" layoutY="257.0" prefHeight="34.0" prefWidth="216.0" promptText="Contraseña" style="-fx-background-radius: 50;" />
       <Label layoutX="17.0" layoutY="110.0" text="Nombre">
