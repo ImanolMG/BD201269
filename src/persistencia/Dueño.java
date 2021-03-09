@@ -55,6 +55,7 @@ public class Dueño implements Serializable {
     public String getDireccion(){
         return Direccion.get();
     }
+
     public StringProperty direccion(){
         return Direccion;
     }
@@ -65,6 +66,7 @@ public class Dueño implements Serializable {
     public String getTelefono(){
         return Telefono.get();
     }
+
     public StringProperty telefono(){
         return Telefono;
     }

@@ -55,9 +55,6 @@ public class DueñosController implements Initializable {
     private DueñoDAO dueñoDAO;
 
 
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         olListaDueños = FXCollections.observableArrayList();
@@ -130,11 +127,8 @@ public class DueñosController implements Initializable {
         idTelefono.setText("");
     }
 
-
-
     public void gestionDeEventos() {
         tblListaDueños.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Dueño>() {
-
             @Override
             public void changed(ObservableValue<? extends Dueño> observableValue, Dueño valorAnterior, Dueño valorNuevo) {
                 if(valorNuevo!=null) {
@@ -142,7 +136,6 @@ public class DueñosController implements Initializable {
                     idNombre.setText(valorNuevo.getNombre());
                     idDireccion.setText(valorNuevo.getDireccion());
                     idTelefono.setText(valorNuevo.getTelefono());
-
                 }
             }
         });
@@ -156,10 +149,7 @@ public class DueñosController implements Initializable {
         cargarMenuprincipal();
     }
 
-
-
     public void cargarMenuprincipal() {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPrincipal.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -172,6 +162,5 @@ public class DueñosController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }
 
