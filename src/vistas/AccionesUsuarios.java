@@ -11,12 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import persistencia.DueñoDAO;
 import persistencia.Usuarios;
 import persistencia.UsuariosDAO;
 
@@ -106,5 +104,68 @@ public class AccionesUsuarios implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void BtnDelete(Event event){
+        UsuariosDAO dao = new UsuariosDAO();
+        odserbListUser = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idIDUSER.getText());
+        dao.EliminarDatos(id);
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha eliminado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        odserbListUser.addAll(dao.listaUsuarios());
+        tableUsuarios.setItems(odserbListUser);
+        btnNuevo();
+    }
+
+    @FXML
+    public void BtnSave(){
+        UsuariosDAO dao = new UsuariosDAO();
+        odserbListUser = FXCollections.observableArrayList();
+
+        dao.GuardarDatos(idNombre.getText(), idUsuario.getText(), idContraseña.getText());
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("El dueño se a registrado exitosamente :D");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        odserbListUser.addAll(dao.listaUsuarios());
+        tableUsuarios.setItems(odserbListUser);
+        btnNuevo();
+    }
+
+    @FXML
+    public void BtnEditar(){
+        UsuariosDAO dao = new UsuariosDAO();
+        odserbListUser = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idIDUSER.getText());
+
+        dao.EditarDatos(id, idNombre.getText(), idUsuario.getText(), idContraseña.getText());
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha modificado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        odserbListUser.addAll(dao.listaUsuarios());
+        tableUsuarios.setItems(odserbListUser);
+        btnNuevo();
+    }
+
+    @FXML
+    public void btnNuevo() {
+        idIDUSER.setText("");
+        idNombre.setText("");
+        idUsuario.setText("");
+        idContraseña.setText("");
     }
 }
