@@ -22,7 +22,6 @@ public class Mascota implements Serializable {
 
     }
 
-
     public Mascota( String TipoMascota, String Nombre, Date FechaIngreso, String NombreDueño, String Sexo, String Motivo, Integer idMascota) {
 
         this.TipoMascota.set(TipoMascota);
