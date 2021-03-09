@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="persistencia">
-  <class name="Medicamento" table="Medicamentos">
-   <id name="id"
-            column="codigo"
+  <class dynamic-insert="true"
+         dynamic-update="true" name="Medicamento" table="Medicamentos">
+   <id name="Codigo"
+            column="Codigo"
             type="java.lang.Integer"
             unsaved-value="null" >
             <generator class="native">
@@ -13,7 +14,7 @@
 <property name="SustanciaActiva" column="SustanciaActiva" />
 <property name="Caducidad" column="Caducidad" />
     <many-to-one name="Medicamento" class="Medicamento" fetch="select">
-            <column name="Codigo" not-null="true" />
+            <column name="codigo" not-null="true" />
     </many-to-one>
   </class>
 </hibernate-mapping>

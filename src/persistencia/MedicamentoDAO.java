@@ -9,8 +9,6 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
-
-import java.util.Iterator;
 import java.util.*;
 
 public class MedicamentoDAO {
@@ -18,7 +16,7 @@ public class MedicamentoDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
-    public MedicamentoDAO() {
+    public MedicamentoDAO(){
         System.err.println("Iniciando conexionn");
         try {
             Configuration configuration = new Configuration();
@@ -39,18 +37,19 @@ public class MedicamentoDAO {
 
         medicamentoLista.add(Projections.property("Codigo"), "Codigo");
         medicamentoLista.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
-        medicamentoLista.add(Projections.property("Fecha de caducidad"), "Caducidad");
-        medicamentoLista.add(Projections.property("Sustancia Activa"), "SustanciaActiva");
+        medicamentoLista.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
+        medicamentoLista.add(Projections.property("Caducidad"), "Caducidad");
+
         criteria.setProjection(medicamentoLista);
 
-        List<Medicamento> medicamentos = new ArrayList<>();
+        List<Medicamento> medicamento = new ArrayList<>();
         List medicamentoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Medicamento.class)).list();
 
         int i =0;
         for(Iterator iterator = medicamentoList.iterator(); iterator.hasNext();){
-            medicamentos.add((Medicamento) iterator.next());
+            medicamento.add((Medicamento) iterator.next());
             i++;
         }
-        return medicamentos;
+        return medicamento;
     }
 }

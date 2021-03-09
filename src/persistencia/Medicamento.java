@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import java.time.chrono.Chronology;
 import java.io.Serializable;
 
 public class Medicamento implements Serializable {
@@ -22,13 +23,13 @@ public class Medicamento implements Serializable {
         this.Caducidad.set(Caducidad);
     }
 
-    public Integer getId() {
+    public Integer getCodigo() {
         return Codigo.get();
     }
-    public void setId(Integer Codigo) {
+    public void setCodigo(Integer Codigo) {
         this.Codigo.set(Codigo);
     }
-    public IntegerProperty idMedicamento(){
+    public IntegerProperty codigo(){
         return Codigo;
     }
 
@@ -38,7 +39,7 @@ public class Medicamento implements Serializable {
     public void setNombreMedicamento(String NombreMedicamento) {
         this.NombreMedicamento.set(NombreMedicamento);
     }
-    public StringProperty NombreMedicamento(){ return NombreMedicamento;}
+    public StringProperty nombreMedicamento(){ return NombreMedicamento;}
 
     public String getSustanciaActiva() {
         return SustanciaActiva.get();
@@ -46,7 +47,7 @@ public class Medicamento implements Serializable {
     public void setSustanciaActiva(String SustanciaActiva) {
         this.SustanciaActiva.set(SustanciaActiva);
     }
-    public StringProperty SustanciaActiva(){ return SustanciaActiva;}
+    public StringProperty sustanciaActiva(){ return SustanciaActiva;}
 
     public String getCaducidad() {
         return Caducidad.get();
@@ -54,7 +55,7 @@ public class Medicamento implements Serializable {
     public void setCaducidad(String Caducidad) {
         this.Caducidad.set(Caducidad);
     }
-    public StringProperty Caducidad(){
+    public StringProperty caducidad(){
         return Caducidad;
     }
 
