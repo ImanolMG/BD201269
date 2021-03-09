@@ -50,7 +50,7 @@ public class MascotasController implements Initializable {
     private TextField idRazon;
 
     @FXML
-    private ComboBox<Mascota> cmbNombreDueño;
+    private ComboBox<Dueño> cmbNombreDueño;
 
     @FXML
     private ComboBox<String> cmbTipoMascota;
@@ -85,7 +85,7 @@ public class MascotasController implements Initializable {
 
     private ObservableList<Mascota> olListaMascotas;
 
-    private ObservableList<Mascota> olListaNombresDueños;
+    private ObservableList<Dueño> olListaNombresDueños;
 
     private MascotaDAO mascotaDAO;
 private DueñoDAO dueñoDAO;
@@ -98,9 +98,10 @@ private DueñoDAO dueñoDAO;
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
+        dueñoDAO = new DueñoDAO();
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
 
-olListaNombresDueños.addAll(mascotaDAO.listaNombreDeDueños());
+olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
 
 
 

@@ -34,7 +34,7 @@ public class MascotaDAO {
         }
     }
 
-    public void GuardarDatos(String TipoMascota, String Nombre, String FechaIngreso, Mascota NombreDueño, String Sexo, String Motivo ){
+    public void GuardarDatos(String TipoMascota, String Nombre, String FechaIngreso, Dueño NombreDueño, String Sexo, String Motivo ){
         Session session = factory.openSession();
         session.beginTransaction();
         Mascota userRegister = new Mascota(TipoMascota, Nombre , Date.valueOf(FechaIngreso), String.valueOf(NombreDueño) ,Sexo, Motivo,0 );
@@ -83,24 +83,5 @@ public class MascotaDAO {
 
     }
 
-    public List<Mascota.DueñoLista> listaNombreDeDueños() {
-        Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Mascota.DueñoLista.class);
-        ProjectionList nombreDueñosLista = Projections.projectionList();
-
-        nombreDueñosLista.add(Projections.property("Nombre"), "Nombre");
-
-        criteria.setProjection(nombreDueñosLista);
-
-        List<Mascota.DueñoLista> dueños = new ArrayList<>();
-        List dueñosNombresList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Mascota.DueñoLista.class)).list();
-
-        int i =0;
-        for(Iterator iterator = dueñosNombresList.iterator(); iterator.hasNext();){
-            dueños.add((Mascota.DueñoLista) iterator.next());
-            i++;
-        }
-        return dueños;
-    }
 
 }

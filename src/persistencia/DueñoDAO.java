@@ -91,5 +91,25 @@ public class DueñoDAO {
         return dueño;
     }
 
+    public List<Dueño> listaNombreDeDueños() {
+        Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(Dueño.class);
+        ProjectionList nombreDueñosLista = Projections.projectionList();
+
+        nombreDueñosLista.add(Projections.property("Nombre"), "Nombre");
+
+        criteria.setProjection(nombreDueñosLista);
+
+        List<Dueño> dueños = new ArrayList<>();
+        List dueñosNombresList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
+
+        int i =0;
+        for(Iterator iterator = dueñosNombresList.iterator(); iterator.hasNext();){
+            dueños.add((Dueño) iterator.next());
+            i++;
+        }
+        return dueños;
+    }
+
 
 }
