@@ -44,6 +44,25 @@ public class MascotaDAO {
     }
 
 
+    public void EditarDatos(Integer id, String TipoMascota, String Nombre, String FechaIngreso, Dueño NombreDueño, String Sexo, String Motivo){
+        Session session = factory.openSession();
+        session.beginTransaction();
+
+        Mascota userRegister = (Mascota) session.get(Mascota.class, id);
+
+        userRegister.setTipoMascota(TipoMascota);
+        userRegister.setNombre(Nombre);
+        userRegister.setFechaIngreso(Date.valueOf(FechaIngreso));
+        userRegister.setNombreDueño(String.valueOf(NombreDueño));
+        userRegister.setSexo(Sexo);
+        userRegister.setMotivo(Motivo);
+
+        session.update(userRegister);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
     public void EliminarDatos (Integer id){
         Session session = factory.openSession();
         session.beginTransaction();
@@ -59,8 +78,6 @@ public class MascotaDAO {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Mascota.class);
         ProjectionList mascotasLista = Projections.projectionList();
-
-
 
         mascotasLista.add(Projections.property("idMascota"), "idMascota");
         mascotasLista.add(Projections.property("TipoMascota"), "TipoMascota");

@@ -104,14 +104,11 @@ private DueñoDAO dueñoDAO;
 olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
 
 
-
         tblListaMascotas.setItems(olListaMascotas);
         cmbNombreDueño.setItems(olListaNombresDueños);
 
         cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
         cmbSexo.getItems().addAll("Macho", "Hembra");
-
-
 
 
 
@@ -142,7 +139,7 @@ idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
 cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
 //dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso());
 idRazon.setText(valorNuevo.getMotivo());
-
+cmbSexo.setValue(valorNuevo.getSexo());
                 }
             }
         });
@@ -160,13 +157,33 @@ idRazon.setText(valorNuevo.getMotivo());
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");
-        mensaje.setContentText("El dueño se a registrado exitosamente :D");
+        mensaje.setContentText("La Mascota se a registrado exitosamente :D");
         mensaje.setHeaderText("Resultado:");
         mensaje.show();
 
         olListaMascotas.addAll(dao.listaMascotas());
         tblListaMascotas.setItems(olListaMascotas);
     }
+
+
+    @FXML
+    public void BtnEditar(Event event){
+        MascotaDAO dao = new MascotaDAO();
+        olListaMascotas = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idIdMascota.getText());
+
+        dao.EditarDatos(id, cmbTipoMascota.getSelectionModel().getSelectedItem(), idNombre.getText(), String.valueOf(dtpkrFechaIngreso.getValue()), cmbNombreDueño.getSelectionModel().getSelectedItem(), cmbSexo.getSelectionModel().getSelectedItem() , idRazon.getText());
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha modificado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaMascotas.addAll(dao.listaMascotas());
+        tblListaMascotas.setItems(olListaMascotas);
+    }
+
 
     @FXML
     public void BtnDelete(Event event){
