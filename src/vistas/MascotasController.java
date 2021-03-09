@@ -69,8 +69,6 @@ public class MascotasController implements Initializable {
     @FXML
     private TableColumn<Mascota, String> clmnMotivoRazon;
 
-
-
     private ObservableList<Mascota> olListaMascotas;
 
     private MascotaDAO mascotaDAO;
@@ -82,16 +80,16 @@ public class MascotasController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         olListaMascotas = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
-       olListaMascotas.addAll(mascotaDAO.listaMascotas());
+        olListaMascotas.addAll(mascotaDAO.listaMascotas());
         tblListaMascotas.setItems(olListaMascotas);
 
         clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
-clmnIdDueño.setCellValueFactory(tf -> tf.getValue().IdDueño());
-clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
-clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
-clmnFechaIngreso.setCellValueFactory(tf -> tf.getValue().fechaIngreso().asString());
-clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
-clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
+        clmnIdDueño.setCellValueFactory(tf -> tf.getValue().IdDueño());
+        clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
+        clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
+        clmnFechaIngreso.setCellValueFactory(tf -> tf.getValue().fechaIngreso().asString());
+        clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
+        clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
 
         gestionDeEventos();
     }

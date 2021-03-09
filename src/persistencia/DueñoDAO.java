@@ -19,7 +19,7 @@ public class DueñoDAO {
     private static ServiceRegistry serviceRegistry;
 
     public DueñoDAO(){
-        System.err.println("Iniciando conexionn");
+        System.err.println("Iniciando conexion");
         try {
             Configuration configuration = new Configuration();
             System.err.println("Leyendo configuracion.");
@@ -58,7 +58,7 @@ public class DueñoDAO {
         session.close();
     }
 
-    public void GuardarDatos( String Nombre, String Direccion, String Telefono){
+    public void GuardarDatos(String Nombre, String Direccion, String Telefono){
         Session session = factory.openSession();
         session.beginTransaction();
         Dueño userRegister = new Dueño(0,Nombre, Direccion, Telefono);
@@ -71,7 +71,7 @@ public class DueñoDAO {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Dueño.class);
         ProjectionList dueñosLista = Projections.projectionList();
-
+        
         dueñosLista.add(Projections.property("idDueño"),"idDueño");
         dueñosLista.add(Projections.property("Nombre"), "Nombre");
         dueñosLista.add(Projections.property("Direccion"), "Direccion");
@@ -79,7 +79,7 @@ public class DueñoDAO {
         criteria.setProjection(dueñosLista);
 
         List<Dueño> dueño = new ArrayList<>();
-        List dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
+        List<Dueño> dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
 
         int i =0;
         for(Iterator iterator = dueñoList.iterator(); iterator.hasNext();){

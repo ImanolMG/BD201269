@@ -1,5 +1,6 @@
 package vistas;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -42,6 +43,8 @@ public class DueñosController implements Initializable {
     @FXML
     private TextField idTelefono;
     @FXML
+
+
     private TableView<Dueño> tblListaDueños;
     @FXML
     private TableColumn<Dueño, Number> clmnidDueño;
@@ -53,7 +56,6 @@ public class DueñosController implements Initializable {
     private TableColumn<Dueño, String> clmnTelefono;
     private ObservableList<Dueño> olListaDueños ;
     private DueñoDAO dueñoDAO;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

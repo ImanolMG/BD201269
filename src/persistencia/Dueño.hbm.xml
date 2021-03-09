@@ -10,11 +10,10 @@
             <generator class="native">
             </generator>
         </id>
+     <property name="Nombre" column="Nombre"/>
+     <property name="Direccion" column="Direccion" />
+     <property name="Telefono" column="Telefono" />
 
-<property name="Nombre" column="Nombre"/>
-
-<property name="Direccion" column="Direccion" />
-<property name="Telefono" column="Telefono" />
     <many-to-one name="Dueño" class="Dueño" fetch="select">
             <column name="IdDueño" not-null="true" />
     </many-to-one>
