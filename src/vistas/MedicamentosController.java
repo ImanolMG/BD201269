@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -17,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import persistencia.Dueño;
@@ -33,7 +35,7 @@ public class MedicamentosController implements Initializable {
     @FXML
     private TextField idSustanciaM;
     @FXML
-    private TextField idCaducidadM;
+    private DatePicker idCaducidadM;
     @FXML
     private TableView<Medicamento> tableMedica;
     @FXML
@@ -54,10 +56,10 @@ public class MedicamentosController implements Initializable {
         medicaDAO = new MedicamentoDAO();
         olListaMedicamentos.addAll(medicaDAO.listaMedicamentos());
         tableMedica.setItems(olListaMedicamentos);
-        clmnCodigo.setCellValueFactory(tf -> tf.getValue().idMedicamento());
-        clmnNombreM.setCellValueFactory(tf -> tf.getValue().NombreMedicamento());
-        clmnCaducidad.setCellValueFactory(tf -> tf.getValue().Caducidad());
-        clmnSustancia.setCellValueFactory(tf -> tf.getValue().SustanciaActiva());
+        clmnCodigo.setCellValueFactory(tf -> tf.getValue().codigo());
+        clmnNombreM.setCellValueFactory(tf -> tf.getValue().nombreMedicamento());
+        clmnCaducidad.setCellValueFactory(tf -> tf.getValue().caducidad());
+        clmnSustancia.setCellValueFactory(tf -> tf.getValue().sustanciaActiva());
         gestionDeEventos();
     }
 
@@ -66,10 +68,9 @@ public class MedicamentosController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Medicamento> observableValue, Medicamento valorAnterior, Medicamento valorNuevo) {
                 if(valorNuevo!=null) {
-                    idCodigoM.setText(String.valueOf(valorNuevo.getId()));
+                    idCodigoM.setText(String.valueOf(valorNuevo.getCodigo()));
                     idNombreM.setText(valorNuevo.getNombreMedicamento());
                     idSustanciaM.setText(valorNuevo.getSustanciaActiva());
-                    idCaducidadM.setText(valorNuevo.getCaducidad());
                 }
             }
         });

@@ -54,10 +54,6 @@ public class AccionesUsuarios implements Initializable {
     private ObservableList<Usuarios> odserbListUser ;
     private UsuariosDAO usuariosDAO;
 
-    @FXML
-    public void Botto(Event event){
-        usuariosDAO.listaUsuarios();
-    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         odserbListUser = FXCollections.observableArrayList();
