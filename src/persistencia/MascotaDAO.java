@@ -83,25 +83,24 @@ public class MascotaDAO {
 
     }
 
-
-    public List<Mascota> listaNombreDeDueños() {
+    public List<Mascota.DueñoLista> listaNombreDeDueños() {
         Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Mascota.class);
+        Criteria criteria = session.createCriteria(Mascota.DueñoLista.class);
         ProjectionList nombreDueñosLista = Projections.projectionList();
 
-        nombreDueñosLista.add(Projections.property("NombreDueño"), "NombreDueño");
-
+        nombreDueñosLista.add(Projections.property("Nombre"), "Nombre");
 
         criteria.setProjection(nombreDueñosLista);
 
-        List<Mascota> mascotas = new ArrayList<>();
-        List dueñosNombresList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Mascota.class)).list();
+        List<Mascota.DueñoLista> dueños = new ArrayList<>();
+        List dueñosNombresList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Mascota.DueñoLista.class)).list();
 
         int i =0;
         for(Iterator iterator = dueñosNombresList.iterator(); iterator.hasNext();){
-            mascotas.add((Mascota) iterator.next());
+            dueños.add((Mascota.DueñoLista) iterator.next());
             i++;
         }
-        return mascotas;
+        return dueños;
     }
+
 }

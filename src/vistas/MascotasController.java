@@ -88,7 +88,7 @@ public class MascotasController implements Initializable {
     private ObservableList<Mascota> olListaNombresDueños;
 
     private MascotaDAO mascotaDAO;
-
+private DueñoDAO dueñoDAO;
 
 
 
@@ -98,16 +98,20 @@ public class MascotasController implements Initializable {
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
-
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
+
 olListaNombresDueños.addAll(mascotaDAO.listaNombreDeDueños());
 
 
+
         tblListaMascotas.setItems(olListaMascotas);
+        cmbNombreDueño.setItems(olListaNombresDueños);
 
         cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
         cmbSexo.getItems().addAll("Macho", "Hembra");
-cmbNombreDueño.setItems(olListaNombresDueños);
+
+
+
 
 
 clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
@@ -127,16 +131,17 @@ clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
 
     public void gestionDeEventos() {
         tblListaMascotas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Mascota>() {
-
             @Override
             public void changed(ObservableValue<? extends Mascota> observableValue, Mascota valorAnterior, Mascota valorNuevo) {
                 if(valorNuevo!=null) {
 idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
           idNombre.setText(valorNuevo.getNombre());
 //cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
+
 cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
 //dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso());
 idRazon.setText(valorNuevo.getMotivo());
+
                 }
             }
         });
@@ -150,7 +155,7 @@ idRazon.setText(valorNuevo.getMotivo());
         MascotaDAO dao = new MascotaDAO();
         olListaMascotas = FXCollections.observableArrayList();
 
-        dao.GuardarDatos(cmbTipoMascota.getSelectionModel().getSelectedItem(), idNombre.getText(), String.valueOf(dtpkrFechaIngreso.getValue()) , cmbNombreDueño.getSelectionModel().getSelectedItem(), cmbSexo.getSelectionModel().getSelectedItem() , idRazon.getText() );
+        dao.GuardarDatos(cmbTipoMascota.getSelectionModel().getSelectedItem(), idNombre.getText(), String.valueOf(dtpkrFechaIngreso.getValue()), cmbNombreDueño.getSelectionModel().getSelectedItem(), cmbSexo.getSelectionModel().getSelectedItem() , idRazon.getText() );
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");

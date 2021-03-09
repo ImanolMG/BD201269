@@ -32,6 +32,8 @@ public class DueñoDAO {
         }
     }
 
+
+
     public void EliminarDatos (Integer id){
         Session session = factory.openSession();
         session.beginTransaction();
@@ -88,5 +90,6 @@ public class DueñoDAO {
         }
         return dueño;
     }
+
 
 }
