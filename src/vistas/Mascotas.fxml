@@ -28,16 +28,16 @@
                   </ImageView>
                   <Pane layoutY="75.0" opacity="0.95" prefHeight="309.0" prefWidth="283.0" style="-fx-background-color: #C2F4F3;" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
                      <children>
-                        <Label layoutX="2.0" layoutY="4.0" text="Nombre Mascota">
+                        <Label layoutX="-1.0" layoutY="47.0" text="Nombre Mascota">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idNombre" layoutX="1.0" layoutY="23.0" prefHeight="23.0" prefWidth="283.0" />
-                        <ComboBox fx:id="cmbDueño" layoutX="5.0" layoutY="101.0" prefHeight="17.0" prefWidth="269.0" promptText="Nombre del Dueño" />
+                        <TextField fx:id="idNombre" layoutX="-2.0" layoutY="66.0" prefHeight="23.0" prefWidth="283.0" />
+                        <ComboBox fx:id="cmbNombreDueño" layoutX="5.0" layoutY="101.0" prefHeight="17.0" prefWidth="269.0" promptText="Nombre del Dueño" />
                         <ComboBox fx:id="cmbTipoMascota" layoutX="1.0" layoutY="138.0" prefHeight="23.0" prefWidth="138.0" promptText="Tipo" />
                         <DatePicker fx:id="dtpkrFechaIngreso" layoutX="-1.0" layoutY="192.0" promptText="Ingrese Fecha" />
-                        <TextField fx:id="idRazon" layoutX="6.0" layoutY="252.0" prefHeight="17.0" prefWidth="283.0" />
+                        <TextField fx:id="idRazon" layoutY="252.0" prefHeight="17.0" prefWidth="283.0" />
                         <ComboBox fx:id="cmbSexo" layoutX="-6.0" layoutY="287.0" prefWidth="150.0" promptText="Sexo DIARIO" />
                         <Label layoutX="2.0" layoutY="172.0" text="Fecha de ingreso">
                            <font>
@@ -49,8 +49,8 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="1.0" layoutY="69.0" prefHeight="17.0" prefWidth="80.0" />
-                        <Label layoutX="3.0" layoutY="52.0" text="Id Dueño">
+                        <TextField fx:id="idIdMascota" disable="true" layoutY="22.0" prefHeight="17.0" prefWidth="80.0" />
+                        <Label layoutX="1.0" layoutY="5.0" text="idMascota">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
@@ -59,17 +59,17 @@
                   </Pane>
                   <Pane layoutX="14.0" layoutY="394.0">
                      <children>
-                        <Button fx:id="idNew" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Nuevo" textFill="WHITE">
+                        <Button fx:id="idNew" mnemonicParsing="false" onAction="#btnNuevo" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Nuevo" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="idGuardar" layoutX="91.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Guardar" textFill="WHITE">
+                        <Button fx:id="idGuardar" layoutX="91.0" mnemonicParsing="false" onAction="#BtnGuardar" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Guardar" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="idEliminar" layoutX="181.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Eliminar" textFill="WHITE">
+                        <Button fx:id="idEliminar" layoutX="181.0" mnemonicParsing="false" onAction="#BtnDelete" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Eliminar" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
@@ -100,15 +100,15 @@
                         <Image url="@../BDfondos/Tabla.jpg" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="tblListaMascotas" layoutY="65.0" opacity="0.85" prefHeight="280.0" prefWidth="425.0" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+                  <TableView fx:id="tblListaMascotas" layoutY="65.0" opacity="0.85" prefHeight="272.0" prefWidth="515.0" AnchorPane.bottomAnchor="114.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
                     <columns>
-                      <TableColumn fx:id="clmnNombreMascota" prefWidth="71.0" text="Nombre" />
-                        <TableColumn fx:id="clmnIdDueño" prefWidth="75.0" text="IdDueño" />
-                      <TableColumn fx:id="clmnNombreDueño" prefWidth="94.0" text="Nombre Dueño" />
-                        <TableColumn fx:id="clmnTipoMascota" prefWidth="107.0" text="Tipo" />
-                        <TableColumn fx:id="clmnFechaIngreso" prefWidth="88.0" text="Fecha Ingrese" />
-                        <TableColumn fx:id="clmSexoMascota" prefWidth="57.0" text="Sexo" />
-                        <TableColumn fx:id="clmnMotivoRazon" minWidth="0.0" prefWidth="97.0" text="Razon" />
+                        <TableColumn fx:id="clmnIdMascota" prefWidth="67.0" text="IdMascota" />
+                      <TableColumn fx:id="clmnNombreMascota" prefWidth="79.0" text="Nombre" />
+                      <TableColumn fx:id="clmnNombreDueño" prefWidth="93.0" text="Nombre Dueño" />
+                        <TableColumn fx:id="clmnTipoMascota" prefWidth="44.0" text="Tipo" />
+                        <TableColumn fx:id="clmnFechaIngreso" prefWidth="64.0" text="Fecha Ingrese" />
+                        <TableColumn fx:id="clmSexoMascota" minWidth="0.0" prefWidth="57.0" text="Sexo" />
+                        <TableColumn fx:id="clmnMotivoRazon" minWidth="0.0" prefWidth="185.0" text="Razon" />
                     </columns>
                   </TableView>
                   <Button layoutX="427.0" layoutY="412.0" mnemonicParsing="false" onAction="#cerrarVentana" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Cerrar" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">

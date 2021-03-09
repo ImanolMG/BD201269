@@ -1,18 +1,23 @@
 package vistas;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.converter.LocalDateTimeStringConverter;
 import persistencia.Dueño;
 import persistencia.DueñoDAO;
 import persistencia.Mascota;
@@ -20,6 +25,10 @@ import persistencia.MascotaDAO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class MascotasController implements Initializable {
@@ -36,20 +45,22 @@ public class MascotasController implements Initializable {
     @FXML
     private TextField idNombre;
     @FXML
-    private TextField idIdDueño;
+    private TextField idIdMascota;
     @FXML
     private TextField idRazon;
 
     @FXML
-    private ComboBox<Dueño> cmbDueño;
+    private ComboBox<Mascota> cmbNombreDueño;
 
     @FXML
-    private ComboBox<Mascota> cmbTipoMascota;
+    private ComboBox<String> cmbTipoMascota;
 
     @FXML private DatePicker dtpkrFechaIngreso;
 
+
+
     @FXML
-    private ComboBox<Mascota> cmbSexo;
+    private ComboBox<String> cmbSexo;
 
 
     @FXML
@@ -59,9 +70,10 @@ public class MascotasController implements Initializable {
     @FXML
     private TableColumn<Mascota, String> clmnTipoMascota;
     @FXML
-    private TableColumn<Mascota, String> clmnFechaIngreso;
+    private TableColumn<Mascota, Date> clmnFechaIngreso;
+
     @FXML
-    private TableColumn<Mascota, Number> clmnIdDueño;
+    private TableColumn<Mascota, Number> clmnIdMascota;
     @FXML
     private TableColumn<Mascota, String> clmnNombreDueño;
     @FXML
@@ -73,6 +85,8 @@ public class MascotasController implements Initializable {
 
     private ObservableList<Mascota> olListaMascotas;
 
+    private ObservableList<Mascota> olListaNombresDueños;
+
     private MascotaDAO mascotaDAO;
 
 
@@ -80,18 +94,31 @@ public class MascotasController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         olListaMascotas = FXCollections.observableArrayList();
+        olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
-       olListaMascotas.addAll(mascotaDAO.listaMascotas());
+
+        olListaMascotas.addAll(mascotaDAO.listaMascotas());
+olListaNombresDueños.addAll(mascotaDAO.listaNombreDeDueños());
+
+
         tblListaMascotas.setItems(olListaMascotas);
 
-        clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
-clmnIdDueño.setCellValueFactory(tf -> tf.getValue().IdDueño());
+        cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
+        cmbSexo.getItems().addAll("Macho", "Hembra");
+cmbNombreDueño.setItems(olListaNombresDueños);
+
+
+clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
+clmnIdMascota.setCellValueFactory(tf -> tf.getValue().idMascota());
+
 clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
 clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
-clmnFechaIngreso.setCellValueFactory(tf -> tf.getValue().fechaIngreso().asString());
+clmnFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("FechaIngreso"));
 clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
 clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
+
 
         gestionDeEventos();
     }
@@ -104,8 +131,12 @@ clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
             @Override
             public void changed(ObservableValue<? extends Mascota> observableValue, Mascota valorAnterior, Mascota valorNuevo) {
                 if(valorNuevo!=null) {
-
-
+idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
+          idNombre.setText(valorNuevo.getNombre());
+//cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
+cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
+//dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso());
+idRazon.setText(valorNuevo.getMotivo());
                 }
             }
         });
@@ -114,10 +145,52 @@ clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
 
     }
 
+   @FXML
+    public void BtnGuardar(){
+        MascotaDAO dao = new MascotaDAO();
+        olListaMascotas = FXCollections.observableArrayList();
+
+        dao.GuardarDatos(cmbTipoMascota.getSelectionModel().getSelectedItem(), idNombre.getText(), String.valueOf(dtpkrFechaIngreso.getValue()) , cmbNombreDueño.getSelectionModel().getSelectedItem(), cmbSexo.getSelectionModel().getSelectedItem() , idRazon.getText() );
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("El dueño se a registrado exitosamente :D");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaMascotas.addAll(dao.listaMascotas());
+        tblListaMascotas.setItems(olListaMascotas);
+    }
+
+    @FXML
+    public void BtnDelete(Event event){
+        MascotaDAO dao = new MascotaDAO();
+        olListaMascotas = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idIdMascota.getText());
+        dao.EliminarDatos(id);
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha eliminado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaMascotas.addAll(dao.listaMascotas());
+        tblListaMascotas.setItems(olListaMascotas);
+    }
 
 
+    @FXML
+    public void btnNuevo() {
+        idNombre.setText("");
+       idIdMascota.setText("");
+       dtpkrFechaIngreso.setValue(null);
+       cmbNombreDueño.setValue(null);
+       cmbTipoMascota.setValue(null);
+       idRazon.setText("");
+       cmbSexo.setValue(null);
 
-
+    }
 
 
 
