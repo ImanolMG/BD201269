@@ -29,6 +29,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class MascotasController implements Initializable {
@@ -94,7 +95,7 @@ private DueñoDAO dueñoDAO;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        dtpkrFechaIngreso.setValue(LocalDate.now());
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
@@ -137,7 +138,7 @@ idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
 //cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
 
 cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
-//dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso());
+dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 idRazon.setText(valorNuevo.getMotivo());
 cmbSexo.setValue(valorNuevo.getSexo());
                 }
