@@ -36,7 +36,7 @@ public class DueñoDAO {
         Session session = factory.openSession();
         session.beginTransaction();
 
-        Dueño userRegister_ImaLaLon_CriteriaUpdate;
+        Dueño userRegister_ImanStringProperty_CriteriaUpdate;
         Dueño userRegister = (Dueño)session.get(Dueño.class, id);
         session.delete(userRegister);
 
