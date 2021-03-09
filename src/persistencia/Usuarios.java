@@ -37,7 +37,7 @@ public class Usuarios implements Serializable {
         this.NombreCompleto.set(NombreCompleto);
     }
     public String getNombreCompleto(){
-        return NombreCompleto.getName();
+        return NombreCompleto.get();
     }
     public StringProperty nombreCompleto(){
         return NombreCompleto;

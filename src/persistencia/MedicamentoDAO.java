@@ -38,7 +38,7 @@ public class MedicamentoDAO {
         ProjectionList medicamentoLista = Projections.projectionList();
 
         medicamentoLista.add(Projections.property("Codigo"), "Codigo");
-        medicamentoLista.add(Projections.property("Nombre"), "NombreMedicamento");
+        medicamentoLista.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
         medicamentoLista.add(Projections.property("Fecha de caducidad"), "Caducidad");
         medicamentoLista.add(Projections.property("Sustancia Activa"), "SustanciaActiva");
         criteria.setProjection(medicamentoLista);

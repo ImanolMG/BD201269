@@ -17,7 +17,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import persistencia.Dueño;
 import persistencia.Usuarios;
 import persistencia.UsuariosDAO;
 

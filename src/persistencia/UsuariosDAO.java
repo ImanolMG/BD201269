@@ -2,8 +2,7 @@ package persistencia;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.ProjectionList;
-import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.*;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
@@ -32,17 +31,25 @@ public class UsuariosDAO {
 
     public boolean BuscarUsuario(String usuario, String contraseña){
         Session session = factory.openSession();
-        List empList1 = session.createQuery(" from Usuarios").list();
-        boolean evaluar = false;
-        Usuarios listUser;
-        for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
-            listUser = (Usuarios) iterator.next();
+        Criteria criteria = session.createCriteria(Usuarios.class);
 
-            if(usuario.equals(listUser.getUsuario())){
-                if(contraseña.equals(listUser.getContraseña())){
-                    evaluar = true;
-                }
-            }
+        Criterion nombre = Restrictions.like("Usuario", usuario);
+        Criterion contra = Restrictions.like("Contraseña", contraseña);
+
+        LogicalExpression andNombreContra = Restrictions.and(nombre, contra);
+        criteria.add(andNombreContra);
+
+        List listaUser = criteria.list();
+        Usuarios usuarios = new Usuarios();
+        boolean evaluar = false;
+        int i =0;
+        for(Iterator iterator = listaUser.iterator(); iterator.hasNext();){
+            usuarios = (Usuarios) iterator.next();
+        }
+        if(usuarios.getContraseña().equals(contraseña)&&usuarios.getUsuario().equals(usuario)){
+            evaluar = true;
+        }else{
+            evaluar=false;
         }
         return evaluar;
     }
@@ -64,7 +71,6 @@ public class UsuariosDAO {
         int i =0;
         for(Iterator iterator = usuariosList.iterator(); iterator.hasNext();){
             usuario.add((Usuarios) iterator.next());
-            System.out.println(usuario.get(i));
             i++;
         }
         return usuario;
