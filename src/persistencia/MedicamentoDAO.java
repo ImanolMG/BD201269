@@ -9,8 +9,6 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
-
-import java.util.Iterator;
 import java.util.*;
 
 public class MedicamentoDAO {
@@ -18,7 +16,7 @@ public class MedicamentoDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
-    public MedicamentoDAO() {
+    public MedicamentoDAO(){
         System.err.println("Iniciando conexionn");
         try {
             Configuration configuration = new Configuration();

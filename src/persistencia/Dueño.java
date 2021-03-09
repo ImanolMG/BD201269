@@ -14,7 +14,7 @@ public class Dueño implements Serializable {
     private final StringProperty Telefono = new SimpleStringProperty();
     private Dueño dueño;
 
-    public Dueño() {
+    public Dueño(){
     }
 
     public Dueño(Integer idDueño, String Nombre,String Direccion,String Telefono) {

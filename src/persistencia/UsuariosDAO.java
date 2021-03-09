@@ -24,7 +24,7 @@ public class UsuariosDAO {
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             factory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
-            System.err.println("No se puede crear la Sesion" + ex);
+            System.err.println("No se puede crear la Sesion " + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

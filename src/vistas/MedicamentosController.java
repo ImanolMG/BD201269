@@ -18,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import persistencia.Dueño;
@@ -77,14 +76,14 @@ public class MedicamentosController implements Initializable {
     }
 
     @FXML
-    private void cerrarVentana(ActionEvent event) {
+    private void cerrarVentana(ActionEvent event){
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
         cargarMenuprincipal();
     }
 
-    public void cargarMenuprincipal() {
+    public void cargarMenuprincipal(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPrincipal.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -92,7 +91,7 @@ public class MedicamentosController implements Initializable {
             stage.setScene(new Scene(page, 600, 400));
             stage.setTitle("Menu Principal");
             stage.show();
-        } catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
