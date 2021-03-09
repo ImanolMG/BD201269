@@ -3,31 +3,32 @@ package persistencia;
 import javafx.beans.property.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.*;
 
 public class Mascota implements Serializable {
 
-    private IntegerProperty IdMascota = new SimpleIntegerProperty();
-    private StringProperty TipoMascota = new SimpleStringProperty();
-    private StringProperty Nombre = new SimpleStringProperty();
-    private ObjectProperty<LocalDateTime> FechaIngreso = new SimpleObjectProperty<>();
-    private IntegerProperty IdDueño = new SimpleIntegerProperty();
-    private StringProperty NombreDueño = new SimpleStringProperty();
-    private StringProperty Sexo = new SimpleStringProperty();
-    private StringProperty Motivo = new SimpleStringProperty();
+    private final IntegerProperty idMascota = new SimpleIntegerProperty();
+    private final  StringProperty TipoMascota = new SimpleStringProperty();
+    private final StringProperty Nombre = new SimpleStringProperty();
+    private final ObjectProperty<Date> FechaIngreso = new SimpleObjectProperty<>();
+    private final StringProperty NombreDueño = new SimpleStringProperty();
+    private final StringProperty Sexo = new SimpleStringProperty();
+    private final StringProperty Motivo = new SimpleStringProperty();
     private Mascota mascota;
+    private Dueño dueño;
 
     public Mascota(){
+
     }
 
 
-    public Mascota(String TipoMascota, String Nombre, LocalDateTime FechaIngreso, String NombreDueño, String Sexo, String Motivo, Integer IdDueño) {
+    public Mascota( String TipoMascota, String Nombre, Date FechaIngreso, String NombreDueño, String Sexo, String Motivo, Integer idMascota) {
+
         this.TipoMascota.set(TipoMascota);
         this.Nombre.set(Nombre);
         this.FechaIngreso.set(FechaIngreso);
-        this.IdDueño.set(IdDueño);
+        this.idMascota.set(idMascota);
         this.NombreDueño.set(NombreDueño);
         this.Sexo.set(Sexo);
         this.Motivo.set(Motivo);
@@ -35,15 +36,18 @@ public class Mascota implements Serializable {
     }
 
 
-    public Integer getId() {
-        return IdMascota.get();
+
+    public Integer getIdMascota() {
+        return idMascota.get();
     }
 
-    public void setId(Integer IdMascota) {
-        this.IdMascota.set(IdMascota);
+    public void setIdMascota(Integer idMascota) {
+        this.idMascota.set(idMascota);
     }
 
-
+    public IntegerProperty idMascota(){
+        return idMascota;
+    }
 
 
 
@@ -75,44 +79,26 @@ public class Mascota implements Serializable {
 
 
 
-    public LocalDateTime getFechaIngreso() {
+    public Date getFechaIngreso() {
         return FechaIngreso.get();
     }
-    public void setFechaIngreso(LocalDateTime FechaIngreso) {
+    public void setFechaIngreso(Date FechaIngreso) {
         this.FechaIngreso.set(FechaIngreso);
     }
-    public ObjectProperty<LocalDateTime> fechaIngreso(){
+    public ObjectProperty<Date> fechaIngreso(){
         return FechaIngreso;
     }
+
 
 
     public String getNombreDueño() {
         return NombreDueño.get();
     }
-
-
-
     public void setNombreDueño(String NombreDueño) {
         this.NombreDueño.set(NombreDueño);
     }
-
     public StringProperty NombreDueño(){
         return NombreDueño;
-    }
-
-
-
-    public Integer getIdDueño() {
-        return IdDueño.get();
-    }
-
-    public void setIdDueño(Integer IdDueño) {
-        this.IdDueño.set(IdDueño);
-    }
-
-
-    public IntegerProperty IdDueño(){
-        return IdDueño;
     }
 
 
@@ -141,6 +127,15 @@ public class Mascota implements Serializable {
     }
     public Mascota getMascota(){
         return mascota;
+    }
+
+    public Dueño getDueño(){
+return dueño;
+
+    }
+
+    public void setCiudad(Dueño dueño) {
+        this.dueño = dueño;
     }
 
 }

@@ -127,6 +127,7 @@ public class DueñosController implements Initializable {
         idNombre.setText("");
         idDireccion.setText("");
         idTelefono.setText("");
+
     }
 
     public void gestionDeEventos() {
