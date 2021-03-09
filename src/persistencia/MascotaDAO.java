@@ -43,7 +43,6 @@ public class MascotaDAO {
         session.close();
     }
 
-
     public void EliminarDatos (Integer id){
         Session session = factory.openSession();
         session.beginTransaction();
@@ -59,8 +58,6 @@ public class MascotaDAO {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Mascota.class);
         ProjectionList mascotasLista = Projections.projectionList();
-
-
 
         mascotasLista.add(Projections.property("idMascota"), "idMascota");
         mascotasLista.add(Projections.property("TipoMascota"), "TipoMascota");
@@ -80,18 +77,15 @@ public class MascotaDAO {
             i++;
         }
         return mascotas;
-
     }
 
 
-    public List<Mascota> listaNombreDeDueños() {
+    public List<Mascota> listaNombreDeDueños(){
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Mascota.class);
         ProjectionList nombreDueñosLista = Projections.projectionList();
 
         nombreDueñosLista.add(Projections.property("NombreDueño"), "NombreDueño");
-
-
         criteria.setProjection(nombreDueñosLista);
 
         List<Mascota> mascotas = new ArrayList<>();

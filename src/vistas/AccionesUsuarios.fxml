@@ -29,7 +29,7 @@
             <TableColumn fx:id="Contraseña" minWidth="0.0" prefWidth="140.0" text="Contraseña" />
         </columns>
       </TableView>
-      <Button fx:id="idEditar" layoutX="96.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnEditar" text="Editar" />
+      <Button fx:id="idEditar" layoutX="80.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnEditar" text="Actualizar" />
       <Button fx:id="idEliminar" layoutX="170.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnDelete" text="Eliminar" />
       <Button fx:id="idNew" layoutX="9.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnNuevo" text="Nuevo" />
       <TextField fx:id="idUsuario" layoutX="14.0" layoutY="198.0" prefHeight="34.0" prefWidth="216.0" promptText="Usuario" style="-fx-background-radius: 50;" />
