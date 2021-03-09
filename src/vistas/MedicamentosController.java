@@ -1,23 +1,79 @@
 package vistas;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MedicamentosController {
+import persistencia.Dueño;
+import persistencia.DueñoDAO;
+import persistencia.MedicamentoDAO;
+import persistencia.Medicamento;
 
 
+public class MedicamentosController implements Initializable {
+    @FXML
+    private TextField idCodigoM;
+    @FXML
+    private TextField idNombreM;
+    @FXML
+    private TextField idSustanciaM;
+    @FXML
+    private TextField idCaducidadM;
+    @FXML
+    private TableView<Medicamento> tableMedica;
+    @FXML
+    private TableColumn<Medicamento, Number> clmnCodigo;
+    @FXML
+    private TableColumn<Medicamento, String> clmnNombreM;
+    @FXML
+    private TableColumn<Medicamento, String> clmnCaducidad;
+    @FXML
+    private TableColumn<Medicamento, String> clmnSustancia;
 
+    private ObservableList<Medicamento> olListaMedicamentos ;
+    private MedicamentoDAO medicaDAO;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        olListaMedicamentos = FXCollections.observableArrayList();
+        medicaDAO = new MedicamentoDAO();
+        olListaMedicamentos.addAll(medicaDAO.listaMedicamentos());
+        tableMedica.setItems(olListaMedicamentos);
+        clmnCodigo.setCellValueFactory(tf -> tf.getValue().idMedicamento());
+        clmnNombreM.setCellValueFactory(tf -> tf.getValue().NombreMedicamento());
+        clmnCaducidad.setCellValueFactory(tf -> tf.getValue().Caducidad());
+        clmnSustancia.setCellValueFactory(tf -> tf.getValue().SustanciaActiva());
+        gestionDeEventos();
+    }
 
-
-
+    public void gestionDeEventos() {
+        tableMedica.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medicamento>() {
+            @Override
+            public void changed(ObservableValue<? extends Medicamento> observableValue, Medicamento valorAnterior, Medicamento valorNuevo) {
+                if(valorNuevo!=null) {
+                    idCodigoM.setText(String.valueOf(valorNuevo.getId()));
+                    idNombreM.setText(valorNuevo.getNombreMedicamento());
+                    idSustanciaM.setText(valorNuevo.getSustanciaActiva());
+                    idCaducidadM.setText(valorNuevo.getCaducidad());
+                }
+            }
+        });
+    }
 
     @FXML
     private void cerrarVentana(ActionEvent event) {
@@ -26,7 +82,6 @@ public class MedicamentosController {
         stage.close();
         cargarMenuprincipal();
     }
-
 
     public void cargarMenuprincipal() {
         try {

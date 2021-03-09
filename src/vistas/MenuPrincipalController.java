@@ -65,23 +65,6 @@ public class MenuPrincipalController {
     }
 
     @FXML
-    public void vistaCitas(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Citas.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(page));
-            stage.setTitle("Citas");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
     public void vistaMedicamentos(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Medicamentos.fxml"));

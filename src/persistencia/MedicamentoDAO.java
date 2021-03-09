@@ -18,12 +18,12 @@ public class MedicamentoDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
 
-    public MedicamentoDAO(String conection) {
+    public MedicamentoDAO() {
         System.err.println("Iniciando conexionn");
         try {
             Configuration configuration = new Configuration();
             System.err.println("Leyendo configuracion.");
-            configuration.configure(conection);
+            configuration.configure();
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             factory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
@@ -35,23 +35,22 @@ public class MedicamentoDAO {
     public List<Medicamento> listaMedicamentos(){
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Medicamento.class);
-        ProjectionList medicamentoList = Projections.projectionList();
+        ProjectionList medicamentoLista = Projections.projectionList();
 
-        medicamentoList.add(Projections.property("Codigo"), "Codigo");
-        medicamentoList.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
-        medicamentoList.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
-        medicamentoList.add(Projections.property("Caducidad"), "Caducidad");
-        criteria.setProjection(medicamentoList);
+        medicamentoLista.add(Projections.property("Codigo"), "Codigo");
+        medicamentoLista.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
+        medicamentoLista.add(Projections.property("Fecha de caducidad"), "Caducidad");
+        medicamentoLista.add(Projections.property("Sustancia Activa"), "SustanciaActiva");
+        criteria.setProjection(medicamentoLista);
 
         List<Medicamento> medicamentos = new ArrayList<>();
-        List medicamentoLista = criteria.setResultTransformer(new AliasToBeanResultTransformer(Medicamento.class)).list();
+        List medicamentoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Medicamento.class)).list();
 
         int i =0;
-        for(Iterator iterator = medicamentoLista.iterator(); iterator.hasNext();){
+        for(Iterator iterator = medicamentoList.iterator(); iterator.hasNext();){
             medicamentos.add((Medicamento) iterator.next());
             i++;
         }
         return medicamentos;
     }
-
 }

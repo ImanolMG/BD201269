@@ -1,5 +1,6 @@
 package vistas;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -33,20 +34,17 @@ public class DueñosController implements Initializable {
     private Button idEditar;
     @FXML
     private Button idEliminar;
-
     @FXML
     private TextField idDueño;
-
     @FXML
     private TextField idNombre;
     @FXML
     private TextField idDireccion;
     @FXML
     private TextField idTelefono;
-
-
-
     @FXML
+
+
     private TableView<Dueño> tblListaDueños;
     @FXML
     private TableColumn<Dueño, Number> clmnidDueño;
@@ -56,14 +54,8 @@ public class DueñosController implements Initializable {
     private TableColumn<Dueño, String> clmnDireccion;
     @FXML
     private TableColumn<Dueño, String> clmnTelefono;
-
-
     private ObservableList<Dueño> olListaDueños ;
     private DueñoDAO dueñoDAO;
-
-
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -138,11 +130,8 @@ public class DueñosController implements Initializable {
 
     }
 
-
-
     public void gestionDeEventos() {
         tblListaDueños.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Dueño>() {
-
             @Override
             public void changed(ObservableValue<? extends Dueño> observableValue, Dueño valorAnterior, Dueño valorNuevo) {
                 if(valorNuevo!=null) {
@@ -150,7 +139,6 @@ public class DueñosController implements Initializable {
                     idNombre.setText(valorNuevo.getNombre());
                     idDireccion.setText(valorNuevo.getDireccion());
                     idTelefono.setText(valorNuevo.getTelefono());
-
                 }
             }
         });
@@ -164,10 +152,7 @@ public class DueñosController implements Initializable {
         cargarMenuprincipal();
     }
 
-
-
     public void cargarMenuprincipal() {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPrincipal.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
@@ -180,6 +165,5 @@ public class DueñosController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }
 

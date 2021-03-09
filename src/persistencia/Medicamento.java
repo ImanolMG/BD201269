@@ -1,50 +1,61 @@
 package persistencia;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import java.io.Serializable;
 
 public class Medicamento implements Serializable {
-
-    private Integer Codigo;
-    private String NombreMedicamento;
-    private String SustanciaActiva;
-    private String Caducidad;
+    private final IntegerProperty Codigo = new SimpleIntegerProperty();
+    private final StringProperty NombreMedicamento = new SimpleStringProperty();
+    private final StringProperty SustanciaActiva = new SimpleStringProperty();
+    private final StringProperty Caducidad = new SimpleStringProperty();
     private Medicamento medicamento;
 
     public Medicamento(){}
 
-    public Medicamento(Integer codigo, String nombreMedicamento, String sustanciaActiva, String caducidad) {
-        Codigo = codigo;
-        NombreMedicamento = nombreMedicamento;
-        SustanciaActiva = sustanciaActiva;
-        Caducidad = caducidad;
+    public Medicamento(Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad) {
+        this.Codigo.set(Codigo);
+        this.NombreMedicamento.set(NombreMedicamento);
+        this.SustanciaActiva.set(SustanciaActiva);
+        this.Caducidad.set(Caducidad);
     }
 
     public Integer getId() {
-        return Codigo;
+        return Codigo.get();
     }
     public void setId(Integer Codigo) {
-        this.Codigo = Codigo;
+        this.Codigo.set(Codigo);
+    }
+    public IntegerProperty idMedicamento(){
+        return Codigo;
     }
 
-    public String getNombreMedicamento() {
-        return NombreMedicamento;
+    public String getNombreMedicamento(){
+        return NombreMedicamento.get();
     }
-    public void setNombreMedicamento(String nombreMedicamento) {
-        NombreMedicamento = nombreMedicamento;
+    public void setNombreMedicamento(String NombreMedicamento) {
+        this.NombreMedicamento.set(NombreMedicamento);
     }
+    public StringProperty NombreMedicamento(){ return NombreMedicamento;}
 
     public String getSustanciaActiva() {
-        return SustanciaActiva;
+        return SustanciaActiva.get();
     }
-    public void setSustanciaActiva(String sustanciaActiva) {
-        SustanciaActiva = sustanciaActiva;
+    public void setSustanciaActiva(String SustanciaActiva) {
+        this.SustanciaActiva.set(SustanciaActiva);
     }
+    public StringProperty SustanciaActiva(){ return SustanciaActiva;}
 
     public String getCaducidad() {
-        return Caducidad;
+        return Caducidad.get();
     }
-    public void setCaducidad(String caducidad) {
-        Caducidad = caducidad;
+    public void setCaducidad(String Caducidad) {
+        this.Caducidad.set(Caducidad);
+    }
+    public StringProperty Caducidad(){
+        return Caducidad;
     }
 
     public void setMedicamento(Medicamento Medicamento){

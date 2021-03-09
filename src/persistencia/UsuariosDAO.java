@@ -1,14 +1,14 @@
 package persistencia;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import java.util.*;
-
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class UsuariosDAO {
 
@@ -31,31 +31,51 @@ public class UsuariosDAO {
 
     public boolean BuscarUsuario(String usuario, String contraseña){
         Session session = factory.openSession();
-        List empList1 = session.createQuery(" from Usuarios").list();
-        boolean evaluar = false;
-        Usuarios listUser;
-        for (Iterator iterator = empList1.iterator(); iterator.hasNext();){
-            listUser = (Usuarios) iterator.next();
+        Criteria criteria = session.createCriteria(Usuarios.class);
 
-            if(usuario.equals(listUser.getUser())){
-                if(contraseña.equals(listUser.getPassword())){
-                    evaluar = true;
-                }
-            }
+        Criterion nombre = Restrictions.like("Usuario", usuario);
+        Criterion contra = Restrictions.like("Contraseña", contraseña);
+
+        LogicalExpression andNombreContra = Restrictions.and(nombre, contra);
+        criteria.add(andNombreContra);
+
+        List listaUser = criteria.list();
+        Usuarios usuarios = new Usuarios();
+        boolean evaluar = false;
+        int i =0;
+        for(Iterator iterator = listaUser.iterator(); iterator.hasNext();){
+            usuarios = (Usuarios) iterator.next();
+        }
+        if(usuarios.getContraseña().equals(contraseña)&&usuarios.getUsuario().equals(usuario)){
+            evaluar = true;
+        }else{
+            evaluar=false;
         }
         return evaluar;
     }
 
-    public void RegistrarUsuarios(String nombre, String usuario, String contraseña){
+    public List<Usuarios> listaUsuarios(){
         Session session = factory.openSession();
-        session.beginTransaction();
+        Criteria criteria = session.createCriteria(Usuarios.class);
+        ProjectionList usuariosLista = Projections.projectionList();
 
-        Usuarios userRegister = new Usuarios(nombre, usuario, contraseña);
-        session.save(userRegister);
+        usuariosLista.add(Projections.property("idUsuario"), "idUsuario");
+        usuariosLista.add(Projections.property("NombreCompleto"), "NombreCompleto");
+        usuariosLista.add(Projections.property("Usuario"), "Usuario");
+        usuariosLista.add(Projections.property("Contraseña"), "Contraseña");
+        criteria.setProjection(usuariosLista);
 
-        session.getTransaction().commit();
-        session.close();
+        List<Usuarios> usuario = new ArrayList<>();
+        List usuariosList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Usuarios.class)).list();
+
+        int i =0;
+        for(Iterator iterator = usuariosList.iterator(); iterator.hasNext();){
+            usuario.add((Usuarios) iterator.next());
+            i++;
+        }
+        return usuario;
     }
+
 
 
 
