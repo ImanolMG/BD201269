@@ -4,6 +4,8 @@ import javafx.beans.property.*;
 
 import java.io.Serializable;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class Mascota implements Serializable {
@@ -78,7 +80,13 @@ public class Mascota implements Serializable {
 
 
 
-    public Date getFechaIngreso() {
+/*    public LocalDate getFechaIngreso() {
+
+        return FechaIngreso.get().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+    */
+
+    public  Date getFechaIngreso(){
         return FechaIngreso.get();
     }
     public void setFechaIngreso(Date FechaIngreso) {
@@ -99,6 +107,7 @@ public class Mascota implements Serializable {
     public StringProperty NombreDueño(){
         return NombreDueño;
     }
+
 
 
     public String getSexo() {
@@ -136,5 +145,30 @@ return dueño;
     public void setCiudad(Dueño dueño) {
         this.dueño = dueño;
     }
+
+class DueñoLista {
+
+    private final StringProperty Nombre = new SimpleStringProperty();
+
+    public DueñoLista(String Nombre) {
+        this.Nombre.set(Nombre);
+    }
+
+    public void setNombre(String Nombre){
+        this.Nombre.set(Nombre);
+    }
+    public String getNombre(){
+        return Nombre.get();
+    }
+
+    public StringProperty nombre(){
+        return Nombre;
+    }
+
+
+
+}
+
+
 
 }

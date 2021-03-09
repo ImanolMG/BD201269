@@ -29,6 +29,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class MascotasController implements Initializable {
@@ -50,7 +51,7 @@ public class MascotasController implements Initializable {
     private TextField idRazon;
 
     @FXML
-    private ComboBox<Mascota> cmbNombreDueño;
+    private ComboBox<Dueño> cmbNombreDueño;
 
     @FXML
     private ComboBox<String> cmbTipoMascota;
@@ -85,29 +86,31 @@ public class MascotasController implements Initializable {
 
     private ObservableList<Mascota> olListaMascotas;
 
-    private ObservableList<Mascota> olListaNombresDueños;
+    private ObservableList<Dueño> olListaNombresDueños;
 
     private MascotaDAO mascotaDAO;
-
+private DueñoDAO dueñoDAO;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        dtpkrFechaIngreso.setValue(LocalDate.now());
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
-
+        dueñoDAO = new DueñoDAO();
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
-olListaNombresDueños.addAll(mascotaDAO.listaNombreDeDueños());
+
+olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
 
 
         tblListaMascotas.setItems(olListaMascotas);
+        cmbNombreDueño.setItems(olListaNombresDueños);
 
         cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
         cmbSexo.getItems().addAll("Macho", "Hembra");
-cmbNombreDueño.setItems(olListaNombresDueños);
+
 
 
 clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
@@ -127,16 +130,17 @@ clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
 
     public void gestionDeEventos() {
         tblListaMascotas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Mascota>() {
-
             @Override
             public void changed(ObservableValue<? extends Mascota> observableValue, Mascota valorAnterior, Mascota valorNuevo) {
                 if(valorNuevo!=null) {
 idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
           idNombre.setText(valorNuevo.getNombre());
 //cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
+
 cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
-//dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso());
+dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 idRazon.setText(valorNuevo.getMotivo());
+cmbSexo.setValue(valorNuevo.getSexo());
                 }
             }
         });
@@ -150,17 +154,37 @@ idRazon.setText(valorNuevo.getMotivo());
         MascotaDAO dao = new MascotaDAO();
         olListaMascotas = FXCollections.observableArrayList();
 
-        dao.GuardarDatos(cmbTipoMascota.getSelectionModel().getSelectedItem(), idNombre.getText(), String.valueOf(dtpkrFechaIngreso.getValue()) , cmbNombreDueño.getSelectionModel().getSelectedItem(), cmbSexo.getSelectionModel().getSelectedItem() , idRazon.getText() );
+        dao.GuardarDatos(cmbTipoMascota.getSelectionModel().getSelectedItem(), idNombre.getText(), String.valueOf(dtpkrFechaIngreso.getValue()), cmbNombreDueño.getSelectionModel().getSelectedItem(), cmbSexo.getSelectionModel().getSelectedItem() , idRazon.getText() );
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");
-        mensaje.setContentText("El dueño se a registrado exitosamente :D");
+        mensaje.setContentText("La Mascota se a registrado exitosamente :D");
         mensaje.setHeaderText("Resultado:");
         mensaje.show();
 
         olListaMascotas.addAll(dao.listaMascotas());
         tblListaMascotas.setItems(olListaMascotas);
     }
+
+
+    @FXML
+    public void BtnEditar(Event event){
+        MascotaDAO dao = new MascotaDAO();
+        olListaMascotas = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idIdMascota.getText());
+
+        dao.EditarDatos(id, cmbTipoMascota.getSelectionModel().getSelectedItem(), idNombre.getText(), String.valueOf(dtpkrFechaIngreso.getValue()), cmbNombreDueño.getSelectionModel().getSelectedItem(), cmbSexo.getSelectionModel().getSelectedItem() , idRazon.getText());
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha modificado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaMascotas.addAll(dao.listaMascotas());
+        tblListaMascotas.setItems(olListaMascotas);
+    }
+
 
     @FXML
     public void BtnDelete(Event event){

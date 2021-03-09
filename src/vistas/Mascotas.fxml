@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -20,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.MascotasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.MascotasController">
    <children>
       <SplitPane dividerPositions="0.35572139303482586" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -38,12 +33,12 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idNombre" layoutX="-2.0" layoutY="66.0" prefHeight="23.0" prefWidth="283.0" />
+                        <TextField fx:id="idNombre" layoutX="-2.0" layoutY="66.0" prefHeight="23.0" prefWidth="283.0" promptText=" Nombre de mascota" />
                         <ComboBox fx:id="cmbNombreDueño" layoutX="5.0" layoutY="101.0" prefHeight="17.0" prefWidth="269.0" promptText="Nombre del Dueño" />
                         <ComboBox fx:id="cmbTipoMascota" layoutX="1.0" layoutY="138.0" prefHeight="23.0" prefWidth="138.0" promptText="Tipo" />
                         <DatePicker fx:id="dtpkrFechaIngreso" layoutX="-1.0" layoutY="192.0" promptText="Ingrese Fecha" />
-                        <TextField fx:id="idRazon" layoutY="252.0" prefHeight="17.0" prefWidth="283.0" />
-                        <ComboBox fx:id="cmbSexo" layoutX="-6.0" layoutY="287.0" prefWidth="150.0" promptText="Sexo DIARIO" />
+                        <TextField fx:id="idRazon" layoutX="11.0" layoutY="252.0" prefHeight="17.0" prefWidth="283.0" promptText="Razon por ingresar la primera vez" />
+                        <ComboBox fx:id="cmbSexo" layoutX="45.0" layoutY="283.0" prefWidth="150.0" promptText="Sexo" />
                         <Label layoutX="2.0" layoutY="172.0" text="Fecha de ingreso">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
@@ -54,7 +49,7 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idIdMascota" disable="true" layoutY="22.0" prefHeight="17.0" prefWidth="80.0" />
+                        <TextField fx:id="idIdMascota" disable="true" layoutY="22.0" prefHeight="17.0" prefWidth="80.0" promptText="ID" />
                         <Label layoutX="1.0" layoutY="5.0" text="idMascota">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
@@ -79,7 +74,7 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="idEditar" layoutX="91.0" layoutY="31.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="idEditar" layoutX="91.0" layoutY="32.0" mnemonicParsing="false" onAction="#BtnEditar" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
@@ -127,11 +122,6 @@
                      </font>
                   </Text>
                   <Button layoutX="136.0" layoutY="395.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="131.0" style="-fx-background-color: #F47456;" text="Mascotas" textFill="WHITE" AnchorPane.bottomAnchor="-1.0">
-                     <font>
-                        <Font name="Arial Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="267.0" layoutY="395.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="131.0" style="-fx-background-color: white;" text="Citas" textFill="#f47456" AnchorPane.bottomAnchor="-1.0">
                      <font>
                         <Font name="Arial Bold" size="22.0" />
                      </font>

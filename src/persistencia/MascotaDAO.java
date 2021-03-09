@@ -34,11 +34,31 @@ public class MascotaDAO {
         }
     }
 
-    public void GuardarDatos(String TipoMascota, String Nombre, String FechaIngreso, Mascota NombreDueño, String Sexo, String Motivo ){
+    public void GuardarDatos(String TipoMascota, String Nombre, String FechaIngreso, Dueño NombreDueño, String Sexo, String Motivo ){
         Session session = factory.openSession();
         session.beginTransaction();
         Mascota userRegister = new Mascota(TipoMascota, Nombre , Date.valueOf(FechaIngreso), String.valueOf(NombreDueño) ,Sexo, Motivo,0 );
         session.save(userRegister);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+
+    public void EditarDatos(Integer id, String TipoMascota, String Nombre, String FechaIngreso, Dueño NombreDueño, String Sexo, String Motivo){
+        Session session = factory.openSession();
+        session.beginTransaction();
+
+        Mascota userRegister = (Mascota) session.get(Mascota.class, id);
+
+        userRegister.setTipoMascota(TipoMascota);
+        userRegister.setNombre(Nombre);
+        userRegister.setFechaIngreso(Date.valueOf(FechaIngreso));
+        userRegister.setNombreDueño(String.valueOf(NombreDueño));
+        userRegister.setSexo(Sexo);
+        userRegister.setMotivo(Motivo);
+
+        session.update(userRegister);
+
         session.getTransaction().commit();
         session.close();
     }
@@ -77,25 +97,8 @@ public class MascotaDAO {
             i++;
         }
         return mascotas;
+
     }
 
 
-    public List<Mascota> listaNombreDeDueños(){
-        Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Mascota.class);
-        ProjectionList nombreDueñosLista = Projections.projectionList();
-
-        nombreDueñosLista.add(Projections.property("NombreDueño"), "NombreDueño");
-        criteria.setProjection(nombreDueñosLista);
-
-        List<Mascota> mascotas = new ArrayList<>();
-        List dueñosNombresList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Mascota.class)).list();
-
-        int i =0;
-        for(Iterator iterator = dueñosNombresList.iterator(); iterator.hasNext();){
-            mascotas.add((Mascota) iterator.next());
-            i++;
-        }
-        return mascotas;
-    }
 }

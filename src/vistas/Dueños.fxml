@@ -31,8 +31,8 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idNombre" layoutY="60.0" prefHeight="23.0" prefWidth="283.0" />
-                        <TextField fx:id="idTelefono" layoutY="144.0" prefHeight="17.0" prefWidth="283.0" />
+                        <TextField fx:id="idNombre" layoutY="60.0" prefHeight="23.0" prefWidth="283.0" promptText="Nombre del dueño" />
+                        <TextField fx:id="idTelefono" layoutY="144.0" prefHeight="17.0" prefWidth="283.0" promptText="Numero telefonico" />
                         <Label layoutY="85.0" text="Direccion">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
@@ -43,13 +43,13 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idDireccion" layoutY="102.0" prefHeight="23.0" prefWidth="283.0" />
+                        <TextField fx:id="idDireccion" layoutY="102.0" prefHeight="23.0" prefWidth="283.0" promptText="Direccion del dueño" />
                         <Label text="Id Dueño">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idDueño" disable="true" layoutY="17.0" prefHeight="17.0" prefWidth="64.0" />
+                        <TextField fx:id="idDueño" disable="true" layoutY="17.0" prefHeight="17.0" prefWidth="64.0" promptText="ID" />
                      </children>
                   </Pane>
                   <Pane layoutX="14.0" layoutY="263.0">

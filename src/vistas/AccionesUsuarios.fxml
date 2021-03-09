@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -13,14 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="733.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.AccionesUsuarios">
+<AnchorPane prefHeight="400.0" prefWidth="733.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.AccionesUsuarios">
    <children>
       <Label layoutX="17.0" layoutY="14.0" prefHeight="70.0" prefWidth="187.0" text="Usuarios">
          <font>
             <Font size="48.0" />
          </font></Label>
-      <TextField fx:id="idNombre" layoutX="14.0" layoutY="134.0" prefHeight="34.0" prefWidth="216.0" promptText="Nombre" style="-fx-background-radius: 50;" />
-      <Button fx:id="idGuardar" layoutX="88.0" layoutY="341.0" mnemonicParsing="false" onAction="#BtnSave" text="Guardar" />
+      <TextField fx:id="idNombre" layoutX="14.0" layoutY="134.0" prefHeight="34.0" prefWidth="216.0" promptText="Nombre" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
+      <Button fx:id="idGuardar" layoutX="88.0" layoutY="341.0" mnemonicParsing="false" onAction="#Botto" style="-fx-background-color: #355389;" text="Guardar" textFill="WHITE" />
       <TableView fx:id="tableUsuarios" layoutX="245.0" layoutY="94.0" prefHeight="304.0" prefWidth="474.0">
         <columns>
            <TableColumn fx:id="IdUsuario" prefWidth="109.0" text="IdUsuario" />
@@ -29,11 +25,11 @@
             <TableColumn fx:id="Contraseña" minWidth="0.0" prefWidth="140.0" text="Contraseña" />
         </columns>
       </TableView>
-      <Button fx:id="idEditar" layoutX="80.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnEditar" text="Actualizar" />
-      <Button fx:id="idEliminar" layoutX="170.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnDelete" text="Eliminar" />
-      <Button fx:id="idNew" layoutX="9.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnNuevo" text="Nuevo" />
-      <TextField fx:id="idUsuario" layoutX="14.0" layoutY="198.0" prefHeight="34.0" prefWidth="216.0" promptText="Usuario" style="-fx-background-radius: 50;" />
-      <PasswordField fx:id="idContraseña" layoutX="14.0" layoutY="257.0" prefHeight="34.0" prefWidth="216.0" promptText="Contraseña" style="-fx-background-radius: 50;" />
+      <Button fx:id="idEditar" layoutX="83.0" layoutY="302.0" mnemonicParsing="false" style="-fx-background-color: #355389;" text="Modificar" textFill="WHITE" />
+      <Button fx:id="idEliminar" layoutX="170.0" layoutY="302.0" mnemonicParsing="false" style="-fx-background-color: #355389;" text="Eliminar" textFill="WHITE" />
+      <Button fx:id="idNew" layoutX="9.0" layoutY="302.0" mnemonicParsing="false" style="-fx-background-color: #355389;" text="Limpiar" textFill="WHITE" />
+      <TextField fx:id="idUsuario" layoutX="14.0" layoutY="198.0" prefHeight="34.0" prefWidth="216.0" promptText="Usuario" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
+      <PasswordField fx:id="idContraseña" layoutX="14.0" layoutY="257.0" prefHeight="34.0" prefWidth="216.0" promptText="Contraseña" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
       <Label layoutX="17.0" layoutY="110.0" text="Nombre">
          <font>
             <Font size="14.0" />
@@ -49,7 +45,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="641.0" layoutY="30.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Cerrrar" />
-      <TextField fx:id="idIDUSER" layoutX="14.0" layoutY="77.0" prefHeight="34.0" prefWidth="216.0" promptText="idUsuario" style="-fx-background-radius: 50;" />
+      <Button layoutX="641.0" layoutY="30.0" mnemonicParsing="false" onAction="#cerrarVentana" style="-fx-background-color: #355389;" text="Cerrrar" textFill="WHITE" />
+      <TextField fx:id="idIDUSER" layoutX="14.0" layoutY="77.0" prefHeight="34.0" prefWidth="216.0" promptText="idUsuario" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
    </children>
 </AnchorPane>
