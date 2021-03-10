@@ -34,6 +34,8 @@ public class MedicamentosController implements Initializable {
     @FXML
     private Button idActualizar;
     @FXML
+    private TextField idIDMed;
+    @FXML
     private TextField idCodigoM;
     @FXML
     private TextField idNombreM;
@@ -44,6 +46,8 @@ public class MedicamentosController implements Initializable {
     @FXML
     private TableView<Medicamento> tableMedica;
     @FXML
+    private TableColumn<Medicamento, Number> clmnId;
+    @FXML
     private TableColumn<Medicamento, Number> clmnCodigo;
     @FXML
     private TableColumn<Medicamento, String> clmnNombreM;
@@ -51,6 +55,8 @@ public class MedicamentosController implements Initializable {
     private TableColumn<Medicamento, Date> clmnCaducidad;
     @FXML
     private TableColumn<Medicamento, String> clmnSustancia;
+
+
 
 
     private ObservableList<Medicamento> olListaMedicamentos ;
@@ -63,6 +69,7 @@ public class MedicamentosController implements Initializable {
         medicaDAO = new MedicamentoDAO();
         olListaMedicamentos.addAll(medicaDAO.listaMedicamentos());
         tableMedica.setItems(olListaMedicamentos);
+        clmnId.setCellValueFactory(tf -> tf.getValue().idMedicamento());
         clmnCodigo.setCellValueFactory(tf -> tf.getValue().codigo());
         clmnNombreM.setCellValueFactory(tf -> tf.getValue().nombreMedicamento());
         clmnCaducidad.setCellValueFactory(new PropertyValueFactory<>("Caducidad"));
@@ -75,6 +82,7 @@ public class MedicamentosController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Medicamento> observableValue, Medicamento valorAnterior, Medicamento valorNuevo) {
                 if(valorNuevo!=null) {
+                    idIDMed.setText(String.valueOf(valorNuevo.getIdMedicamento()));
                     idCodigoM.setText(String.valueOf(valorNuevo.getCodigo()));
                     idNombreM.setText(valorNuevo.getNombreMedicamento());
                     idSustanciaM.setText(valorNuevo.getSustanciaActiva());
@@ -109,13 +117,13 @@ public class MedicamentosController implements Initializable {
     public void BtnGuardar(){
         MedicamentoDAO dao = new MedicamentoDAO();
         olListaMedicamentos = FXCollections.observableArrayList();
-
-
-        dao.GuardarDatos(Integer.valueOf(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()) );
+        Integer id = Integer.parseInt(idIDMed.getText());
+        Integer codigo = Integer.parseInt(idCodigoM.getText());
+        dao.GuardarDatos(id, codigo, idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()) );
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");
-        mensaje.setContentText("La Mascota se a registrado exitosamente :D");
+        mensaje.setContentText("El medicamento se a registrado exitosamente");
         mensaje.setHeaderText("Resultado:");
         mensaje.show();
 
@@ -125,11 +133,12 @@ public class MedicamentosController implements Initializable {
     }
 
     @FXML
-    public void BtnEditar(Event event){
-        MedicamentoDAO dao = new MedicamentoDAO();
+    public void BtnEditar(){
+        MedicamentoDAO daa = new MedicamentoDAO();
         olListaMedicamentos = FXCollections.observableArrayList();
+        Integer id = Integer.parseInt(idIDMed.getText());
 
-        dao.EditarDatos(Integer.valueOf(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()));
+        daa.EditarDatos(id,Integer.parseInt(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()));
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");
@@ -137,7 +146,7 @@ public class MedicamentosController implements Initializable {
         mensaje.setHeaderText("Resultado:");
         mensaje.show();
 
-        olListaMedicamentos.addAll(dao.listaMedicamentos());
+        olListaMedicamentos.addAll(daa.listaMedicamentos());
         tableMedica.setItems(olListaMedicamentos);
         btnNuevo();
     }
@@ -147,7 +156,7 @@ public class MedicamentosController implements Initializable {
         MedicamentoDAO dao = new MedicamentoDAO();
         olListaMedicamentos = FXCollections.observableArrayList();
 
-        dao.EliminarDatos(Integer.valueOf(idCodigoM.getText()));
+        dao.EliminarDatos(Integer.parseInt(idIDMed.getText()));
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");

@@ -19,33 +19,36 @@
                   </ImageView>
                   <Pane layoutY="83.0" opacity="0.95" prefHeight="186.0" prefWidth="282.0" style="-fx-background-color: #C2F4F3;" AnchorPane.bottomAnchor="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="83.0">
                      <children>
-                        <TextField fx:id="idCodigoM" layoutX="2.0" layoutY="63.0" prefHeight="8.0" prefWidth="105.0" />
-                        <Label layoutY="-1.0" text="Nombre de medicamento">
+                        <TextField fx:id="idCodigoM" layoutX="1.0" layoutY="114.0" prefHeight="8.0" prefWidth="105.0" />
+                        <Label layoutY="42.0" text="Nombre de medicamento">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="2.0" layoutY="46.0" text="Codigo">
+                        <Label layoutX="2.0" layoutY="97.0" text="Codigo">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="idNombreM" layoutX="1.0" layoutY="17.0" prefHeight="27.0" prefWidth="283.0" />
-                        <TextField fx:id="idSustanciaM" layoutX="1.0" layoutY="110.0" prefHeight="23.0" prefWidth="283.0" />
-                        <Label layoutX="-1.0" layoutY="92.0" text="Sustancia Activa">
+                        <TextField fx:id="idNombreM" layoutY="62.0" prefHeight="27.0" prefWidth="283.0" />
+                        <TextField fx:id="idSustanciaM" layoutY="171.0" prefHeight="23.0" prefWidth="283.0" />
+                        <Label layoutX="2.0" layoutY="154.0" text="Sustancia Activa">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="3.0" layoutY="141.0" text="Fecha de caducidad">
+                        <TextField fx:id="idIDMed" layoutX="36.0" layoutY="8.0" maxHeight="31.0" maxWidth="38.0" opacity="0.44" prefHeight="31.0" prefWidth="38.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font></TextField>
+                        <Label layoutX="20.0" layoutY="15.0" text="ID">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="idCaducidadM" layoutX="2.0" layoutY="160.0" />
                      </children>
                   </Pane>
-                  <Pane layoutX="14.0" layoutY="297.0">
+                  <Pane layoutX="14.0" layoutY="350.0">
                      <children>
                         <Button fx:id="idNuevo" mnemonicParsing="false" onAction="#btnNuevo" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Nuevo" textFill="WHITE">
                            <font>
@@ -79,6 +82,12 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
+                  <DatePicker fx:id="idCaducidadM" layoutY="301.0" />
+                  <Label layoutY="284.0" text="Fecha de caducidad">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="445.0" prefWidth="514.0">
@@ -90,6 +99,7 @@
                   </ImageView>
                   <TableView fx:id="tableMedica" layoutY="65.0" opacity="0.85" prefHeight="280.0" prefWidth="425.0" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
                     <columns>
+                       <TableColumn fx:id="clmnId" prefWidth="71.0" text="Id" />
                       <TableColumn fx:id="clmnCodigo" prefWidth="71.0" text="Codigo" />
                       <TableColumn fx:id="clmnNombreM" prefWidth="117.0" text="Nombre" />
                         <TableColumn fx:id="clmnCaducidad" prefWidth="146.0" text="Fecha de caducidad" />

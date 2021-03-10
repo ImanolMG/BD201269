@@ -38,6 +38,7 @@ public class MedicamentoDAO {
         Criteria criteria = session.createCriteria(Medicamento.class);
         ProjectionList medicamentoLista = Projections.projectionList();
 
+        medicamentoLista.add(Projections.property("idMedicamento"), "idMedicamento");
         medicamentoLista.add(Projections.property("Codigo"), "Codigo");
         medicamentoLista.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
         medicamentoLista.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
@@ -56,37 +57,30 @@ public class MedicamentoDAO {
         return medicamento;
     }
 
-    public void GuardarDatos(Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
+    public void GuardarDatos(Integer idMedicamento,Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
         Session session = factory.openSession();
         session.beginTransaction();
-        Medicamento userRegister = new Medicamento(Codigo, NombreMedicamento , SustanciaActiva,  Date.valueOf(Caducidad) );
+        Medicamento userRegister = new Medicamento(idMedicamento ,Codigo, NombreMedicamento , SustanciaActiva,  Date.valueOf(Caducidad) );
         session.save(userRegister);
         session.getTransaction().commit();
         session.close();
     }
 
-    public void EditarDatos(Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
+    public void EditarDatos(Integer id,Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
         Session session = factory.openSession();
-        try {
+        session.beginTransaction();
 
-            session.beginTransaction();
+        Medicamento userRegister = (Medicamento) session.get(Medicamento.class, id);
 
-            Medicamento userRegister = (Medicamento) session.get(Medicamento.class, Codigo);
+        userRegister.setCodigo(Codigo);
+        userRegister.setNombreMedicamento(NombreMedicamento);
+        userRegister.setSustanciaActiva(SustanciaActiva);
+        userRegister.setCaducidad(Date.valueOf(Caducidad));
 
-            userRegister.setCodigo(Codigo);
-            userRegister.setNombreMedicamento(NombreMedicamento);
-            userRegister.setSustanciaActiva(SustanciaActiva);
-            userRegister.setCaducidad(Date.valueOf(Caducidad));
-            session.update(userRegister);
 
-            session.getTransaction().commit();
-        }catch (Throwable throwable){
-            Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
-            mensaje.setTitle(throwable.getMessage());
-            mensaje.setContentText("No se ha realizado el registro, asegurese que los datos son correctos");
-            mensaje.setHeaderText("Resultado:");
-            mensaje.show();
-        }
+        session.update(userRegister);
+
+        session.getTransaction().commit();
         session.close();
     }
 
