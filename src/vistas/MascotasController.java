@@ -71,8 +71,7 @@ public class MascotasController implements Initializable {
     @FXML
     private TableColumn<Mascota, String> clmnTipoMascota;
     @FXML
-    private TableColumn<Mascota, Date> clmnFechaIngreso;
-
+    private TableColumn<Mascota, LocalDate> clmnFechaIngreso;
     @FXML
     private TableColumn<Mascota, Number> clmnIdMascota;
     @FXML
@@ -102,7 +101,7 @@ private DueñoDAO dueñoDAO;
         dueñoDAO = new DueñoDAO();
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
 
-olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
+        olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
 
 
         tblListaMascotas.setItems(olListaMascotas);

@@ -43,8 +43,6 @@ public class DueñosController implements Initializable {
     @FXML
     private TextField idTelefono;
     @FXML
-
-
     private TableView<Dueño> tblListaDueños;
     @FXML
     private TableColumn<Dueño, Number> clmnidDueño;

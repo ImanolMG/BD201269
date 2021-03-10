@@ -2,25 +2,24 @@ package persistencia;
 
 import javafx.beans.property.*;
 
-import java.time.LocalDate;
 import java.time.chrono.Chronology;
 import java.io.Serializable;
 import java.util.Date;
 
 public class Medicamento implements Serializable {
-    private IntegerProperty Codigo;
-    private StringProperty NombreMedicamento;
-    private StringProperty SustanciaActiva;
-    private ObjectProperty<LocalDate> Caducidad;
+    private final IntegerProperty Codigo = new SimpleIntegerProperty();
+    private final StringProperty NombreMedicamento = new SimpleStringProperty();
+    private final StringProperty SustanciaActiva = new SimpleStringProperty();
+    private final ObjectProperty<Date> Caducidad = new SimpleObjectProperty<>();
     private Medicamento medicamento;
 
     public Medicamento(){}
 
-    public Medicamento(Integer Codigo, String NombreMedicamento, String SustanciaActiva, LocalDate Caducidad) {
-        this.Codigo = new SimpleIntegerProperty(Codigo);
-        this.NombreMedicamento= new SimpleStringProperty ( NombreMedicamento);
-        this.SustanciaActiva = new SimpleStringProperty(SustanciaActiva);
-        this.Caducidad= new SimpleObjectProperty<>(Caducidad);
+    public Medicamento(Integer Codigo, String NombreMedicamento, String SustanciaActiva, Date Caducidad) {
+        this.Codigo.set(Codigo);
+        this.NombreMedicamento.set(NombreMedicamento);
+        this.SustanciaActiva.set(SustanciaActiva);
+        this.Caducidad.set(Caducidad);
     }
 
     public Integer getCodigo() {
@@ -49,13 +48,13 @@ public class Medicamento implements Serializable {
     }
     public StringProperty sustanciaActiva(){ return SustanciaActiva;}
 
-    public LocalDate getCaducidad() {
+    public Date getCaducidad() {
         return Caducidad.get();
     }
-    public void setCaducidad(LocalDate Caducidad) {
+    public void setCaducidad(Date Caducidad) {
         this.Caducidad.set(Caducidad);
     }
-    public ObjectProperty<LocalDate> caducidad(){
+    public ObjectProperty<Date> caducidad(){
         return Caducidad;
     }
 
