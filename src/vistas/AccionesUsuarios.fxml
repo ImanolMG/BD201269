@@ -27,7 +27,7 @@
       </TableView>
       <Button fx:id="idEditar" layoutX="83.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnEditar" style="-fx-background-color: #355389;" text="Actualizar" textFill="WHITE" />
       <Button fx:id="idEliminar" layoutX="170.0" layoutY="302.0" mnemonicParsing="false" onAction="#BtnDelete" style="-fx-background-color: #355389;" text="Eliminar" textFill="WHITE" />
-      <Button fx:id="idNew" layoutX="9.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnNuevo" style="-fx-background-color: #355389;" text="Limpiar" textFill="WHITE" />
+      <Button fx:id="idNew" layoutX="9.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnNuevo" style="-fx-background-color: #355389;" text="Nuevo" textFill="WHITE" />
       <TextField fx:id="idUsuario" layoutX="14.0" layoutY="198.0" prefHeight="34.0" prefWidth="216.0" promptText="Usuario" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
       <PasswordField fx:id="idContraseña" layoutX="14.0" layoutY="257.0" prefHeight="34.0" prefWidth="216.0" promptText="Contraseña" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
       <Label layoutX="17.0" layoutY="110.0" text="Nombre">
@@ -46,6 +46,6 @@
          </font>
       </Label>
       <Button layoutX="666.0" layoutY="30.0" mnemonicParsing="false" onAction="#cerrarVentana" style="-fx-background-color: #355389;" text="Cerrrar" textFill="WHITE" />
-      <TextField fx:id="idIDUSER" layoutX="14.0" layoutY="77.0" prefHeight="34.0" prefWidth="216.0" promptText="idUsuario" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
+      <TextField fx:id="idIDUSER" disable="true" layoutX="14.0" layoutY="77.0" prefHeight="34.0" prefWidth="70.0" promptText="idUsuario" style="-fx-background-radius: 50; -fx-background-color: #C5DDF9;" />
    </children>
 </AnchorPane>
