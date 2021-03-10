@@ -57,13 +57,8 @@ public class MascotasController implements Initializable {
     private ComboBox<String> cmbTipoMascota;
 
     @FXML private DatePicker dtpkrFechaIngreso;
-
-
-
     @FXML
     private ComboBox<String> cmbSexo;
-
-
     @FXML
     private TableView<Mascota> tblListaMascotas;
     @FXML
@@ -102,26 +97,16 @@ private DueñoDAO dueñoDAO;
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
 
         olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
-
-
         tblListaMascotas.setItems(olListaMascotas);
-        cmbNombreDueño.setItems(olListaNombresDueños);
-
         cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
         cmbSexo.getItems().addAll("Macho", "Hembra");
-
-
-
-clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
-clmnIdMascota.setCellValueFactory(tf -> tf.getValue().idMascota());
-
-clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
-clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
-clmnFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("FechaIngreso"));
-clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
-clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
-
-
+        clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
+        clmnIdMascota.setCellValueFactory(tf -> tf.getValue().idMascota());
+        clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
+        clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
+        clmnFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("FechaIngreso"));
+        clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
+        clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
         gestionDeEventos();
     }
 
