@@ -43,6 +43,7 @@ public class MedicamentoDAO {
         medicamentoLista.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
         medicamentoLista.add(Projections.property("Caducidad"), "Caducidad");
 
+
         criteria.setProjection(medicamentoLista);
 
         List<Medicamento> medicamento = new ArrayList<>();
@@ -65,28 +66,16 @@ public class MedicamentoDAO {
         session.close();
     }
 
-    public void EditarDatos(Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
+    public void EditarDatos(Integer id, String NombreMedicamento, String SustanciaActiva, String Caducidad){
         Session session = factory.openSession();
-        try {
-
-            session.beginTransaction();
-
-            Medicamento userRegister = (Medicamento) session.get(Medicamento.class, Codigo);
-
-            userRegister.setCodigo(Codigo);
+   session.beginTransaction();
+            Medicamento userRegister = (Medicamento) session.get(Medicamento.class, id);
             userRegister.setNombreMedicamento(NombreMedicamento);
             userRegister.setSustanciaActiva(SustanciaActiva);
             userRegister.setCaducidad(Date.valueOf(Caducidad));
             session.update(userRegister);
 
             session.getTransaction().commit();
-        }catch (Throwable throwable){
-            Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
-            mensaje.setTitle(throwable.getMessage());
-            mensaje.setContentText("No se ha realizado el registro, asegurese que los datos son correctos");
-            mensaje.setHeaderText("Resultado:");
-            mensaje.show();
-        }
         session.close();
     }
 

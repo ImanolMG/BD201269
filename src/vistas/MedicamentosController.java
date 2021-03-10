@@ -58,9 +58,9 @@ public class MedicamentosController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        olListaMedicamentos = FXCollections.observableArrayList();
         medicaDAO = new MedicamentoDAO();
+        olListaMedicamentos = FXCollections.observableArrayList();
+
         olListaMedicamentos.addAll(medicaDAO.listaMedicamentos());
         tableMedica.setItems(olListaMedicamentos);
         clmnCodigo.setCellValueFactory(tf -> tf.getValue().codigo());
@@ -128,8 +128,8 @@ public class MedicamentosController implements Initializable {
     public void BtnEditar(Event event){
         MedicamentoDAO dao = new MedicamentoDAO();
         olListaMedicamentos = FXCollections.observableArrayList();
-
-        dao.EditarDatos(Integer.valueOf(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()));
+        Integer id = Integer.parseInt(idCodigoM.getText());
+        dao.EditarDatos(id, idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()));
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");
@@ -139,7 +139,7 @@ public class MedicamentosController implements Initializable {
 
         olListaMedicamentos.addAll(dao.listaMedicamentos());
         tableMedica.setItems(olListaMedicamentos);
-        btnNuevo();
+
     }
 
     @FXML
