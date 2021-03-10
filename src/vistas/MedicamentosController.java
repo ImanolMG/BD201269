@@ -1,39 +1,38 @@
 package vistas;
 
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.chrono.Chronology;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
 
-import persistencia.Dueño;
-import persistencia.DueñoDAO;
-import persistencia.MedicamentoDAO;
-import persistencia.Medicamento;
+import persistencia.*;
 
 
 public class MedicamentosController implements Initializable {
+    @FXML
+    private Button idNuevo;
+    @FXML
+    private Button idGuardar;
+    @FXML
+    private Button idEliminar;
+    @FXML
+    private Button idActualizar;
     @FXML
     private TextField idCodigoM;
     @FXML
@@ -52,6 +51,7 @@ public class MedicamentosController implements Initializable {
     private TableColumn<Medicamento, Date> clmnCaducidad;
     @FXML
     private TableColumn<Medicamento, String> clmnSustancia;
+
 
     private ObservableList<Medicamento> olListaMedicamentos ;
     private MedicamentoDAO medicaDAO;
@@ -103,5 +103,68 @@ public class MedicamentosController implements Initializable {
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void BtnGuardar(){
+        MedicamentoDAO dao = new MedicamentoDAO();
+        olListaMedicamentos = FXCollections.observableArrayList();
+
+
+        dao.GuardarDatos(Integer.valueOf(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()) );
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("La Mascota se a registrado exitosamente :D");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaMedicamentos.addAll(dao.listaMedicamentos());
+        tableMedica.setItems(olListaMedicamentos);
+        btnNuevo();
+    }
+
+    @FXML
+    public void BtnEditar(Event event){
+        MedicamentoDAO dao = new MedicamentoDAO();
+        olListaMedicamentos = FXCollections.observableArrayList();
+
+        dao.EditarDatos(Integer.valueOf(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()));
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha modificado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaMedicamentos.addAll(dao.listaMedicamentos());
+        tableMedica.setItems(olListaMedicamentos);
+        btnNuevo();
+    }
+
+    @FXML
+    public void BtnDelete(Event event){
+        MedicamentoDAO dao = new MedicamentoDAO();
+        olListaMedicamentos = FXCollections.observableArrayList();
+
+        dao.EliminarDatos(Integer.valueOf(idCodigoM.getText()));
+
+        Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+        mensaje.setTitle("Registro exitoso");
+        mensaje.setContentText("Se ha eliminado el registro exitosamente");
+        mensaje.setHeaderText("Resultado:");
+        mensaje.show();
+
+        olListaMedicamentos.addAll(dao.listaMedicamentos());
+        tableMedica.setItems(olListaMedicamentos);
+        btnNuevo();
+    }
+
+    @FXML
+    public void btnNuevo() {
+        idCodigoM.setText("");
+        idNombreM.setText("");
+        idSustanciaM.setText("");
+        idCaducidadM.setValue(null);
     }
 }
