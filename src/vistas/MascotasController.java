@@ -41,6 +41,8 @@ public class MascotasController implements Initializable {
     @FXML
     private Button idEliminar;
     @FXML
+    private Button btnDueños;
+    @FXML
     private TextField idNombre;
     @FXML
     private TextField idIdMascota;
@@ -214,15 +216,25 @@ cmbSexo.setValue(valorNuevo.getSexo());
     }
 
 
+    @FXML
+    public void vistaDueños(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dueños.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(page));
+            stage.setTitle("Dueños");
+            stage.show();
 
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
 
-
-
-
-
-
-
+    }
 
 
 
