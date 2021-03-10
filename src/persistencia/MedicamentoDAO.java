@@ -1,5 +1,6 @@
 package persistencia;
 
+import javafx.scene.control.Alert;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,6 +10,8 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
+
+import java.sql.Date;
 import java.util.*;
 
 public class MedicamentoDAO {
@@ -51,5 +54,50 @@ public class MedicamentoDAO {
             i++;
         }
         return medicamento;
+    }
+
+    public void GuardarDatos(Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
+        Session session = factory.openSession();
+        session.beginTransaction();
+        Medicamento userRegister = new Medicamento(Codigo, NombreMedicamento , SustanciaActiva,  Date.valueOf(Caducidad) );
+        session.save(userRegister);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void EditarDatos(Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
+        Session session = factory.openSession();
+        try {
+
+            session.beginTransaction();
+
+            Medicamento userRegister = (Medicamento) session.get(Medicamento.class, Codigo);
+
+            userRegister.setCodigo(Codigo);
+            userRegister.setNombreMedicamento(NombreMedicamento);
+            userRegister.setSustanciaActiva(SustanciaActiva);
+            userRegister.setCaducidad(Date.valueOf(Caducidad));
+            session.update(userRegister);
+
+            session.getTransaction().commit();
+        }catch (Throwable throwable){
+            Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+            mensaje.setTitle(throwable.getMessage());
+            mensaje.setContentText("No se ha realizado el registro, asegurese que los datos son correctos");
+            mensaje.setHeaderText("Resultado:");
+            mensaje.show();
+        }
+        session.close();
+    }
+
+    public void EliminarDatos (Integer Codigo){
+        Session session = factory.openSession();
+        session.beginTransaction();
+
+        Medicamento userRegister = (Medicamento)session.get(Medicamento.class, Codigo);
+        session.delete(userRegister);
+
+        session.getTransaction().commit();
+        session.close();
     }
 }

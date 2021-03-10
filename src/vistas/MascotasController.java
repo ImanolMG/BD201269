@@ -117,20 +117,16 @@ private DueñoDAO dueñoDAO;
             @Override
             public void changed(ObservableValue<? extends Mascota> observableValue, Mascota valorAnterior, Mascota valorNuevo) {
                 if(valorNuevo!=null) {
-idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
-          idNombre.setText(valorNuevo.getNombre());
-//cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
-
-cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
-dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-idRazon.setText(valorNuevo.getMotivo());
-cmbSexo.setValue(valorNuevo.getSexo());
+                    idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
+                    idNombre.setText(valorNuevo.getNombre());
+                    //cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
+                     cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
+                     dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                     idRazon.setText(valorNuevo.getMotivo());
+                     cmbSexo.setValue(valorNuevo.getSexo());
                 }
             }
         });
-
-
-
     }
 
    @FXML

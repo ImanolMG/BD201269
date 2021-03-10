@@ -47,22 +47,22 @@
                   </Pane>
                   <Pane layoutX="14.0" layoutY="297.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Nuevo" textFill="WHITE">
+                        <Button fx:id="idNuevo" mnemonicParsing="false" onAction="#btnNuevo" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Nuevo" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="91.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Guardar" textFill="WHITE">
+                        <Button fx:id="idGuardar" layoutX="91.0" mnemonicParsing="false" onAction="#BtnGuardar" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Guardar" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="181.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Eliminar" textFill="WHITE">
+                        <Button fx:id="idEliminar" layoutX="181.0" mnemonicParsing="false" onAction="#BtnDelete" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Eliminar" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="91.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="idActualizar" layoutX="91.0" layoutY="32.0" mnemonicParsing="false" onAction="#BtnEditar" prefHeight="23.0" prefWidth="74.0" style="-fx-background-color: #355389;" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
