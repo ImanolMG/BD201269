@@ -105,6 +105,7 @@ public class MenuPrincipalController {
 
     }
 
+
     @FXML
     public void vistaUsuarios(ActionEvent event){
         try {
@@ -121,7 +122,6 @@ public class MenuPrincipalController {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-
 
     }
 

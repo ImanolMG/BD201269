@@ -35,6 +35,9 @@ public class DueñosController implements Initializable {
     @FXML
     private Button idEliminar;
     @FXML
+    private Button btnMascotas;
+
+    @FXML
     private TextField idDueño;
     @FXML
     private TextField idNombre;
