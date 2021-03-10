@@ -1,22 +1,21 @@
 package persistencia;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+
 import java.time.chrono.Chronology;
 import java.io.Serializable;
+import java.util.Date;
 
 public class Medicamento implements Serializable {
     private final IntegerProperty Codigo = new SimpleIntegerProperty();
     private final StringProperty NombreMedicamento = new SimpleStringProperty();
     private final StringProperty SustanciaActiva = new SimpleStringProperty();
-    private final StringProperty Caducidad = new SimpleStringProperty();
+    private final ObjectProperty<Date> Caducidad = new SimpleObjectProperty<>();
     private Medicamento medicamento;
 
     public Medicamento(){}
 
-    public Medicamento(Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad) {
+    public Medicamento(Integer Codigo, String NombreMedicamento, String SustanciaActiva, Date Caducidad) {
         this.Codigo.set(Codigo);
         this.NombreMedicamento.set(NombreMedicamento);
         this.SustanciaActiva.set(SustanciaActiva);
@@ -49,13 +48,13 @@ public class Medicamento implements Serializable {
     }
     public StringProperty sustanciaActiva(){ return SustanciaActiva;}
 
-    public String getCaducidad() {
+    public Date getCaducidad() {
         return Caducidad.get();
     }
-    public void setCaducidad(String Caducidad) {
+    public void setCaducidad(Date Caducidad) {
         this.Caducidad.set(Caducidad);
     }
-    public StringProperty caducidad(){
+    public ObjectProperty<Date> caducidad(){
         return Caducidad;
     }
 

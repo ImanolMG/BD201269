@@ -14,10 +14,17 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.chrono.Chronology;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import persistencia.Dueño;
@@ -42,7 +49,7 @@ public class MedicamentosController implements Initializable {
     @FXML
     private TableColumn<Medicamento, String> clmnNombreM;
     @FXML
-    private TableColumn<Medicamento, String> clmnCaducidad;
+    private TableColumn<Medicamento, Date> clmnCaducidad;
     @FXML
     private TableColumn<Medicamento, String> clmnSustancia;
 
@@ -51,13 +58,14 @@ public class MedicamentosController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         olListaMedicamentos = FXCollections.observableArrayList();
         medicaDAO = new MedicamentoDAO();
         olListaMedicamentos.addAll(medicaDAO.listaMedicamentos());
         tableMedica.setItems(olListaMedicamentos);
         clmnCodigo.setCellValueFactory(tf -> tf.getValue().codigo());
         clmnNombreM.setCellValueFactory(tf -> tf.getValue().nombreMedicamento());
-        clmnCaducidad.setCellValueFactory(tf -> tf.getValue().caducidad());
+        clmnCaducidad.setCellValueFactory(new PropertyValueFactory<>("Caducidad"));
         clmnSustancia.setCellValueFactory(tf -> tf.getValue().sustanciaActiva());
         gestionDeEventos();
     }
@@ -70,6 +78,7 @@ public class MedicamentosController implements Initializable {
                     idCodigoM.setText(String.valueOf(valorNuevo.getCodigo()));
                     idNombreM.setText(valorNuevo.getNombreMedicamento());
                     idSustanciaM.setText(valorNuevo.getSustanciaActiva());
+                    idCaducidadM.setValue(valorNuevo.getCaducidad().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
                 }
             }
         });
