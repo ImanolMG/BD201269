@@ -31,7 +31,7 @@ public class MenuPrincipalController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Dueños.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(page, 750, 800));
+            stage.setScene(new Scene(page));
             stage.setTitle("Dueños");
             stage.show();
 
@@ -53,7 +53,7 @@ public class MenuPrincipalController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Mascotas.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(page, 750, 800));
+            stage.setScene(new Scene(page));
             stage.setTitle("Mascotas");
             stage.show();
         } catch (IOException e) {
@@ -70,7 +70,7 @@ public class MenuPrincipalController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Medicamentos.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(page, 750, 800));
+            stage.setScene(new Scene(page));
             stage.setTitle("Medicamentos");
             stage.show();
         } catch (IOException e) {
@@ -96,7 +96,7 @@ public class MenuPrincipalController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(page, 750, 800));
+            stage.setScene(new Scene(page, 600, 400));
             stage.setTitle("Iniciar Sesion");
             stage.show();
         } catch (IOException e) {
@@ -111,7 +111,7 @@ public class MenuPrincipalController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AccionesUsuarios.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(page, 750, 800));
+            stage.setScene(new Scene(page, 740, 430));
             stage.setTitle("Usuarios");
             stage.show();
         } catch (IOException e) {
