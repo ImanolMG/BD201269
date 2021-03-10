@@ -11,7 +11,6 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +33,7 @@ public class MascotaDAO {
         }
     }
 
-    public void GuardarDatos(String TipoMascota, String Nombre, String FechaIngreso, Dueño NombreDueño, String Sexo, String Motivo ){
+    public void GuardarDatos(String TipoMascota, String Nombre, String FechaIngreso, String NombreDueño, String Sexo, String Motivo ){
         Session session = factory.openSession();
         session.beginTransaction();
         Mascota userRegister = new Mascota(TipoMascota, Nombre , Date.valueOf(FechaIngreso), String.valueOf(NombreDueño) ,Sexo, Motivo,0 );
@@ -44,7 +43,7 @@ public class MascotaDAO {
     }
 
 
-    public void EditarDatos(Integer id, String TipoMascota, String Nombre, String FechaIngreso, Dueño NombreDueño, String Sexo, String Motivo){
+    public void EditarDatos(Integer id, String TipoMascota, String Nombre, String FechaIngreso, String NombreDueño, String Sexo, String Motivo){
         Session session = factory.openSession();
         session.beginTransaction();
 
@@ -99,6 +98,27 @@ public class MascotaDAO {
         return mascotas;
 
     }
+
+/*
+    public List<Dueño> listaDueños(){
+        Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(Dueño.class);
+        ProjectionList dueñosLista = Projections.projectionList();
+
+        dueñosLista.add(Projections.property("NombreDueño"), "NombreDueño");
+        criteria.setProjection(dueñosLista);
+
+        List<Dueño> dueño = new ArrayList<>();
+        List<Dueño> dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
+
+        int i =0;
+        for(Iterator iterator = dueñoList.iterator(); iterator.hasNext();){
+            dueño.add((Dueño) iterator.next());
+            i++;
+        }
+        return dueño;
+    }
+*/
 
 
 }

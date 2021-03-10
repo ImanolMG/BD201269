@@ -18,10 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.converter.LocalDateTimeStringConverter;
-import persistencia.Dueño;
-import persistencia.DueñoDAO;
-import persistencia.Mascota;
-import persistencia.MascotaDAO;
+import persistencia.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,7 +48,7 @@ public class MascotasController implements Initializable {
     private TextField idRazon;
 
     @FXML
-    private ComboBox<Dueño> cmbNombreDueño;
+    private ComboBox<String> cmbNombreDueño;
 
     @FXML
     private ComboBox<String> cmbTipoMascota;
@@ -86,10 +83,10 @@ public class MascotasController implements Initializable {
 
     private ObservableList<Mascota> olListaMascotas;
 
-    private ObservableList<Dueño> olListaNombresDueños;
+    private ObservableList<String> olListaNombresDueños;
 
     private MascotaDAO mascotaDAO;
-private DueñoDAO dueñoDAO;
+
 
 
 
@@ -99,15 +96,14 @@ private DueñoDAO dueñoDAO;
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
-        dueñoDAO = new DueñoDAO();
+
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
 
-olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
 
 
         tblListaMascotas.setItems(olListaMascotas);
-        cmbNombreDueño.setItems(olListaNombresDueños);
 
+cmbNombreDueño.getItems().addAll( "Daniel Imanol Martinez Gomez","Jesus Eduardo Jimenez Guillen","Alonso Anselmo Gomez Sanchez", "Luis Daniel Cruz Gomez");
         cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
         cmbSexo.getItems().addAll("Macho", "Hembra");
 
@@ -129,13 +125,14 @@ clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
 
 
     public void gestionDeEventos() {
+
         tblListaMascotas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Mascota>() {
             @Override
             public void changed(ObservableValue<? extends Mascota> observableValue, Mascota valorAnterior, Mascota valorNuevo) {
                 if(valorNuevo!=null) {
 idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
           idNombre.setText(valorNuevo.getNombre());
-//cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
+cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
 
 cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
 dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
