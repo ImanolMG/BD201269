@@ -97,7 +97,6 @@ public class Mascota implements Serializable {
     }
 
 
-
     public String getNombreDueño() {
         return NombreDueño.get();
     }
@@ -146,28 +145,7 @@ return dueño;
         this.dueño = dueño;
     }
 
-class DueñoLista {
 
-    private final StringProperty Nombre = new SimpleStringProperty();
-
-    public DueñoLista(String Nombre) {
-        this.Nombre.set(Nombre);
-    }
-
-    public void setNombre(String Nombre){
-        this.Nombre.set(Nombre);
-    }
-    public String getNombre(){
-        return Nombre.get();
-    }
-
-    public StringProperty nombre(){
-        return Nombre;
-    }
-
-
-
-}
 
 
 

@@ -126,7 +126,7 @@
                         <Font name="Arial Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button layoutX="5.0" layoutY="395.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="131.0" style="-fx-background-color: white;" text="Dueños" textFill="#f47456" AnchorPane.bottomAnchor="-1.0">
+                  <Button layoutX="5.0" layoutY="395.0" mnemonicParsing="false" onAction="#vistaDueños" prefHeight="57.0" prefWidth="131.0" style="-fx-background-color: white;" text="Dueños" textFill="#f47456" AnchorPane.bottomAnchor="-1.0">
                      <font>
                         <Font name="Arial Bold" size="22.0" />
                      </font>

@@ -18,10 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.converter.LocalDateTimeStringConverter;
-import persistencia.Dueño;
-import persistencia.DueñoDAO;
-import persistencia.Mascota;
-import persistencia.MascotaDAO;
+import persistencia.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +41,8 @@ public class MascotasController implements Initializable {
     @FXML
     private Button idEliminar;
     @FXML
+    private Button btnDueños;
+    @FXML
     private TextField idNombre;
     @FXML
     private TextField idIdMascota;
@@ -51,14 +50,19 @@ public class MascotasController implements Initializable {
     private TextField idRazon;
 
     @FXML
-    private ComboBox<Dueño> cmbNombreDueño;
+    private ComboBox<String> cmbNombreDueño;
 
     @FXML
     private ComboBox<String> cmbTipoMascota;
 
     @FXML private DatePicker dtpkrFechaIngreso;
+
+
+
     @FXML
     private ComboBox<String> cmbSexo;
+
+
     @FXML
     private TableView<Mascota> tblListaMascotas;
     @FXML
@@ -66,7 +70,8 @@ public class MascotasController implements Initializable {
     @FXML
     private TableColumn<Mascota, String> clmnTipoMascota;
     @FXML
-    private TableColumn<Mascota, LocalDate> clmnFechaIngreso;
+    private TableColumn<Mascota, Date> clmnFechaIngreso;
+
     @FXML
     private TableColumn<Mascota, Number> clmnIdMascota;
     @FXML
@@ -80,10 +85,10 @@ public class MascotasController implements Initializable {
 
     private ObservableList<Mascota> olListaMascotas;
 
-    private ObservableList<Dueño> olListaNombresDueños;
+    private ObservableList<String> olListaNombresDueños;
 
     private MascotaDAO mascotaDAO;
-private DueñoDAO dueñoDAO;
+
 
 
 
@@ -93,40 +98,54 @@ private DueñoDAO dueñoDAO;
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
-        dueñoDAO = new DueñoDAO();
+
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
 
-        olListaNombresDueños.addAll(dueñoDAO.listaNombreDeDueños());
+
+
         tblListaMascotas.setItems(olListaMascotas);
+
+cmbNombreDueño.getItems().addAll( "Daniel Imanol Martinez Gomez","Jesus Eduardo Jimenez Guillen","Alonso Anselmo Gomez Sanchez", "Luis Daniel Cruz Gomez");
         cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
         cmbSexo.getItems().addAll("Macho", "Hembra");
-        clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
-        clmnIdMascota.setCellValueFactory(tf -> tf.getValue().idMascota());
-        clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
-        clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
-        clmnFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("FechaIngreso"));
-        clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
-        clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
+
+
+
+clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
+clmnIdMascota.setCellValueFactory(tf -> tf.getValue().idMascota());
+
+clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
+clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
+clmnFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("FechaIngreso"));
+clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
+clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
+
+
         gestionDeEventos();
     }
 
 
 
     public void gestionDeEventos() {
+
         tblListaMascotas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Mascota>() {
             @Override
             public void changed(ObservableValue<? extends Mascota> observableValue, Mascota valorAnterior, Mascota valorNuevo) {
                 if(valorNuevo!=null) {
-                    idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
-                    idNombre.setText(valorNuevo.getNombre());
-                    //cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
-                     cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
-                     dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-                     idRazon.setText(valorNuevo.getMotivo());
-                     cmbSexo.setValue(valorNuevo.getSexo());
+idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
+          idNombre.setText(valorNuevo.getNombre());
+cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
+
+cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
+dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+idRazon.setText(valorNuevo.getMotivo());
+cmbSexo.setValue(valorNuevo.getSexo());
                 }
             }
         });
+
+
+
     }
 
    @FXML
@@ -197,15 +216,25 @@ private DueñoDAO dueñoDAO;
     }
 
 
+    @FXML
+    public void vistaDueños(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dueños.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(page));
+            stage.setTitle("Dueños");
+            stage.show();
 
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
 
-
-
-
-
-
-
+    }
 
 
 
