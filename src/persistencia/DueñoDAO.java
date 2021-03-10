@@ -7,8 +7,6 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.transform.AliasToBeanResultTransformer;
-
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
