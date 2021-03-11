@@ -37,35 +37,26 @@ public class Mascota implements Serializable {
     }
 
 
-
     public Integer getIdMascota() {
         return idMascota.get();
     }
-
     public void setIdMascota(Integer idMascota) {
         this.idMascota.set(idMascota);
     }
-
     public IntegerProperty idMascota(){
         return idMascota;
     }
 
 
-
-
     public String getTipoMascota() {
         return TipoMascota.get();
     }
-
     public void setTipoMascota(String TipoMascota) {
         this.TipoMascota.set(TipoMascota);
     }
-
     public StringProperty tipoMascota(){
         return TipoMascota;
     }
-
-
 
 
     public String getNombre() {
@@ -79,13 +70,6 @@ public class Mascota implements Serializable {
     }
 
 
-
-/*    public LocalDate getFechaIngreso() {
-
-        return FechaIngreso.get().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    }
-    */
-
     public  Date getFechaIngreso(){
         return FechaIngreso.get();
     }
@@ -96,7 +80,6 @@ public class Mascota implements Serializable {
         return FechaIngreso;
     }
 
-
     public String getNombreDueño() {
         return NombreDueño.get();
     }
@@ -106,8 +89,6 @@ public class Mascota implements Serializable {
     public StringProperty NombreDueño(){
         return NombreDueño;
     }
-
-
 
     public String getSexo() {
         return Sexo.get();
@@ -137,8 +118,7 @@ public class Mascota implements Serializable {
     }
 
     public Dueño getDueño(){
-return dueño;
-
+    return dueño;
     }
 
     public void setCiudad(Dueño dueño) {

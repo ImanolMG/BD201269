@@ -3,19 +3,20 @@
 <hibernate-mapping package="persistencia">
   <class dynamic-insert="true"
          dynamic-update="true" name="Medicamento" table="Medicamentos">
-   <id name="idMedicamento"
-            column="idMedicamento"
+   <id name="IdMedicamento"
+            column="IdMedicamento"
             type="java.lang.Integer"
             unsaved-value="null" >
             <generator class="native">
             </generator>
         </id>
-      <property name="Codigo" column="Codigo"/>
-<property name="NombreMedicamento" column="NombreMedicamento"/>
-<property name="SustanciaActiva" column="SustanciaActiva" />
-<property name="Caducidad" column="Caducidad" />
+      <property name="Codigo" column="Codigo" />
+      <property name="NombreMedicamento" column="NombreMedicamento" />
+      <property name="SustanciaActiva" column="SustanciaActiva" />
+      <property name="Caducidad" column="Caducidad" />
+
     <many-to-one name="Medicamento" class="Medicamento" fetch="select">
-            <column name="IdMedicamento" not-null="true" />
+            <column name="idMedicamento" not-null="true" />
     </many-to-one>
   </class>
 </hibernate-mapping>

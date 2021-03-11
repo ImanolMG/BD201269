@@ -1,7 +1,5 @@
 package vistas;
 
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -17,21 +15,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.converter.LocalDateTimeStringConverter;
 import persistencia.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class MascotasController implements Initializable {
-
-
     @FXML
     private Button idNew;
     @FXML
@@ -48,21 +40,13 @@ public class MascotasController implements Initializable {
     private TextField idIdMascota;
     @FXML
     private TextField idRazon;
-
     @FXML
     private ComboBox<String> cmbNombreDueño;
-
     @FXML
     private ComboBox<String> cmbTipoMascota;
-
     @FXML private DatePicker dtpkrFechaIngreso;
-
-
-
     @FXML
     private ComboBox<String> cmbSexo;
-
-
     @FXML
     private TableView<Mascota> tblListaMascotas;
     @FXML
@@ -71,7 +55,6 @@ public class MascotasController implements Initializable {
     private TableColumn<Mascota, String> clmnTipoMascota;
     @FXML
     private TableColumn<Mascota, Date> clmnFechaIngreso;
-
     @FXML
     private TableColumn<Mascota, Number> clmnIdMascota;
     @FXML
@@ -81,16 +64,10 @@ public class MascotasController implements Initializable {
     @FXML
     private TableColumn<Mascota, String> clmnMotivoRazon;
 
-
-
     private ObservableList<Mascota> olListaMascotas;
-
     private ObservableList<String> olListaNombresDueños;
-
     private MascotaDAO mascotaDAO;
-
-
-
+    private DueñoDAO duenioDAO;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -98,54 +75,41 @@ public class MascotasController implements Initializable {
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
+        duenioDAO = new DueñoDAO();
 
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
-
-
-
         tblListaMascotas.setItems(olListaMascotas);
-
-cmbNombreDueño.getItems().addAll( "Daniel Imanol Martinez Gomez","Jesus Eduardo Jimenez Guillen","Alonso Anselmo Gomez Sanchez", "Luis Daniel Cruz Gomez");
-        cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MARINO");
+        cmbNombreDueño.getItems().addAll(duenioDAO.listaNombres());
+        cmbTipoMascota.getItems().addAll("REPTIL","CANINO","MININO","MARINO","MAMIFERO","ARTROPODO", "MAMIFERO MARSUPIAL");
         cmbSexo.getItems().addAll("Macho", "Hembra");
 
+        clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
+        clmnIdMascota.setCellValueFactory(tf -> tf.getValue().idMascota());
 
-
-clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());
-clmnIdMascota.setCellValueFactory(tf -> tf.getValue().idMascota());
-
-clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
-clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
-clmnFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("FechaIngreso"));
-clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
-clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
-
+        clmnNombreDueño.setCellValueFactory(tf -> tf.getValue().NombreDueño());
+        clmnTipoMascota.setCellValueFactory(tf -> tf.getValue().tipoMascota());
+        clmnFechaIngreso.setCellValueFactory(new PropertyValueFactory<>("FechaIngreso"));
+        clmSexoMascota.setCellValueFactory(tf -> tf.getValue().sexo());
+        clmnMotivoRazon.setCellValueFactory(tf -> tf.getValue().motivo());
 
         gestionDeEventos();
     }
 
-
-
     public void gestionDeEventos() {
-
         tblListaMascotas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Mascota>() {
             @Override
             public void changed(ObservableValue<? extends Mascota> observableValue, Mascota valorAnterior, Mascota valorNuevo) {
                 if(valorNuevo!=null) {
-idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
-          idNombre.setText(valorNuevo.getNombre());
-cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
-
-cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
-dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-idRazon.setText(valorNuevo.getMotivo());
-cmbSexo.setValue(valorNuevo.getSexo());
+            idIdMascota.setText(String.valueOf(valorNuevo.getIdMascota()));
+            idNombre.setText(valorNuevo.getNombre());
+            cmbNombreDueño.setValue(valorNuevo.getNombreDueño());
+            cmbTipoMascota.setValue(valorNuevo.getTipoMascota());
+            dtpkrFechaIngreso.setValue(valorNuevo.getFechaIngreso().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            idRazon.setText(valorNuevo.getMotivo());
+            cmbSexo.setValue(valorNuevo.getSexo());
                 }
             }
         });
-
-
-
     }
 
    @FXML
@@ -202,19 +166,16 @@ cmbSexo.setValue(valorNuevo.getSexo());
         tblListaMascotas.setItems(olListaMascotas);
     }
 
-
     @FXML
     public void btnNuevo() {
-        idNombre.setText("");
+       idNombre.setText("");
        idIdMascota.setText("");
        dtpkrFechaIngreso.setValue(null);
        cmbNombreDueño.setValue(null);
        cmbTipoMascota.setValue(null);
        idRazon.setText("");
        cmbSexo.setValue(null);
-
     }
-
 
     @FXML
     public void vistaDueños(ActionEvent event) {
@@ -233,10 +194,7 @@ cmbSexo.setValue(valorNuevo.getSexo());
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-
     }
-
-
 
     @FXML
     private void cerrarVentana(ActionEvent event) {
@@ -245,7 +203,6 @@ cmbSexo.setValue(valorNuevo.getSexo());
         stage.close();
         cargarMenuprincipal();
     }
-
 
     public void cargarMenuprincipal() {
         try {

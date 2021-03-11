@@ -92,7 +92,6 @@ public class MascotaDAO {
             i++;
         }
         return mascotas;
-
     }
 
 /*

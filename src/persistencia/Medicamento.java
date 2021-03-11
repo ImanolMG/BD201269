@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Medicamento implements Serializable {
-    private final IntegerProperty IdMedicamento = new SimpleIntegerProperty();
+    private final IntegerProperty idMedicamento = new SimpleIntegerProperty();
     private final IntegerProperty Codigo = new SimpleIntegerProperty();
     private final StringProperty NombreMedicamento = new SimpleStringProperty();
     private final StringProperty SustanciaActiva = new SimpleStringProperty();
@@ -16,21 +16,21 @@ public class Medicamento implements Serializable {
 
     public Medicamento(){}
 
-    public Medicamento(Integer IdMedicamento,Integer Codigo, String NombreMedicamento, String SustanciaActiva, Date Caducidad) {
-        this.IdMedicamento.set(IdMedicamento);
+    public Medicamento(Integer idMedicamento, Integer Codigo, String NombreMedicamento, String SustanciaActiva, Date Caducidad) {
+        this.idMedicamento.set(idMedicamento);
         this.Codigo.set(Codigo);
         this.NombreMedicamento.set(NombreMedicamento);
         this.SustanciaActiva.set(SustanciaActiva);
         this.Caducidad.set(Caducidad);
     }
     public Integer getIdMedicamento() {
-        return IdMedicamento.get();
+        return idMedicamento.get();
     }
-    public void setIdMedicamento(Integer IdMedicamento) {
-        this.IdMedicamento.set(IdMedicamento);
+    public void setIdMedicamento(Integer idMedicamento) {
+        this.idMedicamento.set(idMedicamento);
     }
     public IntegerProperty idMedicamento(){
-        return IdMedicamento;
+        return idMedicamento;
     }
 
     public Integer getCodigo() {
@@ -69,7 +69,7 @@ public class Medicamento implements Serializable {
         return Caducidad;
     }
 
-    public void setMedicamento(Medicamento Medicamento){
+    public void setMedicamento(Medicamento medicamento){
         this.medicamento = medicamento;
     }
     public Medicamento getMedicamento(){

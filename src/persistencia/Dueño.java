@@ -30,7 +30,6 @@ public class Dueño implements Serializable {
     public Integer getIdDueño(){
         return idDueño.get();
     }
-
     public IntegerProperty idDueño(){
         return idDueño;
     }
@@ -42,7 +41,6 @@ public class Dueño implements Serializable {
     public String getNombre(){
         return Nombre.get();
     }
-
     public StringProperty nombre(){
         return Nombre;
     }

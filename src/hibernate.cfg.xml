@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration SYSTEM "classpath://org/hibernate/hibernate-configuration-3.0.dtd">
 
-<!--MYSQL -->
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -13,10 +12,10 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 
-		    <mapping resource="persistencia/Dueño.hbm.xml" />
+		<mapping resource="persistencia/Dueño.hbm.xml" />
 		<mapping resource="persistencia/Mascota.hbm.xml" />
-		<mapping resource="persistencia/Medicamento.hbm.xml" />
 		<mapping resource="persistencia/Usuarios.hbm.xml" />
+		<mapping resource="persistencia/Medicamento.hbm.xml" />
 
 
 
