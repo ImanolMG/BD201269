@@ -16,7 +16,8 @@ public class Medicamento implements Serializable {
 
     public Medicamento(){}
 
-    public Medicamento(Integer Codigo, String NombreMedicamento, String SustanciaActiva, Date Caducidad) {
+    public Medicamento(Integer idMedicamento, Integer Codigo, String NombreMedicamento, String SustanciaActiva, Date Caducidad) {
+        this.idMedicamento.set(idMedicamento);
         this.Codigo.set(Codigo);
         this.NombreMedicamento.set(NombreMedicamento);
         this.SustanciaActiva.set(SustanciaActiva);
@@ -68,7 +69,7 @@ public class Medicamento implements Serializable {
         return Caducidad;
     }
 
-    public void setMedicamento(Medicamento Medicamento){
+    public void setMedicamento(Medicamento medicamento){
         this.medicamento = medicamento;
     }
     public Medicamento getMedicamento(){
