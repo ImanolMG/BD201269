@@ -18,8 +18,9 @@
       <property name="Sexo" column="Sexo"/>
       <property name="Motivo" column="Motivo"/>
 
-    <many-to-one name="Mascota" class="Mascota" fetch="select">
-            <column name="IdMascota" not-null="true" />
-    </many-to-one>
+      <many-to-one name="Mascota" class="Mascota" fetch="select">
+          <column name="IdMascota" not-null="true" />
+      </many-to-one>
+
   </class>
 </hibernate-mapping>

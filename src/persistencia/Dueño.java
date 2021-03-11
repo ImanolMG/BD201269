@@ -41,7 +41,6 @@ public class Dueño implements Serializable {
     public String getNombre(){
         return Nombre.get();
     }
-
     public StringProperty nombre(){
         return Nombre;
     }

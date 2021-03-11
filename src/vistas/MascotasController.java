@@ -67,6 +67,7 @@ public class MascotasController implements Initializable {
     private ObservableList<Mascota> olListaMascotas;
     private ObservableList<String> olListaNombresDueños;
     private MascotaDAO mascotaDAO;
+    private DueñoDAO duenioDAO;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,12 +75,12 @@ public class MascotasController implements Initializable {
         olListaMascotas = FXCollections.observableArrayList();
         olListaNombresDueños = FXCollections.observableArrayList();
         mascotaDAO = new MascotaDAO();
+        duenioDAO = new DueñoDAO();
 
         olListaMascotas.addAll(mascotaDAO.listaMascotas());
         tblListaMascotas.setItems(olListaMascotas);
-
-        cmbNombreDueño.getItems().addAll( "Daniel Imanol Martinez Gomez","Jesus Eduardo Jimenez Guillen","Alonso Anselmo Gomez Sanchez", "Luis Daniel Cruz Gomez");
-        cmbTipoMascota.getItems().addAll("REPTIL", "CANINO", "MININO", "MAMIFERO");
+        cmbNombreDueño.getItems().addAll(duenioDAO.listaNombres());
+        cmbTipoMascota.getItems().addAll("REPTIL","CANINO","MININO","MARINO","MAMIFERO","ARTROPODO", "MAMIFERO MARSUPIAL");
         cmbSexo.getItems().addAll("Macho", "Hembra");
 
         clmnNombreMascota.setCellValueFactory(tf -> tf.getValue().nombre());

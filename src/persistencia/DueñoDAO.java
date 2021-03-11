@@ -15,7 +15,6 @@ import java.util.List;
 public class DueñoDAO {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
-
     public DueñoDAO(){
         System.err.println("Iniciando conexion");
         try {
@@ -82,15 +81,37 @@ public class DueñoDAO {
 
         List<Dueño> dueño = new ArrayList<>();
         List<Dueño> dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
-
+        String[] nombre = new String[dueñoList.size()];
         int i =0;
         for(Iterator iterator = dueñoList.iterator(); iterator.hasNext();){
             dueño.add((Dueño) iterator.next());
+            nombre[i] = dueño.get(i).getNombre();
             i++;
         }
+        listaNombres();
         return dueño;
     }
 
+    public String[] listaNombres(){
+        Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(Dueño.class);
+        ProjectionList dueñosLista = Projections.projectionList();
+
+        dueñosLista.add(Projections.property("Nombre"), "Nombre");
+        criteria.setProjection(dueñosLista);
+
+        List<Dueño> dueño = new ArrayList<>();
+        List<Dueño> dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
+        String[] nombre = new String[dueñoList.size()];
+        int i =0;
+        for(Iterator iterator = dueñoList.iterator(); iterator.hasNext();){
+            dueño.add((Dueño) iterator.next());
+            nombre[i] = dueño.get(i).getNombre();
+            System.out.println(nombre[i]);
+            i++;
+        }
+        return nombre;
+    }
 
 
 
