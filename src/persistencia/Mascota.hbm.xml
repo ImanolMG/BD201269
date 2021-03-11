@@ -22,4 +22,5 @@
             <column name="IdMascota" not-null="true" />
     </many-to-one>
   </class>
+    
 </hibernate-mapping>

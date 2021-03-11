@@ -60,7 +60,7 @@ public class MedicamentoDAO {
     public void GuardarDatos(Integer idMedicamento,Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
         Session session = factory.openSession();
         session.beginTransaction();
-        Medicamento userRegister = new Medicamento(idMedicamento ,Codigo, NombreMedicamento , SustanciaActiva,  Date.valueOf(Caducidad) );
+        Medicamento userRegister = new Medicamento(0 ,Codigo, NombreMedicamento , SustanciaActiva,  Date.valueOf(Caducidad) );
         session.save(userRegister);
         session.getTransaction().commit();
         session.close();
