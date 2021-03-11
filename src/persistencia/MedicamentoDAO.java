@@ -38,7 +38,7 @@ public class MedicamentoDAO {
         Criteria criteria = session.createCriteria(Medicamento.class);
         ProjectionList medicamentoLista = Projections.projectionList();
 
-        medicamentoLista.add(Projections.property("idMedicamento"), "idMedicamento");
+        medicamentoLista.add(Projections.property("IdMedicamento"), "IdMedicamento");
         medicamentoLista.add(Projections.property("Codigo"), "Codigo");
         medicamentoLista.add(Projections.property("NombreMedicamento"), "NombreMedicamento");
         medicamentoLista.add(Projections.property("SustanciaActiva"), "SustanciaActiva");
@@ -60,13 +60,13 @@ public class MedicamentoDAO {
     public void GuardarDatos(Integer idMedicamento,Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
         Session session = factory.openSession();
         session.beginTransaction();
-        Medicamento userRegister = new Medicamento(idMedicamento ,Codigo, NombreMedicamento , SustanciaActiva,  Date.valueOf(Caducidad) );
+        Medicamento userRegister = new Medicamento(Codigo, NombreMedicamento , SustanciaActiva,  Date.valueOf(Caducidad) );
         session.save(userRegister);
         session.getTransaction().commit();
         session.close();
     }
 
-    public void EditarDatos(Integer id,Integer Codigo, String NombreMedicamento, String SustanciaActiva, String Caducidad){
+    public void EditarDatos(Integer id,Integer Codigo, String NombreMedicamento, String SustanciaActiva, Date Caducidad){
         Session session = factory.openSession();
         session.beginTransaction();
 
@@ -75,10 +75,12 @@ public class MedicamentoDAO {
         userRegister.setCodigo(Codigo);
         userRegister.setNombreMedicamento(NombreMedicamento);
         userRegister.setSustanciaActiva(SustanciaActiva);
-        userRegister.setCaducidad(Date.valueOf(Caducidad));
+        userRegister.setCaducidad(Caducidad);
 
+        userRegister.setMedicamento(userRegister);
 
         session.update(userRegister);
+
 
         session.getTransaction().commit();
         session.close();

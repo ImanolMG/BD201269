@@ -57,8 +57,6 @@ public class MedicamentosController implements Initializable {
     private TableColumn<Medicamento, String> clmnSustancia;
 
 
-
-
     private ObservableList<Medicamento> olListaMedicamentos ;
     private MedicamentoDAO medicaDAO;
 
@@ -138,7 +136,7 @@ public class MedicamentosController implements Initializable {
         olListaMedicamentos = FXCollections.observableArrayList();
         Integer id = Integer.parseInt(idIDMed.getText());
 
-        daa.EditarDatos(id,Integer.parseInt(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), String.valueOf(idCaducidadM.getValue()));
+        daa.EditarDatos(id,Integer.parseInt(idCodigoM.getText()), idNombreM.getText(), idSustanciaM.getText(), java.sql.Date.valueOf(idCaducidadM.getValue()));
 
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         mensaje.setTitle("Registro exitoso");

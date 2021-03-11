@@ -72,7 +72,8 @@ public class DueñoDAO {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Dueño.class);
         ProjectionList dueñosLista = Projections.projectionList();
-        
+
+
         dueñosLista.add(Projections.property("idDueño"),"idDueño");
         dueñosLista.add(Projections.property("Nombre"), "Nombre");
         dueñosLista.add(Projections.property("Direccion"), "Direccion");

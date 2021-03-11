@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="persistencia">
-  <class dynamic-insert="true"
-         dynamic-update="true" name="Medicamento" table="Medicamentos">
-   <id name="idMedicamento"
-            column="idMedicamento"
+    <class dynamic-insert="true"
+           dynamic-update="true" name="Medicamento" table="Medicamentos">
+        <id name="IdMedicamento"
+            column="IdMedicamento"
             type="java.lang.Integer"
             unsaved-value="null" >
             <generator class="native">
             </generator>
         </id>
-      <property name="Codigo" column="Codigo"/>
-<property name="NombreMedicamento" column="NombreMedicamento"/>
-<property name="SustanciaActiva" column="SustanciaActiva" />
-<property name="Caducidad" column="Caducidad" />
-    <many-to-one name="Medicamento" class="Medicamento" fetch="select">
-            <column name="IdMedicamento" not-null="true" />
-    </many-to-one>
-  </class>
+
+        <property name="Codigo" column="Codigo"/>
+        <property name="NombreMedicamento" column="NombreMedicamento" />
+        <property name="SustanciaActiva" column="SustanciaActiva" />
+        <property name="NombreDueño" column="NombreDueño"/>
+        <property name="Caducidad" column="Caducidad"/>
+
+        <many-to-one name="Medicamento" class="Medicamento" fetch="select">
+            <column name="idMedicamento" not-null="true" />
+        </many-to-one>
+    </class>
 </hibernate-mapping>
+
