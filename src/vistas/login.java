@@ -28,15 +28,11 @@ public class login {
 
     @FXML
     void ButtonLogin(ActionEvent event){
-        boolean evaluarInicio = view.BuscarUsuario(idUser.getText(),idPass.getText());
-        System.out.println(evaluarInicio);
-
-        if(evaluarInicio){
-            Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
-            mensaje.setTitle("Error al iniciar session");
-            mensaje.setContentText("Usuario o contraseña incorrectos");
-            mensaje.setHeaderText("Resultado:");
-            mensaje.show();
+        boolean evaluarInicio= false;
+        view.BuscarUsuario(idUser.getText(),idPass.getText());
+        evaluarInicio = view.BuscarUsuario(idUser.getText(),idPass.getText());
+        if(evaluarInicio==false){
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "No se pudo iniciar la sesion",JOptionPane.WARNING_MESSAGE);
         }
         else{
             try {

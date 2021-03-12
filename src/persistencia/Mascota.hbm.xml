@@ -23,4 +23,5 @@
       </many-to-one>
 
   </class>
+    
 </hibernate-mapping>
