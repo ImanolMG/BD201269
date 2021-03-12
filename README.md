@@ -1,7 +1,6 @@
 # BD201269
 ## Proyecto Veterinaria
 
-***PROYECTO TERMINADO***
 
 ***Problemas en la rama master***
 
