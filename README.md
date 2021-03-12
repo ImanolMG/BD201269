@@ -19,3 +19,5 @@ Integrantes de equipo:
 
 ***El Script de la base de datos este dentro del proyecto en la rama master***
 
+***PROYECTO TERMINADO***
+
