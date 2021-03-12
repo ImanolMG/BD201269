@@ -85,7 +85,6 @@ public class DueñoDAO {
         int i =0;
         for(Iterator iterator = dueñoList.iterator(); iterator.hasNext();){
             dueño.add((Dueño) iterator.next());
-            nombre[i] = dueño.get(i).getNombre();
             i++;
         }
         listaNombres();
