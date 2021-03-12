@@ -20,9 +20,9 @@ Integrantes de equipo:
 
 **Alonso Anselmo Gomez Sanchez**    *Nombre de usuario: AAGS589
 
-***El PROYECTO SE SUBIO EN LA RAMA MASTER***
+***El PROYECTO SE SUBIO EN LA RAMA MASTER PERO POR PROBLEMAS DE LA RAMA LA VERSION FINAL DE PROYECTO ESTA EN LA RAMA 201269_IMANOL***
 
 
-***El Script de la base de datos este dentro del proyecto en la rama master***
+***El Script de la base de datos este dentro del proyecto en la rama 201269_Imanol***
 
 
