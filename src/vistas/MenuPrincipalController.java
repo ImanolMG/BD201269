@@ -24,8 +24,8 @@ public class MenuPrincipalController {
     private Button btnMedicamentos;
     @FXML
     private Button btnUsers;
-
     @FXML
+
     public void vistaDueños(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Dueños.fxml"));
@@ -44,8 +44,6 @@ public class MenuPrincipalController {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-
-
 
     @FXML
     public void vistaMascotas(ActionEvent event) {
