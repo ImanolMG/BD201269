@@ -18,31 +18,6 @@ USE `db201269`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cita`
---
-
-DROP TABLE IF EXISTS `cita`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cita` (
-  `IdCita` int(11) NOT NULL AUTO_INCREMENT,
-  `NombreMascota` varchar(45) DEFAULT NULL,
-  `Fecha` varchar(45) DEFAULT NULL,
-  `Servicio` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`IdCita`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cita`
---
-
-LOCK TABLES `cita` WRITE;
-/*!40000 ALTER TABLE `cita` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cita` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `dueño`
 --
 
@@ -50,12 +25,12 @@ DROP TABLE IF EXISTS `dueño`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dueño` (
-  `idDueño` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `IdDueño` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(45) DEFAULT NULL,
   `Direccion` varchar(45) DEFAULT NULL,
   `Telefono` varchar(45) NOT NULL,
-  PRIMARY KEY (`idDueño`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`IdDueño`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +39,7 @@ CREATE TABLE `dueño` (
 
 LOCK TABLES `dueño` WRITE;
 /*!40000 ALTER TABLE `dueño` DISABLE KEYS */;
-INSERT INTO `dueño` VALUES (1,'Daniel Imanol','Calle Reforma #3','967-175-7965'),(2,'Jesus Eduardo Jimenez Guillen ','Calle Reforma #4','967 3453 4321'),(3,'Alonso Anselmo','Sin direccion','967 129 12 16'),(4,'Luis Daniel Cruz Gomez','tuxtla gutierrez','967 2393 3923');
+INSERT INTO `dueño` VALUES (1,'Daniel Imanol Martinez Gomez','Calle reforma #3','9671757965'),(2,'Jesus Eduardo Jimenez ','Tuxtla','967 123 42 32');
 /*!40000 ALTER TABLE `dueño` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,15 +52,14 @@ DROP TABLE IF EXISTS `mascotas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mascotas` (
   `IdMascota` int(11) NOT NULL AUTO_INCREMENT,
-  `TipoMascota` varchar(45) DEFAULT NULL,
-  `Nombre` varchar(45) DEFAULT NULL,
-  `FechaIngreso` varchar(45) NOT NULL,
-  `IdDueño` int(11) NOT NULL,
-  `Sexo` varchar(45) DEFAULT NULL,
-  `Motivo` varchar(45) NOT NULL,
-  `NombreDueño` varchar(45) NOT NULL,
+  `TipoMascota` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `Nombre` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `FechaIngreso` date DEFAULT NULL,
+  `NombreDueño` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `Sexo` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `Motivo` varchar(45) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`IdMascota`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,6 +68,7 @@ CREATE TABLE `mascotas` (
 
 LOCK TABLES `mascotas` WRITE;
 /*!40000 ALTER TABLE `mascotas` DISABLE KEYS */;
+INSERT INTO `mascotas` VALUES (1,'CANINO','Firulais','2021-03-10','Daniel Imanol Martinez Gomez','Macho','Enfermedad'),(2,'REPTIL','Rodolfo','2021-03-10','Jesus Eduardo Jimenez Guillen','Macho','Enfermad');
 /*!40000 ALTER TABLE `mascotas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,12 +80,13 @@ DROP TABLE IF EXISTS `medicamentos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `medicamentos` (
-  `Codigo` int(11) NOT NULL AUTO_INCREMENT,
-  `NombreMedicamento` varchar(45) DEFAULT NULL,
-  `SustanciaActiva` varchar(45) DEFAULT NULL,
-  `Caducidad` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `IdMedicamento` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` int(11) DEFAULT NULL,
+  `NombreMedicamento` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `SustanciaActiva` varchar(45) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `Caducidad` date DEFAULT NULL,
+  PRIMARY KEY (`IdMedicamento`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,12 +106,12 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-  `IdUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `NombreCompleto` varchar(45) DEFAULT NULL,
   `Usuario` varchar(45) DEFAULT NULL,
-  `Contraseña` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`IdUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Contraseña` varchar(45) NOT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +120,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Daniel Imanol Martinez Gomez','Imanol','12345'),(2,'Luis Daniel Cruz Gomez','LuisD','12345');
+INSERT INTO `usuarios` VALUES (1,'Daniel Imanol Martinez Gomez ','Imanol','12345'),(4,'Alonso Anselmo Gomez Sanchez','Alonso','12345');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-05 23:05:56
+-- Dump completed on 2021-03-12 11:38:06
