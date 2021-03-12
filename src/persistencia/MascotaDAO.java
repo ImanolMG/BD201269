@@ -98,26 +98,5 @@ public class MascotaDAO {
         return mascotas;
     }
 
-/*
-    public List<Dueño> listaDueños(){
-        Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Dueño.class);
-        ProjectionList dueñosLista = Projections.projectionList();
-
-        dueñosLista.add(Projections.property("NombreDueño"), "NombreDueño");
-        criteria.setProjection(dueñosLista);
-
-        List<Dueño> dueño = new ArrayList<>();
-        List<Dueño> dueñoList = criteria.setResultTransformer(new AliasToBeanResultTransformer(Dueño.class)).list();
-
-        int i =0;
-        for(Iterator iterator = dueñoList.iterator(); iterator.hasNext();){
-            dueño.add((Dueño) iterator.next());
-            i++;
-        }
-        return dueño;
-    }
-*/
-
 
 }
