@@ -28,13 +28,9 @@ public class login {
 
     @FXML
     void ButtonLogin(ActionEvent event){
-        boolean evaluarInicio= false;
-        view.BuscarUsuario(idUser.getText(),idPass.getText());
-        evaluarInicio = view.BuscarUsuario(idUser.getText(),idPass.getText());
-        if(evaluarInicio==false){
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "No se pudo iniciar la sesion",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
+        boolean evaluarInicio = view.BuscarUsuario(idUser.getText(),idPass.getText());
+
+        if(evaluarInicio){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPrincipal.fxml"));
                 AnchorPane page = (AnchorPane) loader.load();
@@ -48,6 +44,12 @@ public class login {
             Node source = (Node) event.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
+        }else{
+            Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
+            mensaje.setTitle("No se puedo iniciar la sesion");
+            mensaje.setContentText("Usuario o contraseñá incorrectos");
+            mensaje.setHeaderText("Error: ");
+            mensaje.show();
         }
     }
 

@@ -41,16 +41,20 @@ public class UsuariosDAO {
 
         List listaUser = criteria.list();
         Usuarios usuarios = new Usuarios();
-        boolean evaluar = true;
+        boolean evaluar;
         int i =0;
         for(Iterator iterator = listaUser.iterator(); iterator.hasNext();){
             usuarios = (Usuarios) iterator.next();
         }
-        if(usuarios.getContraseña().equals(contraseña)&&usuarios.getUsuario().equals(usuario)){
-            evaluar = false;
+        if(usuario.equals(usuarios.getUsuario())){
+            if(contraseña.equals(usuarios.getContraseña())){
+                evaluar = true;
+            }else {
+                evaluar = false;
+            }
         }
-        if(!usuarios.getUsuario().equals(usuario)||!usuarios.getContraseña().equals(contraseña)){
-            evaluar=true;
+        else{
+            evaluar = false;
         }
         return evaluar;
     }
