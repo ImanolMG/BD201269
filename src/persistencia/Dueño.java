@@ -35,7 +35,7 @@ public class Dueño implements Serializable {
     }
 
 
-    public void setNombre(String Nombre){
+     public void setNombre(String Nombre){
         this.Nombre.set(Nombre);
     }
     public String getNombre(){
