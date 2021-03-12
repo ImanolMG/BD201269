@@ -1,5 +1,11 @@
 # BD201269
 ## Proyecto Veterinaria
+
+***PROYECTO TERMINADO***
+***Problemas en la rama master***
+
+***Version Final del proyecto en la rama 201269_Imanol***
+
 Integrantes de equipo:
 
 **Daniel Imanol Martinez Gomez**        *Nombre de usuario:  ImanolMG
@@ -19,5 +25,4 @@ Integrantes de equipo:
 
 ***El Script de la base de datos este dentro del proyecto en la rama master***
 
-***PROYECTO TERMINADO***
-Problemas en la rama master proyecto completo en la rama 201269_Imanol
+
