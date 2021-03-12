@@ -45,8 +45,6 @@ public class MenuPrincipalController {
         stage.close();
     }
 
-
-
     @FXML
     public void vistaMascotas(ActionEvent event) {
         try {
