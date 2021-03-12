@@ -20,4 +20,4 @@ Integrantes de equipo:
 ***El Script de la base de datos este dentro del proyecto en la rama master***
 
 ***PROYECTO TERMINADO***
-Problemas en rama master proyecto completo en la rama 201269_Imanol
+Problemas en la rama master proyecto completo en la rama 201269_Imanol
