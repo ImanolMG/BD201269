@@ -24,8 +24,8 @@ public class MenuPrincipalController {
     private Button btnMedicamentos;
     @FXML
     private Button btnUsers;
-
     @FXML
+
     public void vistaDueños(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Dueños.fxml"));
